@@ -1,0 +1,90 @@
+.vacancy-card {
+    background-color: #FFFFFF;
+    width: 950px;
+    height: 285px;
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.2473px;
+
+    margin-bottom: 27px;
+}
+
+.vacancy-card:hover {
+    transform: scale(0.99);
+    border: 5px solid #88EAFF;
+    transition: all .1s ease;
+}
+
+.vacancy-card-head > h1 {
+    font-weight: 500;
+    font-size: 32px;
+
+    margin-left: 37px;
+    padding-left: 15px;
+    padding-top: 0px;
+    margin-bottom: 14px;
+    border-left: #88EAFF 5px solid;
+}
+
+.vacancy-card-head > h2 {
+    font-weight: 400;
+    font-size: 30px;
+
+    padding-left: 52px;
+    margin-bottom: 51px;
+}
+
+.first-half {
+    display: flex;
+    justify-content: space-between;
+}
+
+.first-half > a {
+    width: 44px;
+    height: 44px;
+
+    padding-right: 27px;
+    padding-top: 23px;   
+}
+
+.location {
+    font-weight: 400;
+    font-size: 20px;
+
+    padding-left: 52px;
+}
+
+.second-half {
+    margin-top: -40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.department {
+    font-weight: 500;
+    font-size: 24px;
+
+    padding-left: 52px;
+    margin-bottom: 27px;
+}
+
+.respond-button {
+    width: 243px;
+    height: 61px;
+
+    margin-right: 27px; 
+    margin-bottom: 27px;
+    
+    background: #88EAFF;
+    border-radius: 16.8237px;
+    border: 0px;
+
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.respond-button:hover {
+    background-color: aqua;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}

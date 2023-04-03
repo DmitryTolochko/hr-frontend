@@ -1,9 +1,14 @@
 import React from 'react';
+import SearchString from '../components/SearchString';
+import VacancyCard from '../components/VacancyCard';
 
 const BoardOfVacancies = () => {
     return (
         <div>
-            <h1>BoardOfVacancies</h1>
+            <SearchString/>
+            <VacancyCard/>
+            <VacancyCard/>
+            <VacancyCard/>
         </div>
     );
 };

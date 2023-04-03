@@ -11,6 +11,10 @@ import MyVacancies from './pages/MyVacancies'
 import BoardOfCVs from './pages/BoardOfCVs'
 import AdminPanel from './pages/AdminPanel'
 
+import './styles/index.css'
+import './styles/VacancyCard.css'
+import './styles/SearchString.css'
+
 
 class App extends React.Component {
     render () {
