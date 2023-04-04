@@ -1,0 +1,10 @@
+.board-of-vacancies {
+    display: flex;
+    gap: 51px;
+    justify-content: center;
+}
+
+.board {
+    display: grid;
+    justify-items: center;
+}

@@ -14,6 +14,8 @@ import AdminPanel from './pages/AdminPanel'
 import './styles/index.css'
 import './styles/VacancyCard.css'
 import './styles/SearchString.css'
+import './styles/FiltersPanel.css'
+import './styles/BoardOfVacancies.css'
 
 
 class App extends React.Component {

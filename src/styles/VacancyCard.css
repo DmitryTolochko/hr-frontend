@@ -10,7 +10,8 @@
 }
 
 .vacancy-card:hover {
-    transform: scale(0.99);
+    width: 940px;
+    height: 275px;
     border: 5px solid #88EAFF;
     transition: all .1s ease;
 }
@@ -69,6 +70,9 @@
 }
 
 .respond-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 243px;
     height: 61px;
 

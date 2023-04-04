@@ -1,0 +1,46 @@
+.filters-panel {
+    width: 319px;
+    height: 675px;
+
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.2473px;
+}
+
+.filters-panel > h3 {
+    font-weight: 600;
+    font-size: 24px;
+
+    padding-top: 21px;
+    padding-left: 33px;
+    margin-bottom: 31px;
+}
+
+.filters-panel > h4 {
+    font-weight: 500;
+    font-size: 20px;
+
+    margin-left: 37px;
+    padding-left: 10px;
+    border-left: #88EAFF 5px solid;
+
+    margin-bottom: 9px;
+}
+
+.filter-list > li {
+    font-weight: 400;
+    font-size: 16px;
+
+    list-style-image: url(/src/components/images/circle-1.svg);
+    margin-left: 20px;
+    padding-left: 10px;
+    margin-bottom: 7px;
+}
+
+.filter-list > li:hover {
+    color: #797979;
+}
+
+.filter-list > li.filter-active {
+    list-style-image: url(/src/components/images/circle-2.svg);
+}

@@ -3,7 +3,6 @@
 }
 
 .search-form > input {
-    width: 703px;
     height: 61px;
 
     font-weight: 300;
@@ -24,7 +23,7 @@
     outline: 0;
 }
 
-.search-form > button {
+.search-button {
     width: 207px;
     height: 61px;
     
@@ -39,8 +38,12 @@
     margin-left: 40px;
 }
 
-.search-form > button:hover {
+.search-button:hover {
     background-color: aqua;
     transition: all .1s ease;
     transform: scale(1.02);
+}
+
+.search-box {
+    display: flex;
 }
