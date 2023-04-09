@@ -1,0 +1,134 @@
+.loginPan {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 550px;
+    height: 518px;
+    margin: 0 auto;
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.2473px;
+
+}
+
+.loginPan_h1 {
+    position: absolute;
+    width: 105px;
+    height: 49px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 49px;
+
+    margin: 0;
+    left: 107.12px;
+    top: 62.17px;
+    z-index: 2;
+
+    color: #000000;
+
+}
+
+#circle {
+    position: absolute;
+    width: 74px;
+    height: 74px;
+    top: 51.65px;
+    left: 84.89px;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 50%;
+
+    background: #88EAFF;
+
+}
+
+
+.loginPan_first_input  {
+    width: 380.22px;
+    height: 52.65px;
+    margin-top: 171px;
+    margin-left: 85px;
+    border: none;
+
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+
+
+}
+
+.loginPan_second_input{
+    width: 380.22px;
+    height: 52.65px;
+    margin-left: 85px;
+    margin-top: 27px;
+    border: none;
+
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.placeholder {
+    width: 199px;
+    height: 24px;
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #797979;
+}  
+
+.loginPan_button {
+    width: 380.22px;
+    height: 70.66px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    margin-top: 41px;
+    margin-left: 85px;
+    background: #88EAFF;
+    border-color: #88EAFF;
+    border-radius: 16.8237px;
+    border: none;
+}
+
+.loginPan_button:hover {
+    background-color: aqua;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.loginPan_div {
+    width: 337px;
+    margin: 0 auto;
+    margin-top: 27px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    
+
+    color: #000000;
+}
+
+.loginPan_a {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: bold;
+
+    color: #000000;
+}
