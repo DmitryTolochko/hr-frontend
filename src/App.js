@@ -16,6 +16,7 @@ import './styles/VacancyCard.css'
 import './styles/SearchString.css'
 import './styles/FiltersPanel.css'
 import './styles/BoardOfVacancies.css'
+import './styles/CVCard.css'
 
 
 class App extends React.Component {

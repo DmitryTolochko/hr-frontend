@@ -8,7 +8,9 @@ const MyVacancies = () => {
             <div className='board'>
                 <div className='search-box'>
                     <SearchString width='470px'/>
-                    <button className='search-button'>Добавить</button>
+                    <button className='search-button'>
+                        <img src={require('../components/images/plus.svg').default} style={{width: "17px", height: "17px"}}></img>Добавить
+                    </button>
                 </div>
                 <VacancyCardEdit/>
                 <VacancyCardEdit/>
