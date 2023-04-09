@@ -56,7 +56,7 @@
 
 
 .loginPan_first_input  {
-    width: 380.22px;
+    width: 365px;
     height: 52.65px;
     margin-top: 171px;
     margin-left: 85px;
@@ -78,7 +78,7 @@
 }
 
 .loginPan_second_input{
-    width: 380.22px;
+    width: 365px;
     height: 52.65px;
     margin-left: 85px;
     margin-top: 27px;
@@ -99,7 +99,7 @@
 
 
 .loginPan_button {
-    width: 380.22px;
+    width: 380px;
     height: 70.66px;
 
     font-family: 'Montserrat';

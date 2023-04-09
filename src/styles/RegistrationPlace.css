@@ -1,0 +1,185 @@
+.glav_registrationPan{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-top: 5%;
+}
+.registrationPan {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 600px;
+    height: 649px;
+    margin: 0 auto;
+    justify-content: center;
+    
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.2473px;
+
+}
+
+.circle2 {
+    position: absolute;
+    width: 74px;
+    height: 74px;
+    top: 51.65px;
+    left: 87px;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 50%;
+
+    background: #88EAFF;
+}
+
+.registrationPan_h1 {
+    position: absolute;
+    width: 105px;
+    height: 49px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 49px;
+
+    margin: 0;
+    left: 107.12px;
+    top: 62.17px;
+    z-index: 2;
+
+    color: #000000;
+
+}
+
+.registrationPan_first_input  {
+    width: 410px;
+    height: 53px;
+    margin-top: 160px;
+    margin-left: 86px;
+    border: none;
+    padding-left: 14px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    color: #797979;
+
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+
+
+}
+
+.registrationPan_second_input{
+    width: 410px;
+    height: 53px;
+    margin-left: 86px;
+    margin-top: 21px;
+    border: none;
+    padding-left: 14px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    color: #797979;
+
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.registrationPan_third_input{
+    width: 410px;
+    height: 53px;
+    margin-left: 86px;
+    margin-top: 21px;
+    border: none;
+    padding-left: 14px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    color: #797979;
+
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.registrationPan_four_input{
+    width: 410px;
+    height: 53px;
+    margin-left: 86px;
+    margin-top: 21px;
+    border: none;
+    padding-left: 14px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    color: #797979;
+
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.registrationPan_button {
+    width: 430px;
+    height: 70.66px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 34px;
+    margin-top: 41px;
+    margin-left: 85px;
+    background: #88EAFF;
+    border-color: #88EAFF;
+    border-radius: 16.8237px;
+    border: none;
+}
+
+.registrationPan_button:hover {
+    background-color: aqua;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.registrationPan_div {
+    width: 337px;
+    margin: 0 auto;
+    margin-top: 27px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    margin-right: 90px;
+    
+
+    color: #000000;
+}
+
+.registrationPan_a {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: bold;
+
+    color: #000000;
+}
