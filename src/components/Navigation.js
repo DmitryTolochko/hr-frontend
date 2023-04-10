@@ -15,6 +15,8 @@ class Navigation extends React.Component {
                         <NavLink to="/AdminPanel">Админ панель</NavLink>
                         <NavLink to="/BoardOfCVs">Доска резюме</NavLink>
                         <NavLink to="/Account">Профиль пользователя</NavLink>
+                        <NavLink to="/Login">Логин</NavLink>
+                        <NavLink to="/Registration">Регистрация</NavLink>
                     </NavMenu>
                 </Nav>
             </div>

@@ -10,12 +10,17 @@ import BoardOfVacancies from './pages/BoardOfVacancies'
 import MyVacancies from './pages/MyVacancies'
 import BoardOfCVs from './pages/BoardOfCVs'
 import AdminPanel from './pages/AdminPanel'
+import Login from './pages/Login';
+import Registration from './pages/Registration';
 
 import './styles/index.css'
 import './styles/VacancyCard.css'
 import './styles/SearchString.css'
 import './styles/FiltersPanel.css'
 import './styles/BoardOfVacancies.css'
+import './styles/LoginPlace.css'
+import './styles/RegistrationPlace.css'
+
 import './styles/CVCard.css'
 
 
@@ -34,6 +39,8 @@ class App extends React.Component {
                         <Route path='/BoardOfCVs' element={<BoardOfCVs/>} />
                         <Route path='/Account' element={<Account/>} />
                         <Route path="/AdminPanel" element={<AdminPanel/>}/>
+                        <Route path="/Login" element={<Login/>}/>
+                        <Route path="/Registration" element={<Registration/>}/>
                     </Routes>
                 </Router>
             </>
