@@ -1,25 +1,22 @@
 import React from 'react';
-import { Nav, NavLink, NavMenu } 
-    from "./NavbarElements.js";
+import { Link } from 'react-router-dom';
 
 class Navigation extends React.Component {
     render () {
         return (
-            <div>
-                <Nav>
-                    <NavMenu>
-                        <NavLink to="/CVEditor">Ваше резюме</NavLink>
-                        <NavLink to="/FeaturedVacancies">Избранные вакансии</NavLink>
-                        <NavLink to="/BoardOfVacancies">Доска Вакансий</NavLink>
-                        <NavLink to="/MyVacancies">Мои вакансии</NavLink>
-                        <NavLink to="/AdminPanel">Админ панель</NavLink>
-                        <NavLink to="/BoardOfCVs">Доска резюме</NavLink>
-                        <NavLink to="/Account">Профиль пользователя</NavLink>
-                        <NavLink to="/Login">Логин</NavLink>
-                        <NavLink to="/Registration">Регистрация</NavLink>
-                    </NavMenu>
-                </Nav>
-            </div>
+            <header className='navigation'>
+                <ul>
+                    <li><Link to="/CVEditor">Ваше резюме</Link></li>
+                    <li><Link to="/FeaturedVacancies">Избранные вакансии</Link></li>
+                    <li><Link to="/BoardOfVacancies">Доска Вакансий</Link></li>
+                    <li><Link to="/MyVacancies">Мои вакансии</Link></li>
+                    <li><Link to="/AdminPanel">Админ панель</Link></li>
+                    <li><Link to="/BoardOfCVs">Доска резюме</Link></li>
+                    <li><Link to="/Account">Профиль пользователя</Link></li>
+                    <li><Link to="/Login">Логин</Link></li>
+                    <li><Link to="/Registration">Регистрация</Link></li>
+                </ul>
+            </header>
         )
     }
 }

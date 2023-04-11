@@ -9,9 +9,9 @@ const FeaturedVacancies= () => {
             <FiltersPanel/>
             <div className='board'>
                 <SearchString width='703px'/>
-                <VacancyCard/>
-                <VacancyCard/>
-                <VacancyCard/>
+                <VacancyCard animatedClass='animated-card'/>
+                <VacancyCard animatedClass='animated-card'/>
+                <VacancyCard animatedClass='animated-card'/>
             </div>
         </div>
     );

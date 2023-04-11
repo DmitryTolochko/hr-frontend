@@ -9,9 +9,9 @@ const BoardOfCVs = () => {
             <FiltersPanel/>
             <div className='board'>
                 <SearchString width='703px'/>
-                <CVCard/>
-                <CVCard/>
-                <CVCard/>
+                <CVCard animatedClass='animated-card'/>
+                <CVCard animatedClass='animated-card'/>
+                <CVCard animatedClass='animated-card'/>
             </div>
         </div>
     );

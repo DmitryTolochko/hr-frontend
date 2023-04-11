@@ -12,9 +12,9 @@ const MyVacancies = () => {
                         <img src={require('../components/images/plus.svg').default} style={{width: "17px", height: "17px"}}></img>Добавить
                     </button>
                 </div>
-                <VacancyCardEdit/>
-                <VacancyCardEdit/>
-                <VacancyCardEdit/>
+                <VacancyCardEdit animatedClass='animated-card'/>
+                <VacancyCardEdit animatedClass='animated-card'/>
+                <VacancyCardEdit animatedClass='animated-card'/>
             </div>
         </div>
     );

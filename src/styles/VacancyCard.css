@@ -9,7 +9,7 @@
     margin-bottom: 27px;
 }
 
-.vacancy-card:hover {
+.animated-card:hover {
     width: 940px;
     height: 275px;
     border: 5px solid #88EAFF;

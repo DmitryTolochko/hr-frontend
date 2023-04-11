@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CVCard= () => {
+const CVCard= (props) => {
     return (
-        <div className='vacancy-card'>
+        <div className={`vacancy-card ${props.animatedClass}`}>
             <div className='first-half'>
                 <span className='vacancy-card-head'>
                     <h1>Frontend-разработчик</h1>

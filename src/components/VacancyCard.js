@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const VacancyCard = () => {
+const VacancyCard = (props) => {
     return (
-        <div className='vacancy-card'>
+        <div className={`vacancy-card ${props.animatedClass}`}>
             <div className='first-half'>
                 <span className='vacancy-card-head'>
-                    <h1>Frontend-разработчик</h1>
+                    <h1><Link to="/Vacancy">Frontend-разработчик</Link></h1>
                     <h2>50 000 руб.</h2>
                 </span>
                 <a><img src={require('./images/star-1.svg').default} alt='star'></img></a>
