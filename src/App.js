@@ -13,6 +13,8 @@ import AdminPanel from './pages/AdminPanel'
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import Vacancy from './pages/Vacancy';
+import VacancyEditor from './pages/VacancyEditor';
+import CVResponses from './pages/CVResponses';
 
 import './styles/index.css'
 import './styles/VacancyCard.css'
@@ -24,6 +26,7 @@ import './styles/RegistrationPlace.css'
 import './styles/CVCard.css'
 import './styles/Vacancy.css'
 import './styles/Navigation.css'
+import './styles/VacancyEditor.css'
 
 
 class App extends React.Component {
@@ -45,6 +48,8 @@ class App extends React.Component {
                             <Route path="/Login" element={<Login/>}/>
                             <Route path="/Registration" element={<Registration/>}/>
                             <Route path="/Vacancy" element={<Vacancy/>}/>
+                            <Route path="/VacancyEditor" element={<VacancyEditor/>}/>
+                            <Route path="/CVResponses" element={<CVResponses/>}/>
                         </Routes>
                     </div>
                 </Router>

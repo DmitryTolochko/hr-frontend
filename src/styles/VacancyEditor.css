@@ -1,0 +1,179 @@
+.vacancy-editor {
+    font-weight: 400;
+    font-size: 20px;
+
+    width: 820px;
+    height:fit-content;
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.2473px;
+
+    margin: auto auto;
+}
+
+.vacancy-editor > h1 {
+    margin: 0 0;
+    font-weight: 600;
+    font-size: 40px;
+
+    padding-top: 29px;
+    padding-left: 55px;
+}
+
+.vacancy-editor > p {
+    margin: 0 0;
+    padding-top: 17px;
+    padding-left: 55px;
+
+    margin-bottom: 7px;
+}
+
+.vacancy-editor > h2 {
+    margin: 0 0;
+    font-weight: 500;
+    font-size: 24px;
+
+    margin-left: 55px;
+    padding-left: 12px;
+    border-left: #88EAFF 4px solid;
+
+    margin-top: 30px;
+}
+
+.vacancy-editor > input, select {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;    
+
+    border: 0;
+    width: 600px;
+    height: 41px;
+    
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+
+    margin-left: 54px;
+    padding-left: 11px;
+}
+
+.vacancy-editor > textarea {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+
+    box-sizing: border-box;
+
+    border: 0;
+    width: 603px;
+    height: 149px;
+    
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+
+    margin-left: 54px;
+    margin-top: 17px;
+    padding: 15px;
+
+    resize: none;
+}
+
+.skills-editor {
+    margin-top: 0;
+    display: flex;
+    list-style: none;
+    padding-right: 31px;
+    padding-left: 55px;
+    margin-top: 20px;
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.skills-editor > li {
+    display: flex;
+    font-weight: 500;
+    font-size: 11.8161px;
+
+    vertical-align: middle;
+
+    padding: 10px;
+    background: #88EAFF;
+    box-shadow: 0px 5.28571px 39.6429px rgba(0, 0, 0, 0.1);
+    border-radius: 9.30394px;
+}
+
+.delete-skill {
+    width: 12px;
+    height: 14px;
+
+    padding-left: 5px;
+}
+
+.editor-buttons {
+    display: flex;
+    gap: 20px;
+
+    padding-left: 54px;
+    padding-top: 41px;
+
+    padding-bottom: 35px;
+}
+
+.editor-button {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+
+    border: 1px solid #000000;
+    border-radius: 16.8237px;
+    background: #FFFFFF;
+
+    padding: 15px 46px;
+}
+
+.publish-button {
+    font-weight: 500;
+    font-size: 24px;
+    
+    display: flex;
+    background: #88EAFF;
+    border-radius: 16.8237px;
+
+    border: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.publish-button > img {
+    width: 23px;
+    height: 25px;
+
+    padding-right: 7px;
+}
+
+.add-button {
+    position: absolute;
+
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+
+    margin-left: -40px;
+    padding-top: 10px;
+}
+
+.editor-button:hover {
+    transition: all .1s ease;
+    transform: scale(1.02);
+}

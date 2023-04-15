@@ -12,13 +12,12 @@
     background: #FFFFFF;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    border: 0px;
-
-    background: url('../components/images/lupa.svg') no-repeat scroll 110px 20px;    
+    border: 0px; 
 }
 
 .search-form > input::placeholder {
     color: #797979;
+    background: url('../components/images/lupa.svg') no-repeat scroll 80px 4px;   
 }
 
 .search-form > input:focus {
