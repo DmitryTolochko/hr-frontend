@@ -47,7 +47,7 @@ class App extends React.Component {
                             <Route path="/AdminPanel" element={<AdminPanel/>}/>
                             <Route path="/Login" element={<Login/>}/>
                             <Route path="/Registration" element={<Registration/>}/>
-                            <Route path="/Vacancy" element={<Vacancy/>}/>
+                            <Route path="/Vacancy/:id" element={<Vacancy/>}/>
                             <Route path="/VacancyEditor" element={<VacancyEditor/>}/>
                             <Route path="/CVResponses" element={<CVResponses/>}/>
                         </Routes>

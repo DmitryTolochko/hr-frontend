@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchString from '../components/SearchString';
 import VacancyCardEdit from '../components/VacancyCardEdit';
+import { Link } from 'react-router-dom';
 
 const MyVacancies = () => {
     return (
@@ -8,9 +9,11 @@ const MyVacancies = () => {
             <div className='board'>
                 <div className='search-box'>
                     <SearchString width='470px'/>
-                    <button className='search-button'>
-                        <img src={require('../components/images/plus.svg').default} style={{width: "17px", height: "17px"}}></img>Добавить
-                    </button>
+                    <Link to="/VacancyEditor">
+                        <button className='search-button'>
+                            <img src={require('../components/images/plus.svg').default} style={{width: "17px", height: "17px"}}></img>Добавить
+                        </button>
+                    </Link>
                 </div>
                 <VacancyCardEdit animatedClass='animated-card'/>
                 <VacancyCardEdit animatedClass='animated-card'/>
