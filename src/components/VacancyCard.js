@@ -9,8 +9,6 @@ class VacancyCard extends React.Component {
             department: ''
         }
         this.getDepartment(props.departmentId)
-        console.log(props)
-        console.log(this.state)
     }
 
     getDepartment(id) {

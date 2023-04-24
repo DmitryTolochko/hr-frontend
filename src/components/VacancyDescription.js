@@ -1,14 +1,15 @@
 import React from 'react';
-const VacancyDescription = (props) => {       
+const VacancyDescription = (props) => {    
+    let employmentTypes = ['Не указано', 'Полная занятость', 'Частичная занятость', 'Вахта', 'Удаленная работа', 'Стажировка']   
+    let workExperience = ['Не важно', 'От 1 до 3 лет', 'От 4 до 6 лет', 'Более 6 лет']
     return (
             <div className='vacancy-description'>
                 <span className='h2-span'>
                     <h2>Требования</h2>
                 </span>
                 <ul className='aquirements'>
-                    <li>Опыт работы <p>{props.cardInfo.workExperience} года</p></li>
-                    {/* <li>Занятость <p>Полная</p></li>
-                    <li>Условия <p>Офис</p></li> */}
+                    <li>Опыт работы: <p>{workExperience[props.cardInfo.workExperience]}</p></li>
+                    <li>Занятость: <p>{employmentTypes[props.cardInfo.employmentType]}</p></li>
                 </ul>
                 <span className='h2-span'>
                     <h2>Описание</h2>
