@@ -9,7 +9,7 @@
     margin-bottom: 27px;
 }
 
-.vacancy-card:hover {
+.animated-card:hover {
     width: 940px;
     height: 275px;
     border: 5px solid #88EAFF;
@@ -46,6 +46,11 @@
 
     padding-right: 27px;
     padding-top: 23px;   
+}
+
+.first-half > a > img:hover {
+    transition: all .1s ease;
+    transform: scale(1.3);
 }
 
 .location {

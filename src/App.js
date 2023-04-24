@@ -12,6 +12,9 @@ import BoardOfCVs from './pages/BoardOfCVs'
 import AdminPanel from './pages/AdminPanel'
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import Vacancy from './pages/Vacancy';
+import VacancyEditor from './pages/VacancyEditor';
+import CVResponses from './pages/CVResponses';
 
 import './styles/index.css'
 import './styles/VacancyCard.css'
@@ -24,6 +27,9 @@ import './styles/AccountStyle.css'
 import './styles/CVstyle.css'
 import './styles/AdminPanstyle.css'
 import './styles/CVCard.css'
+import './styles/Vacancy.css'
+import './styles/Navigation.css'
+import './styles/VacancyEditor.css'
 
 
 class App extends React.Component {
@@ -32,18 +38,23 @@ class App extends React.Component {
             <>
                 <Router>
                     <Navigation />
-                    <Routes>
-                        <Route exact path='/' element={<Account/>} />
-                        <Route path='/CVEditor' element={<CVEditor/>} />
-                        <Route path='/FeaturedVacancies' element={<FeaturedVacancies/>} />
-                        <Route path='/BoardOfVacancies' element={<BoardOfVacancies/>} />
-                        <Route path='/MyVacancies' element={<MyVacancies/>} />
-                        <Route path='/BoardOfCVs' element={<BoardOfCVs/>} />
-                        <Route path='/Account' element={<Account/>} />
-                        <Route path="/AdminPanel" element={<AdminPanel/>}/>
-                        <Route path="/Login" element={<Login/>}/>
-                        <Route path="/Registration" element={<Registration/>}/>
-                    </Routes>
+                    <div className='page'>
+                        <Routes>
+                            <Route exact path='/' element={<Account/>} />
+                            <Route path='/CVEditor' element={<CVEditor/>} />
+                            <Route path='/FeaturedVacancies' element={<FeaturedVacancies/>} />
+                            <Route path='/BoardOfVacancies' element={<BoardOfVacancies/>} />
+                            <Route path='/MyVacancies' element={<MyVacancies/>} />
+                            <Route path='/BoardOfCVs' element={<BoardOfCVs/>} />
+                            <Route path='/Account' element={<Account/>} />
+                            <Route path="/AdminPanel" element={<AdminPanel/>}/>
+                            <Route path="/Login" element={<Login/>}/>
+                            <Route path="/Registration" element={<Registration/>}/>
+                            <Route path="/Vacancy/:id" element={<Vacancy/>}/>
+                            <Route path="/VacancyEditor/:id" element={<VacancyEditor/>}/>
+                            <Route path="/CVResponses" element={<CVResponses/>}/>
+                        </Routes>
+                    </div>
                 </Router>
             </>
         );

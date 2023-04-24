@@ -1,25 +1,32 @@
 import React from 'react';
-import { Nav, NavLink, NavMenu } 
-    from "./NavbarElements.js";
+import { Link } from 'react-router-dom';
 
 class Navigation extends React.Component {
     render () {
         return (
-            <div>
-                <Nav>
-                    <NavMenu>
-                        <NavLink to="/CVEditor">Ваше резюме</NavLink>
-                        <NavLink to="/FeaturedVacancies">Избранные вакансии</NavLink>
-                        <NavLink to="/BoardOfVacancies">Доска Вакансий</NavLink>
-                        <NavLink to="/MyVacancies">Мои вакансии</NavLink>
-                        <NavLink to="/AdminPanel">Админ панель</NavLink>
-                        <NavLink to="/BoardOfCVs">Доска резюме</NavLink>
-                        <NavLink to="/Account">Профиль пользователя</NavLink>
-                        <NavLink to="/Login">Логин</NavLink>
-                        <NavLink to="/Registration">Регистрация</NavLink>
-                    </NavMenu>
-                </Nav>
-            </div>
+            <header className='navigation'>
+                <img src={require('./images/logo.png')} alt='logo'/>
+                <ul className='main-menu'>
+                    <li className='chosen-page'><Link to="/CVEditor">Мое резюме</Link></li>
+                    <li><Link to="/FeaturedVacancies">Избранные вакансии</Link></li>
+                    <li><Link to="/BoardOfVacancies">Доска Вакансий</Link></li>
+                    
+                    {/* <li><Link to="/Login">Логин</Link></li>
+                    <li><Link to="/Registration">Регистрация</Link></li> */}
+                    <li className='more'>Ещё<img src={require('./images/arrow-down.svg').default}/>
+                        <ul className="submenu">
+                            <li><Link to="/AdminPanel">Админ панель</Link></li>
+                            <li><Link to="/BoardOfCVs">Доска резюме</Link></li>
+                            <li><Link to="/MyVacancies">Мои вакансии</Link></li>
+                            <li><Link to="/CVResponses">Отклики</Link></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div className='account'>
+                    <img src={require('./images/deafult-avatar.png')} alt='avatar'/>
+                    <Link to="/Account">Профиль пользователя</Link>
+                </div>
+            </header>
         )
     }
 }

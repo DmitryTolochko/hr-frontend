@@ -1,0 +1,85 @@
+.vacancy-description {
+    width: 950px;
+    height: auto;
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.2473px;
+}
+
+.vacancy {
+    /* margin-left: 18%; */
+    display: grid;
+    justify-content: center;
+}
+
+.h2-span > h2 {
+    font-weight: 500;
+    font-size: 24px;
+
+    margin-top: 0;
+    padding-top: 0;
+    padding-left: 10px;
+    margin-left: 44px;
+    border-left: #88EAFF 4px solid;
+}
+
+.h2-span {
+    padding-top: 28px;
+    display: flex;
+}
+
+.description {
+    margin: 0 0;
+    width: 867px;
+    padding-left: 46px;
+    white-space: pre-wrap;
+}
+
+.aquirements {
+    list-style: none;
+    padding-left: 42px;
+    margin: 0 0;
+}
+
+.aquirements > li {
+    font-weight: 300;
+    font-size: 18px;
+
+    display: flex;
+}
+
+.aquirements > li > p {
+    font-weight: 400;
+    font-size: 20px;
+
+    margin: 0 0;
+    padding-left: 12px;
+}
+
+.upload-date {
+    font-weight: 300;
+    font-size: 16px;
+
+    padding-left: 46px;
+    padding-bottom: 44px;
+}
+
+.vacancy-skills {
+    margin-bottom: 45px;
+    width: 857px;
+    flex-wrap: wrap;
+}
+
+.vacancy > a {
+    display: flex;
+    justify-content:baseline;
+    font-weight: 500;
+    font-size: 23.4667px;
+    color: #535353;
+
+    margin-top: -20px;
+
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+}

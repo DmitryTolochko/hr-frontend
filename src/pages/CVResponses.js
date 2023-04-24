@@ -1,20 +1,21 @@
 import React from 'react';
 import SearchString from '../components/SearchString';
-import VacancyCard from '../components/VacancyCard';
 import FiltersPanel from '../components/FiltersPanel';
+import CVCard from '../components/CVCard';
+import CVResponse from '../components/CVResponse';
 
-const FeaturedVacancies= () => {
+const CVResponses = () => {
     return (
         <div className='board-of-vacancies'>
             <FiltersPanel/>
             <div className='board'>
                 <SearchString width='703px'/>
-                <VacancyCard animatedClass='animated-card'/>
-                <VacancyCard animatedClass='animated-card'/>
-                <VacancyCard animatedClass='animated-card'/>
+                <CVResponse animatedClass='animated-card'/>
+                <CVResponse animatedClass='animated-card'/>
+                <CVResponse animatedClass='animated-card'/>
             </div>
         </div>
     );
 };
 
-export default FeaturedVacancies;
+export default CVResponses;
