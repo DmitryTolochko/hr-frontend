@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from './Login';
+import AccountPan from '../components/AccountPan';
 
 const Account = () => {
     return (
         <div>
-            
+            <AccountPan/>
         </div>
     );
 };

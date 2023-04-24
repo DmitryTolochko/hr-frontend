@@ -1,0 +1,525 @@
+.glav_CVPan{
+    display: flex;
+    margin-left: 165px;
+    margin-top: 3%;
+}
+
+.CVPan {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 820px;
+    height: 2200px;
+    justify-content: center;
+    
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.25px;
+}
+
+.CVPan_h1 {
+    position: absolute;
+    width: 270px;
+    height: 49px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 49px;
+
+    margin: 0;
+    left: 53px;
+    top: 27px;
+
+    color: #000000;
+}
+
+.CVPanglav_h2 {
+    width: 298px;
+    height: 29px;
+    
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0;
+    margin-top: 100px;
+    margin-left: 58px;
+    padding-left: 10px;
+
+    color: #000000;
+    border-left: #88EAFF 4px solid;
+}
+
+.CVPan_h2 {
+    width: 298px;
+    height: 29px;
+    
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0;
+    margin-top: 30px;
+    margin-left: 58px;
+    padding-left: 10px;
+
+    color: #000000;
+    border-left: #88EAFF 4px solid;
+}
+
+
+.CVPan_h3 {
+    height: 24px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    
+    margin: 0;
+    margin-left: 50px;
+    margin-top: 18px;
+    padding-left: 10px;
+
+    color: #000000;
+}
+
+.CVPan_select {
+    width: 610px;
+    height: 41px;
+    margin-top: 15px;
+    margin-left: 58px;
+    border: none;
+    padding-left: 10px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.56989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.CVPan_input1 {
+    width: 600px;
+    height: 41px;
+    margin-top:  15px;
+    margin-left: 58px;
+    border: none;
+    padding-left: 10px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.56989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.CVPan_input2 {
+    width: 580px;
+    height: 142px;
+    margin-top:  15px;
+    margin-left: 58px;
+    border: none;
+    padding: 15px;
+    resize: none;
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.56989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.photo_div {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 442px;
+    height: 820px;
+    justify-content: center;
+    margin-left: 35px;
+    
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.25px;
+}
+
+.photo_div_h2 {
+    width: 298px;
+    height: 29px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+
+    margin: 0;
+    margin-left: 55px;
+    margin-top: 31px;
+    padding-left: 10px;
+
+    color: #000000;
+    border-left: #88EAFF 4px solid;
+}
+
+.fio_CVpan {
+    width: 259px;
+    height: 22px;
+    margin-left: 70px;
+    margin-top: 15px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    
+
+    color: #000000;
+
+}
+
+.date_CVpan {
+    width: 597px;
+    height: 41px;
+    margin-top:  15px;
+    margin-left: 58px;
+    border: none;
+    padding-left: 10px;
+    padding-right: 5px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.56989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.CVpan_h3_a {
+    width: 207px;
+    height: 21px;
+    margin-left: 58px;
+    margin-top: 15px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16.1119px;
+    line-height: 20px;
+
+    color: #797979;
+}
+
+.CVPan_up_button {
+    width: 286px;
+    height: 61px;
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 35px;
+    margin-left: 58px;
+    background: #88EAFF;
+    border-color: #88EAFF;
+    border-radius: 16.8237px;
+    border: none;
+}
+    
+.CVPan_up_button:hover {
+    background-color: aqua;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+    
+
+.CVPan_PDF_button { 
+    width: 257px;
+    height: 61px;
+
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 35px;
+    margin-left: 20px;
+    
+    background: white;
+    border-color: black;
+    border-radius: 16.8237px;
+}
+
+.CVPan_PDF_button:hover {
+    background-color: lightgray;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.img_CV {
+    width: 352px;
+    height: 352px;
+    left: 1271px;
+    top: 219px;
+    margin-left: 45px;
+    margin-top: 24px;
+    filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.1));
+    border-radius: 176px;
+}
+
+.CVPan_a {
+    margin-left: 25px;
+   
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-decoration: none;
+
+    color: #535353;
+}
+
+.modal_job {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 600px;
+    height: 500px;
+    justify-content: center;
+    margin-left: 20px;
+    
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.25px;
+}
+
+.modal_job_h2 {
+    width: 307px;
+    height: 30px;
+    
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0;
+    margin-top: 53px;
+    margin-left: 55px;
+    padding-left: 10px;
+
+    color: #000000;
+    border-left: #88EAFF 4px solid;
+}
+
+.modal_job_h3 {
+    height: 24px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    
+    margin: 0;
+    margin-left: 45px;
+    margin-top: 18px;
+    padding-left: 10px;
+
+    color: #000000;
+}
+
+.modal_job_input1 {
+    width: 500px;
+    height: 42px;
+    margin-top:  15px;
+    margin-left: 45px;
+    border: none;
+    padding-left: 10px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.56989px solid #000000;
+    border-radius: 5.84946px; 
+}
+
+.CVPan_plus_button {
+    width: 250px;
+    height: 58px;
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 24px;
+    margin-top: 20px;
+    margin-left: 45px;
+    background: #88EAFF;
+    border-color: #88EAFF;
+    border-radius: 16.8237px;
+    border: none;
+}
+    
+.CVPan_plus_button:hover {
+    background-color: aqua;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.CVPan_no_button {
+    width: 172px;
+    height: 58px;
+
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 24px;
+    margin-top: 20px;
+    margin-left: 20px;
+    
+    background: white;
+    border-color: black;
+    border-radius: 16.8237px;
+}
+
+.CVPan_no_button:hover {
+    background-color: lightgray;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.modal_job2 {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 600px;
+    height: 600px;
+    justify-content: center;
+    margin-left: 20px;
+    
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.25px;
+}
+
+.CVPan_select2 {
+    width: 500px;
+    height: 41px;
+    margin-top: 15px;
+    margin-left: 45px;
+    border: none;
+    padding-left: 10px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.56989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.p_job {
+    background-color: #FFFFFF;
+    width: 150px;
+    height: 89px;
+    border: 1px solid #000000;
+    border-radius: 5.84946px;
+    margin-left: 58px;
+}
+
+.trash-small {
+    margin-top: 11px;
+    margin-left: 130px;
+}
+
+.trash-small2 {
+    margin-top: 11px;
+    margin-left: 225px;
+}
+
+
+.p_study {
+    background-color: #FFFFFF;
+    width: 248px;
+    height: 119px;
+    border: 1px solid #000000;
+    border-radius: 5.84946px;
+    margin-left: 58px;
+}
+
+h1_p {
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 11px;
+    margin-top: 10px;
+
+    color: #000000;
+}
+
+h2_p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 11px;
+
+    color: #000000;
+
+}
+
+h3_p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 11px;
+    margin-top: 14px;
+
+    color: #000000;
+
+}

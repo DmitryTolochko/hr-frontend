@@ -1,11 +1,14 @@
 import React from 'react';
+import CVpan from '../components/CVpan';
 
-const CVEditor= () => {
-    return (
-        <div>
-            <h1>CVEditor</h1>
-        </div>
-    );
-};
+class CVEditor extends React.Component {
+    render () {
+        return (
+            <div>
+            <CVpan/>
+            </div>
+        )
+    }
+}
 
 export default CVEditor;
