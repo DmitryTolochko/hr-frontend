@@ -20,7 +20,9 @@ import './styles/FiltersPanel.css'
 import './styles/BoardOfVacancies.css'
 import './styles/LoginPlace.css'
 import './styles/RegistrationPlace.css'
-
+import './styles/AccountStyle.css'
+import './styles/CVstyle.css'
+import './styles/AdminPanstyle.css'
 
 
 class App extends React.Component {

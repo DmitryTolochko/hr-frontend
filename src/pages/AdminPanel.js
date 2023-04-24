@@ -1,9 +1,16 @@
 import React from 'react';
+import SearchString from '../components/SearchString';
+import AdminPan from '../components/AdminPan';
+
 
 const AdminPanel = () => {
     return (
         <div>
-            <h1>AdminPanel</h1>
+            <div>
+                    <SearchString width='660px'/>
+                    <AdminPan/>
+            </div>
+            
         </div>
     );
 };

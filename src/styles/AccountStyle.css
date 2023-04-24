@@ -1,0 +1,289 @@
+.glav_accountPan{
+    display: flex;
+    margin-left: 230px;
+    margin-top: 3%;
+}
+
+.accountPan {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 709px;
+    height: 760px;
+    justify-content: center;
+    
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.25px;
+}
+
+.accountPan_h1 {
+    position: absolute;
+    width: 361px;
+    height: 49px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 49px;
+
+    margin: 0;
+    left: 54px;
+    top: 27px;
+
+    color: #000000;
+
+}
+
+.accountPan_h2 {
+    width: 139px;
+    height: 29px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+
+    margin: 0;
+    margin-left: 55px;
+    margin-top: 99px;
+    padding-left: 10px;
+
+    color: #000000;
+    border-left: #88EAFF 4px solid;
+}
+
+.accountPan_h3 {
+    height: 24px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    
+    margin: 0;
+    margin-left: 40px;
+    margin-top: 23px;
+    padding-left: 10px;
+
+    color: #000000;
+}
+
+.accountPan_input {
+    width: 595px;
+    height: 41px;
+    margin-top: 8px;
+    margin-left: 48px;
+    border: none;
+    padding-left: 14px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.56989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.accountPan_title_input {
+    width: 132px;
+    height: 41px;
+    margin-top: 8px;
+    margin-left: 48px;
+    border: none;
+    padding-left: 14px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.accountPan_link_input {
+    width: 435px;
+    height: 41px;
+    margin-top: 8px;
+    margin-left: 12px;
+    border: none;
+    padding-left: 14px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.accountPan_save_button {
+    width: 228px;
+    height: 61px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin-top: 32px;
+    margin-left: 48px;
+    background: #88EAFF;
+    border-color: #88EAFF;
+    border-radius: 16.8237px;
+    border: none;
+}
+
+.accountPan_save_button:hover {
+    background-color: aqua;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.accountPan_password_button {
+    width: 234px;
+    height: 61px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 40;
+    font-size: 20px;
+    line-height: 24px;
+    margin-top: 32px;
+    margin-left: 27px;
+    background: white;
+    border-color: black;
+    border-radius: 16.8237px;
+}
+
+.accountPan_password_button:hover {
+    background-color: lightgray;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.photodiv {
+    position: relative;
+    background-color: #FFFFFF;
+    width: 452px;
+    height: 455px;
+    justify-content: center;
+    margin-left: 49px;
+    
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.25px;
+}
+
+.photodiv_a {
+    margin-left: 80px;
+   
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-decoration: none;
+
+    color: #535353;
+}
+
+.director_div {
+
+    background-color: #FFFFFF;
+    width: 452px;
+    height: 235px;
+    justify-content: center;
+    margin-left: -452px;
+    margin-top: 480px;
+    
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.25px;
+}
+
+.director_div_h1 {
+    width: 255px;
+    height: 29px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: bold;
+    
+
+    margin: 0;
+    margin-left: 35px;
+    margin-top: 25px;
+    padding-left: 10px;
+
+    color: #000000;
+    border-left: #88EAFF 4px solid;
+}
+
+.director_div_h2 {
+    width: 321px;
+    height: 22px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+
+    margin: 0;
+    margin-left: 25px;
+    margin-top: 0px;
+    padding-left: 10px;
+    font-weight: bold;
+
+    color: #000000;
+}
+
+.director_div_h3 {
+    height: 24px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    
+    margin: 0;
+    margin-left: 25px;
+    margin-top: 20px;
+    padding-left: 10px;
+
+    color: #000000;
+}
+
+.img_ac {
+    width: 352px;
+    height: 352px;
+    left: 1168px;
+    top: 162px;
+    margin-left: 50px;
+    margin-top: 27px;
+    margin-bottom: 20px;
+    filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.1));
+    border-radius: 176px;
+    
+}
+
+
