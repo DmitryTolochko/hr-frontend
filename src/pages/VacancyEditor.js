@@ -117,7 +117,7 @@ class VacancyEditor extends React.Component {
                     <option value={0}>Не важно</option>
                     <option value={1}>От 1 до 3 лет</option>
                     <option value={2}>От 4 до 6 лет</option>
-                    <option vlaue={3}>Более 6 лет</option>
+                    <option value={3}>Более 6 лет</option>
                 </select>
                 
                 <p>Занятость</p>
