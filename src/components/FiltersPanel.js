@@ -73,30 +73,23 @@ class FiltersPanel extends React.Component {
     } 
 
     createRequest() {
-        let salarySetting = this.state.salary.filter((el) => (el.className === 'filter-active'))
-        let WESetting = this.state.workExperience.filter((el) => (el.className === 'filter-active'))
-        let ETSetting = this.state.employmentType.filter((el) => (el.className === 'filter-active'))
-        if (salarySetting !== null && salarySetting.value !== null) {
-            let salary = {
+        let salaryFilter = this.state.salary.find((el) => (el.className === 'filter-active'))
+        // let WESetting = this.state.workExperience.filter((el) => (el.className === 'filter-active'))
+        // let ETSetting = this.state.employmentType.filter((el) => (el.className === 'filter-active'))
+        if (salaryFilter) {
+            const salaryParams = {
                 fieldName: "salary",
-                minValue: salarySetting[0].value,
+                minValue: salaryFilter.value ?? 0,
             }
             this.setState((prevState) => {
-                let list = prevState.rangeQueryList
-                if (list.length == 0) {list.push(salary)}
-                else {
-                    for (let i = 0; i < list.length; i++) {
-                        if (list[i].fieldName === salary.fieldName) {
-                            list[i] = salary;
-                            break;
-                        } else {
-                            list.push(salary);
-                            break;
-                        }
-                    }
+                const rangeQueryList = prevState.rangeQueryList
+                if (!rangeQueryList.length) {
+                    rangeQueryList.push(salaryParams)
                 }
-                console.log(JSON.stringify(list))
-                return { rangeQueryList: JSON.stringify(list)}
+                else {
+                    rangeQueryList.map((param) => param.fieldName === salaryParams.fieldName ? salaryParams : param)
+                }
+                return { rangeQueryList: rangeQueryList}
             })
         }
         this.props.onFilterApplied(this.state)
