@@ -4,7 +4,7 @@ import VacancyCard from '../components/VacancyCard';
 import FiltersPanel from '../components/FiltersPanel';
 import axios from 'axios'
 
-class BoardOfVacancies extends React.Component {
+export class BoardOfVacancies extends React.Component {
     constructor(props) {
         super(props)
 
@@ -15,11 +15,24 @@ class BoardOfVacancies extends React.Component {
         this.state = {
             data: []
         }
+        this.filterVacancies = this.filterVacancies.bind(this)
     }
+
+    filterVacancies = (settings) => {
+        axios.post('http://89.108.103.70/api/Vacancy/get-all-filter', {
+            // containsQueryList: settings.containsQueryList,
+            // equalsQueryList: settings.equalsQueryList,
+            rangeQueryList: settings.rangeQueryList,
+        }).then((response) => {
+            this.setState({data: response.data.vacancyList})
+        })
+        console.log(this.state.data)
+    }
+
     render() {
         return (
             <div className='board-of-vacancies'>
-                <FiltersPanel/>
+                <FiltersPanel onFilterApplied={this.filterVacancies}/>
                 <div className='board'>
                     <SearchString width='703px'/>
                     

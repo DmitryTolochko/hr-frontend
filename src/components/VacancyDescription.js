@@ -19,9 +19,9 @@ const VacancyDescription = (props) => {
                     <h2>Требуемые навыки</h2>
                 </span>
                 <ul className='skills vacancy-skills'>
-                    {props.cardInfo.skillList == undefined ? 'Не указаны' : props.cardInfo.skillList.map((skill) => (<li key={props.cardInfo.id}>{skill.name}</li>))}
+                    {props.cardInfo.skillList === undefined ? 'Не указаны' : props.cardInfo.skillList.map((skill) => (<li key={props.cardInfo.id}>{skill.name}</li>))}
                 </ul>
-                <p className='upload-date'>Вакансия опубликована 18:22 26.03.2023</p>
+                {/* <p className='upload-date'>Вакансия опубликована 18:22 26.03.2023</p> */}
             </div>
     )
 }
