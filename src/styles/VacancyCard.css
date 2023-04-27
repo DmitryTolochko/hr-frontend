@@ -25,6 +25,8 @@
     padding-top: 0px;
     margin-bottom: 14px;
     border-left: #88EAFF 5px solid;
+
+    cursor: pointer;
 }
 
 .vacancy-card-head > h2 {
@@ -46,6 +48,8 @@
 
     padding-right: 27px;
     padding-top: 23px;   
+
+    cursor: pointer;
 }
 
 .first-half > a > img:hover {
@@ -90,6 +94,8 @@
 
     font-weight: 500;
     font-size: 24px;
+
+    cursor: pointer;
 }
 
 .respond-button:hover {
