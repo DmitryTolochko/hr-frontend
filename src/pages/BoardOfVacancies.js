@@ -8,33 +8,51 @@ export class BoardOfVacancies extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: []
+            vacancies: [],
+            options: {
+                containsQueryList: [],
+                equalsQueryList: [],
+                rangeQueryList: []
+            }
+        }
+        this.getVacancies();
+        this.stateUpdater = this.stateUpdater.bind(this)
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (this.state.options !== prevState.options) {
+            this.getVacancies(this.state.options);
         }
     }
 
-    componentDidMount() {
-        this.getVacancies();
+    stateUpdater(newRangeQueryList) {
+        this.setState({
+            options: {
+                containsQueryList: [],
+                equalsQueryList: [],
+                rangeQueryList: newRangeQueryList,
+            }
+        })
     }
 
     getVacancies(settings = {}) {
         axios.post('http://89.108.103.70/api/Vacancy/get-all-filter', {
             rangeQueryList: settings.rangeQueryList ?? [],
         }).then((response) => {
-            this.setState({data: response.data.filteredVacancyList})
+            this.setState({vacancies: response.data.filteredVacancyList})
         })
     }
 
     render() {
-        if (!this.state.data.length) {
+        if (!this.state.vacancies.length) {
             return;
         }
         return (
             <div className='board-of-vacancies'>
-                <FiltersPanel onFilterApplied={this.getVacancies.bind(this)}/>
+                <FiltersPanel stateUpdater={this.stateUpdater} options={this.state.options}/>
                 <div className='board'>
                     <SearchString width='703px'/>
-                    
-                    {this.state.data.map((el) => (<div key={el.id}><VacancyCard animatedClass='animated-card' cardInfo={el} departmentId={el.departmentId}/></div>))}
+                    {this.state.vacancies.map((el) => (<div key={el.id}><VacancyCard animatedClass='animated-card' cardInfo={el} departmentId={el.departmentId}/></div>))}
                 </div>
             </div>
         );
