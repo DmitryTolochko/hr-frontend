@@ -8,6 +8,8 @@ class VacancyCard extends React.Component {
         this.state = {
             department: ''
         }
+
+        this.getDepartment = this.getDepartment.bind(this)
         this.getDepartment(props.departmentId)
     }
 
@@ -16,14 +18,13 @@ class VacancyCard extends React.Component {
         .then((resp) => resp.json())
         .then((data) => this.setState({department: data.name}));
     }
-    getDepartment = this.getDepartment.bind(this)
 
     render() {
         return (
             <div className={`vacancy-card ${this.props.animatedClass}`}>
                 <div className='first-half'>
                     <span className='vacancy-card-head'>
-                        <h1><Link to={"/Vacancy/" + this.props.cardInfo.id}>{this.props.cardInfo.title}</Link></h1>
+                        <h1><Link to={"/Vacancy/" + this.props.cardInfo.id} target="_blank">{this.props.cardInfo.title}</Link></h1>
                         <h2>{this.props.cardInfo.salary} руб.</h2>
                     </span>
                     <a><img src={require('./images/star-1.svg').default} alt='star'></img></a>

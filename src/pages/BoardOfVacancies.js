@@ -5,24 +5,27 @@ import FiltersPanel from '../components/FiltersPanel';
 import axios from 'axios'
 
 export class BoardOfVacancies extends React.Component {
+
     constructor(props) {
         super(props)
         this.state = {
             vacancies: [],
-            options: {
-                containsQueryList: [],
-                equalsQueryList: [],
-                rangeQueryList: []
-            }
+            options: JSON.parse(localStorage.getItem('FILTER_OPTIONS')) ?? {}
         }
-        this.getVacancies();
+        this.getVacancies(this.state.options);
         this.stateUpdater = this.stateUpdater.bind(this)
     }
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.options !== prevState.options) {
+            localStorage.setItem('FILTER_OPTIONS', JSON.stringify(this.state.options))
             this.getVacancies(this.state.options);
         }
+    }
+
+    componentWillUnmount() {
+        localStorage.removeItem('FILTER_OPTIONS');
+        localStorage.removeItem('FILTERS');
     }
 
     stateUpdater(newRangeQueryList) {
@@ -35,9 +38,9 @@ export class BoardOfVacancies extends React.Component {
         })
     }
 
-    getVacancies(settings = {}) {
+    getVacancies(options = {}) {
         axios.post('http://89.108.103.70/api/Vacancy/get-all-filter', {
-            rangeQueryList: settings.rangeQueryList ?? [],
+            rangeQueryList: options.rangeQueryList ?? [],
         }).then((response) => {
             this.setState({vacancies: response.data.filteredVacancyList})
         })
