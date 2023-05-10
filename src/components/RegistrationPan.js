@@ -18,7 +18,7 @@ const Registration = () => {
                 <input className = 'registrationPan_four_input' placeholder='Пароль'>
                 </input>
                 <button className='registrationPan_button'>
-                    Зарегестрироваться
+                    Зарегистрироваться
                 </button>
                 <div className='registrationPan_div'>
                     Уже есть аккаунт?&nbsp;

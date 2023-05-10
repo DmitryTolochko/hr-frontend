@@ -1,6 +1,6 @@
 .glav_accountPan{
     display: flex;
-    margin-left: 230px;
+    justify-content: center;
     margin-top: 3%;
 }
 

@@ -15,6 +15,7 @@ import Registration from './pages/Registration';
 import Vacancy from './pages/Vacancy';
 import VacancyEditor from './pages/VacancyEditor';
 import CVResponses from './pages/CVResponses';
+import CV from './pages/CV';
 
 import './styles/index.css'
 import './styles/VacancyCard.css'
@@ -30,6 +31,7 @@ import './styles/CVCard.css'
 import './styles/Vacancy.css'
 import './styles/Navigation.css'
 import './styles/VacancyEditor.css'
+import './styles/CV.css'
 
 
 class App extends React.Component {
@@ -53,6 +55,7 @@ class App extends React.Component {
                             <Route path="/Vacancy/:id" element={<Vacancy/>}/>
                             <Route path="/VacancyEditor/:id" element={<VacancyEditor/>}/>
                             <Route path="/CVResponses" element={<CVResponses/>}/>
+                            <Route path="/CV" element={<CV/>}/>
                         </Routes>
                     </div>
                 </Router>

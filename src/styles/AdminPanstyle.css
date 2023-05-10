@@ -1,10 +1,419 @@
+.glavAdmin {
+    display: flex;
+    margin-top: 3%;
+    justify-content: center;
+}
+
+.SearchStringadmin {
+    margin-left: 100px;
+}
+
 .people {
     background-color: #FFFFFF;
-    width: 200px;
-    height: 100px;
+    width: 894px;
+    height: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 100px;
+    margin-bottom: 15px;
+    
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.people:hover {
+    width: 888px;
+    height: 59px;
+    border: 3px solid #88EAFF;
+}
+
+.peoplerole {
+    background: #E9F8F3;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-right: 28px;
+}
+
+.adminlk {
+    z-index: 0;
+    background-color: #FFFFFF;
+    width: 442px;
+    height: 770px;
     justify-content: center;
+    margin-left: 1050px;
+    margin-top: -350px;
     
     
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 29.25px;
+    
+}
+
+.peopletext {
+    
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #000000;
+}
+
+.zaglav {
+    margin-top: -30px;
+    margin-left: 120px;
+    margin-bottom: 12px;
+}
+
+.tabletext {
+    width: 59px;
+    height: 20px;
+    margin-left: 10px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+
+
+    color: #797979;
+}
+
+.tabletext1 {
+    width: 59px;
+    height: 20px;
+    margin-left: 141px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+
+
+    color: #797979;
+
+}
+
+.tabletext2 {
+    width: 59px;
+    height: 20px;
+    margin-left: 241px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+
+
+    color: #797979;
+
+}
+
+.tabletext3 {
+    width: 59px;
+    height: 20px;
+    margin-left: 209px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+
+
+    color: #797979;
+
+}
+
+.img_adm {
+    width: 38px;
+    height: 38px;
+    margin-left: 27px;
+
+    border-radius: 500px;
+}
+
+.img_adm2 {
+    width: 352px;
+    height: 352px;
+    left: 1301px;
+    top: 194px;
+    margin-left: 47px;
+    margin-top: 32px;
+
+    filter: drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.1));
+    border-radius: 176px;
+}
+
+.admin_h1 {
+    width: 300px;
+    height: 29px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: bold;
+    
+
+    margin: 0;
+    margin-left: 45px;
+    margin-top: 33px;
+    padding-left: 14px;
+
+    color: #000000;
+    border-left: #88EAFF 4px solid;
+}
+
+.admin_h2 {
+    width: 259px;
+    height: 50px;
+      
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    
+    margin: 0;
+    margin-left: 45px;
+    margin-top: 15px;
+    margin-bottom: -15px;
+   
+    
+    color: #000000;
+
+}
+
+.admin_a_text {
+    width: 259px;
+    height: 22px;
+      
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: bold;
+    
+    margin: 0;
+    margin-left: 45px;
+   
+    
+    color: #000000;
+    
+}
+
+.adminPan_change_button {
+    width: 186px;
+    height: 49px;
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 24px;
+    margin-left: 42px;
+    background: #88EAFF;
+    border-color: #88EAFF;
+    border-radius: 16.8237px;
+    border: none;
+    
+}
+
+.adminPan_change_button:hover {
+    background-color: aqua;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.adminPan_delete_button {
+    width: 150px;
+    height: 49px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 40;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 32px;
+    margin-left: 20px;
+    background: white;
+    border: none;
+    border-radius: 16.8237px;
+}
+
+.adminPan_delete_button:hover {
+    background-color: lightgray;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.adminmodal1 {
+    position: absolute;
+    background-color: #FFFFFF;
+    width: 520px;
+    height: 590px;
+    justify-content: center;
+    margin-top: 150px;
+    z-index: 10;
+    
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.25px;
+}
+
+.adminmodal_h1 {
+    width: 333px;
+    height: 30px;
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: bold;
+    
+    margin: 0px;
+    margin-left: 60px;
+    margin-top: 53px;
+    padding-left: 14px;
+
+    color: #000000;
+    border-left: #88EAFF 4px solid;
+}
+
+.adminmodal_h2 {
+    height: 24px;
+    margin-left: 60px;
+    margin-top: 17px;
+    margin-bottom: 0px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #000000;
+}
+
+.adminPan_modal_input {
+    width: 409px;
+    height: 41px;
+    margin-top: 14px;
+    margin-left: 48px;
+    border: none;
+    padding-left: 14px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.56989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.adminPan_select {
+    width: 425px;
+    height: 45px;
+    margin-top: 6px;
+    margin-left: 48px;
+    border: none;
+    padding-left: 10px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.56989px solid #000000;
+    border-radius: 5.84946px;
+}
+
+.adminPan_otmena_button {
+    width: 190px;
+    height: 58px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 10px;
+    margin-left: 25px;
+    background: white;
+    border-radius: 16.8237px;
+}
+
+.adminPan_otmena_button:hover {
+    background-color: lightgray;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.adminPan_save_button {
+    width: 211px;
+    height: 58px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 24px;
+    margin-top: 32px;
+    margin-left: 48px;
+    background: #88EAFF;
+    border-color: #88EAFF;
+    border-radius: 16.8237px;
+    border: none;
+}
+
+.adminPan_save_button:hover {
+    background-color: aqua;
+    transition: all .1s ease;
+    transform: scale(1.02);
+}
+
+.adminmodal2 {
+    position: absolute;
+    background-color: #FFFFFF;
+    width: 520px;
+    height: 762px;
+    justify-content: center;
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.25px;
+}
+
+.dark-overlay {
+    position: absolute;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* black with 50% opacity */
+    z-index: 5; /* ensure the overlay is on top of other content */
+}
+
+.modaloff {
+    display: none;
 }
