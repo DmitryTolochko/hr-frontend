@@ -40,7 +40,7 @@ const AccountPan = () => {
                 </button>
             </div>
             <div className='photodiv'>
-                <a href=''><img className='img_ac'></img></a>
+                <img className='img_ac' src={require('./images/deafult-avatar.png')} alt='avatar'></img>
                 <a className='photodiv_a' href = ''> 
                     <img src={require('./images/pencil-small.svg').default} alt='save'></img>
                     &nbsp;Изменить фото профиля

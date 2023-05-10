@@ -1,0 +1,86 @@
+.exitCV {
+    width: 92.51px;
+    height: 29.33px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 23.4667px;
+    line-height: 29px;
+    margin-left: 450px;
+
+    color: #535353;
+
+}
+
+.glavCV {
+    margin-top: 1%;
+}
+
+.people_card {
+    background-color: #FFFFFF;
+    width: 799px;
+    height: 276px;
+    justify-content: center;
+    margin-left: 450px;
+    margin-bottom: 40px;
+    margin-top: 8px;
+    
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29px;
+}
+
+.people_card_h1 {
+  
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    
+    margin: 0;
+    margin-left: 45px;
+    padding-left: 14px;
+    padding-top: 0px;
+
+    color: #000000;
+    border-left: #88EAFF 4px solid;
+}
+
+.people_card_span {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.people_card_p {
+    margin-top: 32px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 29px;
+
+    color: #000000;
+}
+
+.CVcard {
+    background-color: #FFFFFF;
+    width: 799px;
+    height: 1065px;
+    justify-content: center;
+    margin-left: 450px;
+    margin-bottom: 40px;
+    margin-top: 8px;
+    
+    
+    background: #FFFFFF;
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29px;
+}
+
