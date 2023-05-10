@@ -54,7 +54,7 @@ class Registration extends React.Component {
                     <input className = 'registrationPan_four_input' placeholder='Пароль' onChange={(e) => this.setState({password: e.target.value})}>
                     </input>
                     <button className='registrationPan_button' onClick={this.createNewUser}>
-                        Зарегестрироваться
+                        Зарегистрироваться
                     </button>
                     <div className='registrationPan_div'>
                         Уже есть аккаунт?&nbsp;
