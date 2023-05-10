@@ -32,7 +32,8 @@ class Registration extends React.Component {
             phone: this.state.phone,
             password: this.state.password,
             passwordConfirm: this.state.password
-        }).then(setTimeout(() => {window.location.replace("/Account")}, 100));
+        })
+        .then(setTimeout(() => {window.location.replace("/Login")}, 300));
     }
 
     render() {

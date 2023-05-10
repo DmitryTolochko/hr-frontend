@@ -7,22 +7,62 @@ import axios from 'axios';
 class MyVacancies extends React.Component {
     constructor(props) {
         super(props)
+        this.refreshToken()
+        this.state = {
+            data: []
+        }
+        this.getVacancies = this.getVacancies.bind(this)
+    }
 
+    logInUser = async (response) => {
+        if (response.status === 200) {
+            localStorage.setItem('tokens', JSON.stringify(response.data))
+
+            let getUser = await fetch('http://89.108.103.70/api/Auth/user-info', {
+                headers: {
+                    'Authorization': `Bearer ${response.data.accessToken}`
+                }
+            })
+
+            let dataUser = await getUser.json()
+
+            localStorage.setItem('user', JSON.stringify(dataUser))
+            this.getVacancies()
+            setTimeout(this.refreshToken, 900000);
+        }
+    }
+
+    refreshToken() {
+        if (localStorage.getItem('tokens') !== null) {
+            axios.post('http://89.108.103.70/api/Auth/update-token', {
+                'accessToken': JSON.parse(localStorage.getItem('tokens')).accessToken,
+                'refreshToken': JSON.parse(localStorage.getItem('tokens')).refreshToken,
+            }).then((response) => this.logInUser(response)).catch( function (error) {
+                if (error.response) {
+                    localStorage.removeItem('tokens')
+                    localStorage.removeItem('user')
+                    window.location.replace("/Login")
+                }
+            })
+        } 
+        else {
+            localStorage.removeItem('tokens')
+            localStorage.removeItem('user')
+            window.location.replace("/Login")
+        }
+    }
+
+    getVacancies() {
         axios.post(`http://89.108.103.70/api/Vacancy/get-all-filter`, {
             "containsQueryList": [
                 {
                   "fieldName": "authorId",
-                  "values": [
-                    "ab8a64f0-32ea-46b1-950c-c2a8f085d515"
-                  ]
+                  "values": [JSON.parse(localStorage.getItem('user')).id]
                 }
               ],
         }).then((response) => this.setState({data: response.data.filteredVacancyList}))
-
-        this.state = {
-            data: []
-        }
     }
+
     render() {
         return (
             <div>

@@ -22,7 +22,7 @@ class VacancyEditor extends React.Component {
 
         this.state = {
             id: null,
-            authorId: "ab8a64f0-32ea-46b1-950c-c2a8f085d515",
+            authorId: JSON.parse(localStorage.getItem('user')).id,
             departmentId: "",
             title: "Название",
             workExperience: 0,
@@ -36,6 +36,44 @@ class VacancyEditor extends React.Component {
 
         this.updateVacancy = this.updateVacancy.bind(this);
         this.addSkill = this.addSkill.bind(this);
+    }
+
+    logInUser = async (response) => {
+        if (response.status === 200) {
+            localStorage.setItem('tokens', JSON.stringify(response.data))
+
+            let getUser = await fetch('http://89.108.103.70/api/Auth/user-info', {
+                headers: {
+                    'Authorization': `Bearer ${response.data.accessToken}`
+                }
+            })
+
+            let dataUser = await getUser.json()
+
+            localStorage.setItem('user', JSON.stringify(dataUser))
+            this.updateVacancy()
+            setTimeout(this.refreshToken, 900000);
+        }
+    }
+
+    refreshToken() {
+        if (localStorage.getItem('tokens') !== null) {
+            axios.post('http://89.108.103.70/api/Auth/update-token', {
+                'accessToken': JSON.parse(localStorage.getItem('tokens')).accessToken,
+                'refreshToken': JSON.parse(localStorage.getItem('tokens')).refreshToken,
+            }).then((response) => this.logInUser(response)).catch( function (error) {
+                if (error.response) {
+                    localStorage.removeItem('tokens')
+                    localStorage.removeItem('user')
+                    window.location.replace("/Login")
+                }
+            })
+        } 
+        else {
+            localStorage.removeItem('tokens')
+            localStorage.removeItem('user')
+            window.location.replace("/Login")
+        }
     }
 
     updateVacancy() {
@@ -56,7 +94,7 @@ class VacancyEditor extends React.Component {
         } else {
             axios.post(`http://89.108.103.70/api/Vacancy`, {
                 authorId: this.state.authorId,
-                departmentId: "ec932170-8814-4c2e-a7db-586b386a6dab",
+                departmentId: "8bdadea4-b014-40bd-b1a1-73a3c02af059",
                 title: this.state.title,
                 workExperience: this.state.workExperience,
                 salary: this.state.salary,

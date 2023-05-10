@@ -19,8 +19,6 @@ export const AuthProvider = ({ children }) => {
 
     let [loading, setLoading] = useState(true)
 
-    const nav = useNavigate()
-
     let loginUser = async (e) => {
         e.preventDefault()
 
@@ -43,55 +41,55 @@ export const AuthProvider = ({ children }) => {
             setUser(dataUser.user)
             localStorage.setItem('authTokens', JSON.stringify(data))
             localStorage.setItem('user', JSON.stringify(dataUser.user))
-            nav('/vacansies')
+            window.location.replace("/Account")
         } else {
             alert('Ошибочка')
         }
     }
 
-    let registerUser = async (e) => {
-        e.preventDefault()
-        let response = await fetch('http://127.0.0.1:8000/api/register/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ 'email': e.target.email.value, 'password': e.target.password.value, 'password2': e.target.password2.value })
-        })
-        if (response.status === 200) {
-            let response = await fetch('http://127.0.0.1:8000/auth/jwt/create/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ 'email': e.target.email.value, 'password': e.target.password.value })
-            })
-            let data = await response.json()
-            let getUser = await fetch('http://127.0.0.1:8000/api/profile/', {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${data.access}`
-                }
-            })
-            let dataUser = await getUser.json()
-            if (response.status === 200) {
-                setAuthToken(data)
-                setUser(dataUser.user)
-                localStorage.setItem('authTokens', JSON.stringify(data))
-                localStorage.setItem('user', JSON.stringify(dataUser.user))
-                nav('/profile')
-            } else {
-                alert('Ошибочка')
-            }
-        }
-    }
+    // let registerUser = async (e) => {
+    //     e.preventDefault()
+    //     let response = await fetch('http://127.0.0.1:8000/api/register/', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ 'email': e.target.email.value, 'password': e.target.password.value, 'password2': e.target.password2.value })
+    //     })
+    //     if (response.status === 200) {
+    //         let response = await fetch('http://127.0.0.1:8000/auth/jwt/create/', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ 'email': e.target.email.value, 'password': e.target.password.value })
+    //         })
+    //         let data = await response.json()
+    //         let getUser = await fetch('http://127.0.0.1:8000/api/profile/', {
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Bearer ${data.access}`
+    //             }
+    //         })
+    //         let dataUser = await getUser.json()
+    //         if (response.status === 200) {
+    //             setAuthToken(data)
+    //             setUser(dataUser.user)
+    //             localStorage.setItem('authTokens', JSON.stringify(data))
+    //             localStorage.setItem('user', JSON.stringify(dataUser.user))
+    //             nav('/profile')
+    //         } else {
+    //             alert('Ошибочка')
+    //         }
+    //     }
+    // }
 
     let logoutUser = () => {
         setAuthToken(null)
         setUser(null)
         localStorage.removeItem('authTokens')
         localStorage.removeItem('user')
-        nav('/auth/login')
+        window.location.replace("/Login")
     }
 
     let updateUser = (newUser) => {
@@ -99,8 +97,8 @@ export const AuthProvider = ({ children }) => {
     }
 
     let updateToken = async () => {
-        console.log('Обновилиии')
-        let response = await fetch('http://127.0.0.1:8000/auth/jwt/refresh/', {
+        console.log('Обновили')
+        let response = await fetch('http://127.0.0.1:8000/api/Auth/update-token', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

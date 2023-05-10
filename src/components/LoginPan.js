@@ -11,6 +11,7 @@ class LoginPan extends React.Component {
         }
 
         this.getToken = this.getToken.bind(this)
+        this.logInUser = this.logInUser.bind(this)
     }
 
     getToken() {
@@ -18,9 +19,46 @@ class LoginPan extends React.Component {
             axios.post(`http://89.108.103.70/api/Auth/login`, {
                 email: this.state.email,
                 password: this.state.password
+            }).then((response) => this.logInUser(response))
+        }
+    }
+
+    logInUser = async (response) => {
+        if (response.status === 200) {
+            localStorage.setItem('tokens', JSON.stringify(response.data))
+
+            let getUser = await fetch('http://89.108.103.70/api/Auth/user-info', {
+                headers: {
+                    'Authorization': `Bearer ${response.data.accessToken}`
+                }
             })
-        } else {
-            return
+
+            let dataUser = await getUser.json()
+            console.log(dataUser)
+
+            localStorage.setItem('user', JSON.stringify(dataUser))
+            setTimeout(this.refreshToken, 900000);
+            window.location.replace("/Account")
+        }
+    }
+
+    refreshToken() {
+        if (localStorage.getItem('tokens') !== null) {
+            axios.post('http://89.108.103.70/api/Auth/update-token', {
+                'accessToken': JSON.parse(localStorage.getItem('tokens')).accessToken,
+                'refreshToken': JSON.parse(localStorage.getItem('tokens')).refreshToken,
+            }).then((response) => this.logInUser(response)).catch( function (error) {
+                if (error.response) {
+                    localStorage.removeItem('tokens')
+                    localStorage.removeItem('user')
+                    window.location.replace("/Login")
+                }
+            })
+        } 
+        else {
+            localStorage.removeItem('tokens')
+            localStorage.removeItem('user')
+            window.location.replace("/Login")
         }
     }
     
@@ -35,12 +73,12 @@ class LoginPan extends React.Component {
                     </div>
                     <input className = 'loginPan_first_input' placeholder='Почта' onChange={(e) => this.setState({email: e.target.value})}/>
                     <input className = 'loginPan_second_input' placeholder='Пароль' onChange={(e) => this.setState({password: e.target.value})}/>
-                    <button className='loginPan_button'>
+                    <button className='loginPan_button' onClick={this.getToken}>
                         Войти
                     </button>
                     <div className='loginPan_div'>
                         Еще нет аккаунта?&nbsp;
-                        <a className='loginPan_a' href = ''> 
+                        <a className='loginPan_a' href='/Registration'> 
                             Регистрация
                         </a>
                     </div>
