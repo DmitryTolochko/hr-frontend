@@ -10,7 +10,7 @@ class FiltersPanel extends React.Component {
         }
 
         this.updateRangeQueryList = this.updateRangeQueryList.bind(this)
-        // this.handleWorkExperienceChange = this.handleWorkExperienceChange.bind(this)
+        this.updateEqualsQueryList = this.updateEqualsQueryList.bind(this)
         // this.handleEmploymentTypeChange = this.handleEmploymentTypeChange.bind(this)
         // this.createRequest = this.createRequest.bind(this)
     }
@@ -34,22 +34,36 @@ class FiltersPanel extends React.Component {
             minValue: newFilters[name].find((el) => (el.className === 'filter-active')).value ?? 0,
         }
 
-        let rangeQueryList = this.props.options.rangeQueryList ?? []
-        if (!rangeQueryList.length) {
-            rangeQueryList.push(filterParams)
-        }
-        else {
-            rangeQueryList = rangeQueryList.map((param) => param.fieldName === name ? filterParams : param)
-        }
-        this.props.stateUpdater(rangeQueryList);           
+        const options = this.props.options
+        const rangeQueryList = options.rangeQueryList ?? []
+        const newRangeQueryList = rangeQueryList.filter((param) => param.fieldName !== name)
+
+        newRangeQueryList.push(filterParams)
+
+        options.rangeQueryList = newRangeQueryList;
+        this.props.stateUpdater(options);           
     } 
 
-    // handleWorkExperienceChange = (id) => {
-    //     this.setState((prevState) => {
-    //         const elements = prevState.workExperience.map((el) => this.changeSetting(el, id))
-    //         return { workExperience: elements }
-    //     })
-    // } 
+    updateEqualsQueryList = (name, id) => {
+        const newFilters = this.changeFiltersState(name, id)
+        this.setState({filters: newFilters})
+
+        const filterParams = {
+            fieldName: name,
+            value: newFilters[name].find((el) => (el.className === 'filter-active')).value,
+        }
+
+        const options = this.props.options
+        const equalsQueryList = options.equalsQueryList ?? []
+
+        const newEqualsQueryList = equalsQueryList.filter((param) => param.fieldName !== name)
+
+        if (filterParams.value) {
+            newEqualsQueryList.push(filterParams)
+        }
+        options.equalsQueryList = newEqualsQueryList;
+        this.props.stateUpdater(options);           
+    } 
 
     // handleEmploymentTypeChange = (id) => {
     //     this.setState((prevState) => {
@@ -69,20 +83,18 @@ class FiltersPanel extends React.Component {
                         <li className={el.className} key={el.id} onClick={() => this.updateRangeQueryList('salary', el.id)}><a>{el.name}</a></li>
                     ))}
                 </ul>
-                {/* <h4>Опыт работы</h4>
+                <h4>Опыт работы</h4>
                 <ul className='filter-list'>
                     {this.state.filters.workExperience.map((el) => (
-                        <li className={el.className} key={el.id} onClick={() => this.handleWorkExperienceChange(el.id)}><a>{el.name}</a></li>
+                        <li className={el.className} key={el.id} onClick={() => this.updateEqualsQueryList('workExperience', el.id)}><a>{el.name}</a></li>
                     ))}
-                </ul> */}
-                {/* <h4>Занятость</h4>
+                </ul>
+                <h4>Занятость</h4>
                 <ul className='filter-list'>
-                    {this.state.employmentType.map((el) => (
-                        <li className={el.className} key={el.id} onClick={() => this.handleEmploymentTypeChange(el.id)}><a>{el.name}</a></li>
+                    {this.state.filters.employmentType.map((el) => (
+                        <li className={el.className} key={el.id} onClick={() => this.updateEqualsQueryList('employmentType', el.id)}><a>{el.name}</a></li>
                     ))}
-                </ul> */}
-                {/* <h4>Город</h4> */}
-                {/* <button onClick={this.createRequest}>Искать</button> */}
+                </ul>
             </div>
         );
     }

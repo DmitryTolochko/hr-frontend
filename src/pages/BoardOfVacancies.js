@@ -18,6 +18,7 @@ export class BoardOfVacancies extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.options !== prevState.options) {
+            console.log(this.state.options)
             localStorage.setItem('FILTER_OPTIONS', JSON.stringify(this.state.options))
             this.getVacancies(this.state.options);
         }
@@ -28,27 +29,30 @@ export class BoardOfVacancies extends React.Component {
         localStorage.removeItem('FILTERS');
     }
 
-    stateUpdater(newRangeQueryList) {
+    stateUpdater(newOptions) {
         this.setState({
-            options: {
-                containsQueryList: [],
-                equalsQueryList: [],
-                rangeQueryList: newRangeQueryList,
-            }
+            options:  Object.assign({}, newOptions)
         })
     }
 
     getVacancies(options = {}) {
-        axios.post('http://89.108.103.70/api/Vacancy/get-all-filter', {
-            rangeQueryList: options.rangeQueryList ?? [],
-        }).then((response) => {
-            this.setState({vacancies: response.data.filteredVacancyList})
+        axios.post('http://89.108.103.70/api/Vacancy/get-all-filter', options)
+            .then((response) => {
+                this.setState({vacancies: response.data.filteredVacancyList})
         })
     }
 
     render() {
         if (!this.state.vacancies.length) {
-            return;
+            return (
+                <div className='board-of-vacancies'>
+                <FiltersPanel stateUpdater={this.stateUpdater} options={this.state.options}/>
+                <div className='board'>
+                    <SearchString width='703px'/>
+                    <div className='loader'></div>
+                </div>
+            </div>
+            );
         }
         return (
             <div className='board-of-vacancies'>
