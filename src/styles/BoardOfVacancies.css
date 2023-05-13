@@ -1,15 +1,24 @@
 .board-of-vacancies {
     display: flex;
-    gap: 51px;
+    gap: 50px;
     justify-content: center;
 }
 
 .board {
-    display: grid;
+    width: 100%;;
+    max-width: 950px;
     justify-items: center;
 }
 
+.loader-wrapper {
+    display: grid;
+    justify-items: center;
+    min-height: 550px;
+    align-items: center;
+}
+
 .loader {
+    position: relative;
     animation: rotate 1s infinite;
     height: 50px;
     width: 50px;

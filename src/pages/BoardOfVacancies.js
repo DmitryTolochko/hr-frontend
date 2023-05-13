@@ -49,7 +49,9 @@ export class BoardOfVacancies extends React.Component {
                 <FiltersPanel stateUpdater={this.stateUpdater} options={this.state.options}/>
                 <div className='board'>
                     <SearchString width='703px'/>
-                    <div className='loader'></div>
+                    <div className='loader-wrapper'>
+                        <div className='loader'></div>
+                    </div>
                 </div>
             </div>
             );
@@ -58,7 +60,7 @@ export class BoardOfVacancies extends React.Component {
             <div className='board-of-vacancies'>
                 <FiltersPanel stateUpdater={this.stateUpdater} options={this.state.options}/>
                 <div className='board'>
-                    <SearchString width='703px'/>
+                    <SearchString/>
                     {this.state.vacancies.map((el) => (<div key={el.id}><VacancyCard animatedClass='animated-card' cardInfo={el} departmentId={el.departmentId}/></div>))}
                 </div>
             </div>
