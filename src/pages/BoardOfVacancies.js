@@ -48,7 +48,7 @@ export class BoardOfVacancies extends React.Component {
                 <div className='board-of-vacancies'>
                 <FiltersPanel stateUpdater={this.stateUpdater} options={this.state.options}/>
                 <div className='board'>
-                    <SearchString width='703px'/>
+                    <SearchString/>
                     <div className='loader-wrapper'>
                         <div className='loader'></div>
                     </div>
