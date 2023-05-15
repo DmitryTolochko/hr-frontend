@@ -32,6 +32,7 @@ import './styles/Vacancy.css'
 import './styles/Navigation.css'
 import './styles/VacancyEditor.css'
 import './styles/CV.css'
+import './styles/MyVacancies.css'
 
 
 class App extends React.Component {

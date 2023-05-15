@@ -1,0 +1,15 @@
+.my-vacancies {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+}
+
+.my-vacancies__wrapper {
+    display: flex;
+}
+
+.my-vacancies__button {
+    height: 60px;
+    margin-left: 30px;
+}

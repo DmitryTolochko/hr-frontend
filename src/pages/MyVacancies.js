@@ -59,11 +59,11 @@ class MyVacancies extends React.Component {
     render() {
         return (
             <div>
-                <div className='board'>
-                    <div className='search-box'>
-                        <SearchString width='470px'/>
+                <div className='my-vacancies'>
+                    <div className='my-vacancies__wrapper'>
+                        <SearchString/>
                         <Link to="/VacancyEditor/0">
-                            <button className='search-button'>
+                            <button className='my-vacancies__button search-button'>
                                 <img src={require('../components/images/plus.svg').default} style={{width: "17px", height: "17px"}}></img>Добавить
                             </button>
                         </Link>
