@@ -37,7 +37,6 @@ class LoginPan extends React.Component {
             console.log(dataUser)
 
             localStorage.setItem('user', JSON.stringify(dataUser))
-            setTimeout(this.refreshToken, 900000);
             window.location.replace("/Account")
         }
     }

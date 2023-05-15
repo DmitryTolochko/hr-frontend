@@ -1,12 +1,15 @@
 import React from 'react';
 import AccountPan from '../components/AccountPan';
 
-const Account = () => {
-    return (
-        <div>
-            <AccountPan/>
-        </div>
-    );
+
+class Account extends React.Component {
+    render () {
+        return (
+            <div>
+                <AccountPan/>
+            </div>
+        );
+    }
 };
 
 export default Account;

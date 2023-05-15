@@ -1,6 +1,6 @@
 const Adminmodal2 = () => {
     return (
-        <div className='adminmodal2'>
+        <div className='adminmodal2 modaloff'>
                 <h2 className='adminmodal_h1'>Изменение пользователя</h2>
                 <h3 className='adminmodal_h2'>ФИО</h3>
                 <input className = 'adminPan_modal_input' placeholder='ФИО'/>

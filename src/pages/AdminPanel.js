@@ -5,10 +5,7 @@ import AdminPan from '../components/AdminPan';
 const AdminPanel = () => {
     return (
         <div>
-            <div>
-                    <AdminPan/>
-            </div>
-            
+            <AdminPan/>
         </div>
     );
 };

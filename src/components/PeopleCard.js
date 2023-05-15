@@ -1,12 +1,11 @@
-const PeopleCard = () => {
+const PeopleCard = (props) => {
     return (
-        <a href=''><div className='people'>
+        <div className='people'>
             <img className='img_adm' src={require('./images/deafult-avatar.png')} alt='avatar'></img>
-            <text className='peopletext'>Иванов Иван Иванович</text>
-            <text className='peopletext'>пнрпцпцг@mail.ru</text>
+            <text className='peopletext'>{props.data.surname + ' ' + props.data.name + ' ' + props.data.patronymic}</text>
+            <text className='peopletext'>{props.data.email}</text>
             <text className='peopletext peoplerole'>Глава департамента</text>
         </div>
-        </a>
     );
 };
     

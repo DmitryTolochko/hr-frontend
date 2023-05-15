@@ -7,7 +7,7 @@ function get_current_age(date) {
         let age = ((new Date().getTime() - new Date(date)) / (24 * 3600 * 365.25 * 1000)) | 0
         if (age == 0) { return 'Возраст не обозначен'; }
         else if (age % 10 == 1) { return age + ' год'; }
-        else if (age % 10 <= 4) {return age + ' года'; }
+        else if (age % 10 <= 4 && age % 10 !== 0) { return age + ' года'; }
         else { return age + ' лет';}
     }
     return 'Возраст не обозначен';
