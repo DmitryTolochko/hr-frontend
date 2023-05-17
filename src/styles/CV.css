@@ -15,6 +15,14 @@
 
 .glavCV {
     margin-top: 1%;
+    display: flex;
+    justify-content:center;
+    gap: 30px;
+}
+
+.card_Cv{
+    display: grid;
+    
 }
 
 .people_card {
@@ -46,8 +54,74 @@
     padding-top: 0px;
 
     color: #000000;
-    border-left: #88EAFF 4px solid;
+    border-left:  #88EAFF 4px solid;
 }
+
+.people_card_h2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 44px;
+    margin-left: 57px;
+    margin-top: -15px;
+
+    color: #000000;
+
+}
+
+.people_card_h3{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 34px;
+    margin-left: 47px;
+    margin-top: 65px;
+
+    color: #000000;
+}
+
+.people_people_vacancy {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 34px;
+    margin-left: 47px;
+    margin-top: -25px;
+    font-weight: bold;
+
+    color: #000000;
+}
+
+.vacancy_time_data {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    margin-left: 605px;
+    margin-top: -55px;
+
+
+    color: #797979;
+
+}
+
+.vacancy_data {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    margin-left: 650px;
+    margin-top: -40px;
+
+
+    color: #797979;
+}
+
 
 .people_card_span {
     padding: 0;
@@ -72,15 +146,265 @@
 .CVcard {
     background-color: #FFFFFF;
     width: 799px;
-    height: 1065px;
     justify-content: center;
     margin-left: 450px;
     margin-bottom: 40px;
-    margin-top: 8px;
-    
+    padding-top: 10px;
+    padding-bottom: 35px;
     
     background: #FFFFFF;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 29px;
 }
 
+.CVPang_h2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0;
+    margin-top: 25px;
+    margin-left: 45px;
+    padding-left: 10px;
+    padding-top: 0;
+
+    color: #000000;
+    border-left: #88EAFF 4px solid;
+}
+
+.CVcard_h3 {
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    margin-left: 50px;
+    margin-top: 20px;
+
+    color: #000000;
+}
+
+.CVcard_p1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: 160px;
+    margin-top: -42px;
+
+    color: #000000;
+
+}
+
+.CVcard_p2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: 250px;
+    margin-top: -42px;
+
+    color: #000000;
+
+}
+
+.CVcard_p3 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: 270px;
+    margin-top: -42px;
+
+    color: #000000;
+
+}
+
+.CVcard_p {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: 45px;
+    margin-top: 13px;
+
+    color: #000000;
+
+}
+
+.CVcard_p4 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px;
+    margin-left: 50px;
+    margin-top: -5px;
+
+
+    color: #000000;
+
+}
+
+.CVcard_text {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 50px;
+    margin-top: -10px;
+
+
+    color: #000000;
+
+}
+
+.h1_p1 {
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+
+    color: #000000;
+}
+
+.h2_p2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 10px;
+    margin-top: -10px;
+
+    color: #000000;
+
+}
+
+.h3_p3 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 10px;
+    margin-top: -10px;
+
+    color: #000000;
+
+}
+
+.h1_pp {
+    
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 5px;
+    margin-top: -10px;
+
+    color: #000000;
+}
+
+.h3_pp1 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 5px;
+    margin-top: -10px;
+
+    color: #000000;
+
+}
+
+.h2_p22 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 5px;
+    margin-top: -10px;
+
+    color: #000000;
+}
+
+.vacancy_time_data2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    margin-left: 35px;
+    margin-top: 47px;
+
+
+    color: #797979;
+
+}
+
+.vacancy_data2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    margin-left: 290px;
+    margin-top: -40px;
+
+
+    color: #797979;
+}
+
+.vacancy_time2 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    margin-left: 240px;
+    margin-top: -22px;
+
+
+    color: #797979;
+}
+
+.photo_card_div{
+    background-color: #FFFFFF;
+    width: 442px;
+    height: 725px;
+    justify-content: center;
+    margin-top: 40px;
+    
+    
+    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 29.25px;
+}
+
+.fio_CVpan2{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    margin-left: 70px;
+    margin-top: 9px;
+
+    color: #000000;
+
+}

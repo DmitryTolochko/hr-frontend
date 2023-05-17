@@ -1,6 +1,6 @@
 .glav_CVPan{
     display: flex;
-    margin-left: 165px;
+    justify-content: center;
     margin-top: 3%;
 }
 
@@ -309,12 +309,13 @@
 }
 
 .modal_job {
-    position: relative;
+    position: absolute;
     background-color: #FFFFFF;
     width: 600px;
     height: 500px;
     justify-content: center;
     margin-left: 20px;
+    margin-top: 300px;
     
     
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
@@ -425,12 +426,13 @@
 }
 
 .modal_job2 {
-    position: relative;
+    position: absolute;
     background-color: #FFFFFF;
     width: 600px;
     height: 600px;
     justify-content: center;
     margin-left: 20px;
+    margin-top: 250px;
     
     
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
@@ -486,40 +488,53 @@
     margin-left: 58px;
 }
 
-h1_p {
+.h1_p {
     
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-    margin-left: 11px;
-    margin-top: 10px;
+    margin-left: 5px;
+    margin-top: -20px;
 
     color: #000000;
 }
 
-h2_p {
+.h2_p {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 300;
     font-size: 16px;
     line-height: 20px;
-    margin-left: 11px;
+    margin-left: 5px;
+    margin-top: -10px;
 
     color: #000000;
 
 }
 
-h3_p {
+.h3_p {
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
-    margin-left: 11px;
-    margin-top: 14px;
+    margin-left: 5px;
+    margin-top: -10px;
 
     color: #000000;
 
+}
+
+.h2_p22 {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 5px;
+    margin-top: -10px;
+
+    color: #000000;
 }
