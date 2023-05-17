@@ -19,6 +19,13 @@ class BoardOfCVs extends React.Component {
     }
 
     render() {
+        if (!this.state.data.length) {
+            return (
+                <div className='loader-wrapper'>
+                        <div className='loader'></div>
+                </div>
+            )
+        }
         return (
             <div className='board-of-vacancies'>
                 <FiltersPanel/>

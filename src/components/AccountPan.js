@@ -11,10 +11,6 @@ class AccountPan extends React.Component {
             github: 'Ссылка',
             telegram: 'Ссылка',
             vk: 'Ссылка',
-            favoriteVacancyIdList: [],
-            favoriteResumeIdList: [],
-            resumeResponseIdList: [],
-            vacancyResponseIdList: []
         }
         this.refreshToken()
         this.getUserInfo = this.getUserInfo.bind(this)
@@ -62,10 +58,6 @@ class AccountPan extends React.Component {
                 github: response.data.github !== null ? response.data.github : 'Ссылка',
                 telegram: response.data.telegram !== null ? response.data.telegram : 'Ссылка',
                 vk: response.data.telegram !== null ? response.data.vk : 'Ссылка',
-                favoriteVacancyIdList: response.data.favoriteVacancyIdList,
-                favoriteResumeIdList: response.data.favoriteResumeIdList,
-                resumeResponseIdList: response.data.resumeResponseIdList,
-                vacancyResponseIdList: response.data.vacancyResponseIdList
             })
         })
     }
@@ -73,15 +65,14 @@ class AccountPan extends React.Component {
     updateUserInfo() {
         axios.put(`http://89.108.103.70/api/user`, {
             id: JSON.parse(localStorage.getItem('user')).id,
-            surname: this.state.fullName.split()[0],
-            name: this.state.fullName.split()[1],
-            patronymic: this.state.fullName.split()[2],
+            surname: this.state.fullName.split(' ')[0],
+            name: this.state.fullName.split(' ')[1],
+            patronymic: this.state.fullName.split(' ')[2],
             email: this.state.email,
             phone: this.state.phone,
             github: this.state.github === 'Ссылка' ? null : this.state.github,
             telegram: this.state.telegram === 'Ссылка' ? null : this.state.telegram,
         })
-        // .then(window.location.replace('/Account'))
     }
 
     render() {

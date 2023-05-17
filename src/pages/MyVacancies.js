@@ -57,6 +57,13 @@ class MyVacancies extends React.Component {
     }
 
     render() {
+        // if (!this.state.data.length) {
+        //     return (
+        //         <div className='loader-wrapper'>
+        //                 <div className='loader'></div>
+        //         </div>
+        //     )
+        // }
         return (
             <div>
                 <div className='my-vacancies'>
