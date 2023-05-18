@@ -1,4 +1,5 @@
 import React from 'react';
+
 const VacancyDescription = (props) => {    
     let employmentTypes = ['Не указано', 'Полная занятость', 'Частичная занятость', 'Вахта', 'Удаленная работа', 'Стажировка']   
     let workExperience = ['Не важно', 'От 1 до 3 лет', 'От 4 до 6 лет', 'Более 6 лет']

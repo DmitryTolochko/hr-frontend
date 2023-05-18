@@ -1,46 +1,84 @@
-const CVcardCVPan = () => {
-    return (
-<div className='CVcard'>
-                <h2 className='CVPang_h2'>
-                    Основная информация
-                </h2>
-                <h3 className='CVcard_h3'>Занятость</h3>
-                <p className='CVcard_p1'>Полная занятость</p>
-                <h3 className='CVcard_h3'>Место проживания</h3>
-                <p className='CVcard_p2'>Екатеринбург</p>
-                <h3 className='CVcard_h3'>Желаемая география</h3>
-                <p className='CVcard_p3'>Екатеринбург</p>
-                <h2 className='CVPang_h2'>
-                    О себе
-                </h2>
-                <p className='CVcard_p'>jscbjkasbfjsbfjbfjbjbfjbjbjbjbjbjbjebajbjbfakbfawjbf</p>
-                <h2 className='CVPang_h2'>
-                    Опыт работы
-                </h2>
-                <h3 className='CVcard_h3'>Текущая должность</h3>
-                <p className='CVcard_p4'>Frontend-разработчик</p>
-                <p className='CVcard_text'>c <a href=''>2021</a> по н.в</p>
-                <h3 className='CVcard_h3'>Предыдущие места работы</h3>
-                <p className='p_job'> 
-                    <p className='h1_p1'>Дизайнер</p>
-                    <p className='h2_p2'>ООО Вкусно</p>
-                    <p className='h3_p3'>2017-2019</p>
-                </p>
-                <h2 className='CVPang_h2'>
-                    Образование
-                </h2>
-                <p className='p_study'> <a href = ''><text className='h2_p'></text></a>
+import React from "react";
+
+let employmentTypes = ['Не указано', 'Полная занятость', 'Частичная занятость', 'Вахта', 'Удаленная работа', 'Стажировка']   
+let workExperience = ['Не важно', 'От 1 до 3 лет', 'От 4 до 6 лет', 'Более 6 лет']
+function getGenderName(gender) {
+    if (gender === 0) {
+        return 'Мужской'
+    }
+    else {
+        return 'Женский'
+    }
+}
+
+class CVcardCVPan extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state={
+            data: null,
+            age: null
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.data !== this.props.data) {
+          this.setState({ data: this.props.data });
+        }
+    }
+
+    render() {
+        if (this.state.data === null) {
+            return;
+        }
+        return (
+            <div className='CVcard'>
+                <h2 className='CVPang_h2'>Основная информация</h2>
+                <h3 className='CVcard_h3'>Занятость:</h3>
+                <p className='CVcard_p1'>{employmentTypes[this.state.data.employmentType]}</p>
+                <h3 className='CVcard_h3'>Место проживания:</h3>
+                <p className='CVcard_p2'>{this.state.data.city}</p>
+                <h3 className='CVcard_h3'>Пол:</h3>
+                <p className='CVcard_p3'>{getGenderName(this.state.data.gender)}</p>
+                <h2 className='CVPang_h2'>О себе</h2>
+                <p className='CVcard_p'>{this.state.data.description}</p>
+                {this.state.data?.jobDataList !== null ? (
+                    <>
+                        <h2 className='CVPang_h2'>Опыт работы</h2>
+                        {this.state.data?.jobDataList !== null && this.state.data?.jobDataList.filter((el) => (el.endYear === null)).length > 0 ? (
+                            <>
+                                <h3 className='CVcard_h3'>Текущая должность</h3>
+                                <p className='CVcard_p4'>{this.state.data?.jobDataList.filter((el) => (el.endYear === null))[0].organizationName}</p>
+                                <p className='CVcard_text'>c {this.state.data?.jobDataList.filter((el) => (el.endYear === null))[0].startYear} по н.в</p>
+                            </>) : (<></>)}
+                        {this.state.data?.jobDataList !== null && this.state.data?.jobDataList.filter((el) => (el.endYear !== null)).length > 0 ? (
+                            <>
+                                <h3 className='CVcard_h3'>Предыдущие места работы</h3>
+                                <div className="jobs">
+                                {this.state.data.jobDataList.filter((el) => (el.endYear !== null)).map((el) => (
+                                    <p className='p_job'> 
+                                        <p className='h1_p1'>{el.organizationName}</p>
+                                        <p className='h2_p2'>{el.organizationName}</p>
+                                        <p className='h3_p3'>{el.startYear}-{el.endYear}</p>
+                                    </p>))}
+                                </div>
+                            </>) : (<></>)}
+                    </>) : (<></>)
+                }
+                <h2 className='CVPang_h2'>Образование</h2>
+                    <p className='p_study'> <a href = ''><text className='h2_p'></text></a>
                     <p className='h1_pp'>Высшее</p>
                     <p className='h2_p22'>МГТУ им. Баумана</p>
                     <p className='h3_pp1'>Программная инженерия</p>
                     <p className='h3_pp1'>2017-2018</p>
                 </p>
-                <h2 className='CVPang_h2'>
-                    Ключевые навыки
-                </h2>
-                <p className='vacancy_time_data2'>Резюме опубликовано в <a href=''><p className='vacancy_time2'>14:15</p></a><a href=''><p className='vacancy_data2'>14.12.2011</p></a></p>
+                <h2 className='CVPang_h2'>Ключевые навыки</h2>
+                <ul className='skills vacancy-skills'>
+                    {this.state.data.skillList.map((el) => (<li key={el.id}>{el.name}</li>))}
+                </ul>
+                {/* <p className='vacancy_time_data2'>Резюме опубликовано в <a href=''><p className='vacancy_time2'>14:15</p></a><a href=''><p className='vacancy_data2'>14.12.2011</p></a></p> */}
             </div>
-    );
+        );
+    }
 };
         
 export default CVcardCVPan;   

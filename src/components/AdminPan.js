@@ -13,6 +13,7 @@ class AdminPan extends React.Component {
             data: null,
             user: null,
             modalData: null,
+            role: null
         }
 
         this.getUsers = this.getUsers.bind(this)
@@ -52,6 +53,9 @@ class AdminPan extends React.Component {
     }
 
     componentDidMount() {
+        if (JSON.parse(localStorage.getItem('role'))?.roleList[0] !== 'admin') {
+            window.location.replace("/BoardOfVacancies")
+        }
         this.refreshToken()
     }
 
@@ -63,17 +67,24 @@ class AdminPan extends React.Component {
 
     getUserInfo(info) {
         this.setState({user: info})
+        setTimeout(() => {
+            if (info !== null) {
+                axios.get(`http://89.108.103.70/api/user/role/${info.id}`).then((resp) => {
+                    this.setState({role: resp.data.roleList[0]});
+                })
+            }
+        }, 3);
     }
 
     updateModalData(info) {
-        this.setState({modalData: info})
+        this.setState({modalData: info});
     }
 
     render() {
         if (this.state.data === null) {
             return (
                 <div className='loader-wrapper'>
-                        <div className='loader'></div>
+                    <div className='loader'></div>
                 </div>
             )
         }
@@ -89,9 +100,9 @@ class AdminPan extends React.Component {
                     </div>
                     {this.state.data.userList.map((el) => (<a onClick={() => this.getUserInfo(el)}><PeopleCard data={el}/></a>))}
                 </div>
-                {this.state.user !== null ? (<AdminLK data={this.state.user} updateData={this.updateModalData}/>) : (<></>)}
+                {this.state.user !== null && this.state.role !== null ? (<AdminLK data={this.state.user} role={this.state.role}  updateData={this.updateModalData}/>) : (<></>)}
                 {this.state.modalData !== null ? (<div class="dark-overlay"></div>) : (<></>)}
-                <Adminmodal2 data={this.state.modalData} updateData={this.updateModalData}/> 
+                <Adminmodal2 data={this.state.modalData} role={this.state.role} updateData={this.updateModalData}/> 
             </div>
         );
     }

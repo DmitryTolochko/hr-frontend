@@ -56,7 +56,7 @@ class App extends React.Component {
                             <Route path="/Vacancy/:id" element={<Vacancy/>}/>
                             <Route path="/VacancyEditor/:id" element={<VacancyEditor/>}/>
                             <Route path="/CVResponses" element={<CVResponses/>}/>
-                            <Route path="/CV" element={<CV/>}/>
+                            <Route path="/CV/:id" element={<CV/>}/>
                         </Routes>
                     </div>
                 </Router>

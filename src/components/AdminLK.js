@@ -1,18 +1,35 @@
 import axios from 'axios';
 import React from 'react';
 
+function getRoleName(role) {
+    if (role === 'user') {
+        return 'Сотрудник'
+    }
+    else if (role === 'admin') {
+        return 'Администратор'
+    }
+    else {
+        return 'Глава департамента'
+    }
+}
+
 class PeopleCard extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            data: props.data
+            data: props.data,
+            role: props.role
         }
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.data !== this.props.data) {
-          this.setState({ data: this.props.data });
+        if (prevProps.data !== this.props.data || prevProps.role !== this.props.role) {
+            this.setState({ 
+                data: this.props.data,
+                role: this.props.role
+            });
         }
+        console.log(this.state)
     }
 
     deleteUser() {
@@ -33,7 +50,7 @@ class PeopleCard extends React.Component {
                 <h2 className='admin_h2'>Телефон</h2>
                 <p className='admin_a_text'>+{this.state.data.phone}</p>
                 <h2 className='admin_h2'>Роль</h2>
-                <p className='admin_a_text'>admin</p>
+                <p className='admin_a_text'>{getRoleName(this.state.role)}</p>
                 <button className='adminPan_change_button' onClick={() => this.props.updateData(this.state.data)}>
                 <img src={require('./images/pencil-small.svg').default} alt='change'></img>
                 &nbsp;Изменить

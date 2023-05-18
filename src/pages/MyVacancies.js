@@ -7,11 +7,17 @@ import axios from 'axios';
 class MyVacancies extends React.Component {
     constructor(props) {
         super(props)
-        this.refreshToken()
         this.state = {
-            data: []
+            data: null
         }
         this.getVacancies = this.getVacancies.bind(this)
+    }
+
+    componentDidMount() {
+        if (JSON.parse(localStorage.getItem('role'))?.roleList[0] === 'user') {
+            window.location.replace("/BoardOfVacancies")
+        }
+        this.refreshToken()
     }
 
     refreshToken() {
@@ -57,13 +63,13 @@ class MyVacancies extends React.Component {
     }
 
     render() {
-        // if (!this.state.data.length) {
-        //     return (
-        //         <div className='loader-wrapper'>
-        //                 <div className='loader'></div>
-        //         </div>
-        //     )
-        // }
+        if (this.state.data === null) {
+            return (
+                <div className='loader-wrapper'>
+                        <div className='loader'></div>
+                </div>
+            )
+        }
         return (
             <div>
                 <div className='my-vacancies'>
