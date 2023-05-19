@@ -21,4 +21,5 @@ export const filtersData = {
         {id: 5, name: 'Удаленная работа', className: '', value: '4'},
         {id: 6, name: 'Стажировка', className: '', value: '5'},
     ],
+    skills: []
 }

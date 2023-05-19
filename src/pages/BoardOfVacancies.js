@@ -18,7 +18,6 @@ export class BoardOfVacancies extends React.Component {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.state.options !== prevState.options) {
-            console.log(this.state.options)
             localStorage.setItem('FILTER_OPTIONS', JSON.stringify(this.state.options))
             this.getVacancies(this.state.options);
         }

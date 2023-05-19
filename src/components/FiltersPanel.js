@@ -1,18 +1,28 @@
 import React from 'react';
+import {ReactComponent as ClearIcon} from '../components/images/trash-small.svg';
 import { filtersData } from '../data/filters';
+import axios from 'axios';
 
 class FiltersPanel extends React.Component {
     constructor(props) {
         super(props)
-
+        
         this.state = {
             filters: JSON.parse(localStorage.getItem('FILTERS')) ?? filtersData
         }
 
-        this.updateRangeQueryList = this.updateRangeQueryList.bind(this)
-        this.updateEqualsQueryList = this.updateEqualsQueryList.bind(this)
-        // this.handleEmploymentTypeChange = this.handleEmploymentTypeChange.bind(this)
-        // this.createRequest = this.createRequest.bind(this)
+        this.skillsInputRef = React.createRef();
+
+        this.updateRangeQueryList = this.updateRangeQueryList.bind(this);
+        this.updateEqualsQueryList = this.updateEqualsQueryList.bind(this);
+        this.clearSkills = this.clearSkills.bind(this);
+    }
+
+    componentDidMount() {
+        axios.get('http://89.108.103.70/api/skill/get-all')
+            .then((response) => {
+                this.setState({skills: response.data.map((skill => skill.name))})
+        })
     }
 
     changeFiltersState = (type, id) => {
@@ -65,13 +75,29 @@ class FiltersPanel extends React.Component {
         this.props.stateUpdater(options);           
     } 
 
-    // handleEmploymentTypeChange = (id) => {
-    //     this.setState((prevState) => {
-    //         const elements = prevState.employmentType.map((el) => this.changeSetting(el, id))
-    //         return { employmentType: elements }
-    //     })
-    // } 
+    addSkill(event) {
+        if(event.key === 'Enter' || event.key === 'Unidentified') {
+            const value = this.skillsInputRef.current.value;
+            if(this.state.skills.includes(value)) {
+                const filters = this.state.filters;
+                filters.skills.push(value);
+                filters.skills = [...new Set(filters.skills)];
+                
+                localStorage.setItem('FILTERS', JSON.stringify(filters))
+                this.setState({filters: filters})
 
+                this.skillsInputRef.current.value = '';
+            }
+        }
+    }
+
+    clearSkills = () => {
+        const filters = this.state.filters;
+        filters.skills = []
+
+        localStorage.setItem('FILTERS', JSON.stringify(filters))
+        this.setState({filters: filters})
+    }
 
     render() {
         return (
@@ -95,6 +121,28 @@ class FiltersPanel extends React.Component {
                         <li className={el.className} key={el.id} onClick={() => this.updateEqualsQueryList('employmentType', el.id)}><a>{el.name}</a></li>
                     ))}
                 </ul>
+                <h4>Навыки</h4>
+                <input ref={this.skillsInputRef} className="filters-panel__input" list="skillsList" type="text" placeholder='Введите навык' onKeyUp={(el) => this.addSkill(el)}></input>
+                {this.state.skills && 
+                    <datalist id="skillsList">
+                        {this.state.skills.map((skill, id) =>
+                        <option key={id} value={skill} />
+                        )}
+                    </datalist>
+                }
+                <div className="filters-panel__skills">
+                    {
+                        this.state.filters.skills.map((skill) => 
+                        <div className="filters-panel__skills-item">{skill}</div>
+                        )
+                    }
+                </div>
+                {!!this.state.filters.skills.length && 
+                    <button className="filters-panel__clear" onClick={this.clearSkills}>
+                    <ClearIcon className='filters-panel__clear-icon'/>
+                        Очистить
+                    </button>
+                }
             </div>
         );
     }
