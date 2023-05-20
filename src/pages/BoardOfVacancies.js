@@ -2,6 +2,7 @@ import React from 'react';
 import SearchString from '../components/SearchString';
 import VacancyCard from '../components/VacancyCard';
 import FiltersPanel from '../components/FiltersPanel';
+import Loader from '../components/Loader';
 import axios from 'axios'
 
 export class BoardOfVacancies extends React.Component {
@@ -12,6 +13,8 @@ export class BoardOfVacancies extends React.Component {
             vacancies: [],
             options: JSON.parse(localStorage.getItem('FILTER_OPTIONS')) ?? {}
         }
+    
+        this.loading = true;
         this.getVacancies(this.state.options);
         this.stateUpdater = this.stateUpdater.bind(this)
     }
@@ -29,6 +32,7 @@ export class BoardOfVacancies extends React.Component {
     }
 
     stateUpdater(newOptions) {
+        this.loading = true;
         this.setState({
             options:  Object.assign({}, newOptions)
         })
@@ -38,6 +42,7 @@ export class BoardOfVacancies extends React.Component {
         axios.post('http://89.108.103.70/api/Vacancy/get-all-filter', options)
             .then((response) => {
                 this.setState({vacancies: response.data.filteredVacancyList})
+                this.loading = false;
         })
     }
 
@@ -49,7 +54,8 @@ export class BoardOfVacancies extends React.Component {
                 <div className='board'>
                     <SearchString/>
                     <div className='loader-wrapper'>
-                        <div className='loader'></div>
+                        <Loader isLoading={this.loading}/>
+                        {!this.loading && <p>Ничего не найдено :(</p>}
                     </div>
                 </div>
             </div>
@@ -60,6 +66,9 @@ export class BoardOfVacancies extends React.Component {
                 <FiltersPanel stateUpdater={this.stateUpdater} options={this.state.options}/>
                 <div className='board'>
                     <SearchString/>
+                    <div className='board__loader'>
+                        <Loader isLoading={this.loading}/>
+                    </div>
                     {this.state.vacancies.map((el) => (<div key={el.id}><VacancyCard animatedClass='animated-card' cardInfo={el} departmentId={el.departmentId}/></div>))}
                 </div>
             </div>
