@@ -67,7 +67,7 @@
 
 .vacancy-skills {
     margin-bottom: 45px;
-    width: 857px;
+    /* width: 857px; */
     flex-wrap: wrap;
 }
 

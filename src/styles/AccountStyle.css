@@ -9,7 +9,8 @@
     background-color: #FFFFFF;
     width: 709px;
     justify-content: center;
-    
+    height:fit-content;
+    padding-bottom: 40px;
     
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 29.25px;
@@ -206,7 +207,6 @@
 
     background-color: #FFFFFF;
     width: 452px;
-    height: 235px;
     justify-content: center;
     margin-left: -452px;
     margin-top: 480px;
@@ -238,8 +238,6 @@
 }
 
 .director_div_h2 {
-    width: 321px;
-    height: 22px;
   
     font-family: 'Montserrat';
     font-style: normal;
@@ -249,6 +247,7 @@
 
     margin: 0;
     margin-left: 25px;
+    margin-right: 25px;
     margin-top: 0px;
     padding-left: 10px;
     font-weight: bold;

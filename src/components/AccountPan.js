@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios'
+import AccoutDepartmentCard from './AccountDepartmentCard';
 
 class AccountPan extends React.Component {
     constructor(props) {
@@ -8,9 +9,9 @@ class AccountPan extends React.Component {
             fullName: '',
             email: '',
             phone: '',
-            github: 'Ссылка',
-            telegram: 'Ссылка',
-            vk: 'Ссылка',
+            github: null,
+            telegram: null,
+            vk: null,
         }
         this.refreshToken()
         this.getUserInfo = this.getUserInfo.bind(this)
@@ -36,6 +37,7 @@ class AccountPan extends React.Component {
                     if (error.response) {
                         localStorage.removeItem('tokens')
                         localStorage.removeItem('user')
+                        localStorage.removeItem('role')
                         window.location.replace("/Login")
                     }
                 })
@@ -55,9 +57,9 @@ class AccountPan extends React.Component {
                 fullName: response.data.surname + ' ' + response.data.name + ' ' + response.data.patronymic,
                 email: response.data.email,
                 phone: response.data.phone,
-                github: response.data.github !== null ? response.data.github : 'Ссылка',
-                telegram: response.data.telegram !== null ? response.data.telegram : 'Ссылка',
-                vk: response.data.telegram !== null ? response.data.vk : 'Ссылка',
+                github: response.data.github,
+                telegram: response.data.telegram,
+                vk: response.data.vk,
             })
         })
     }
@@ -70,8 +72,9 @@ class AccountPan extends React.Component {
             patronymic: this.state.fullName.split(' ')[2],
             email: this.state.email,
             phone: this.state.phone,
-            github: this.state.github === 'Ссылка' ? null : this.state.github,
-            telegram: this.state.telegram === 'Ссылка' ? null : this.state.telegram,
+            github: this.state.github === 'Ссылка' || this.state.github === '' ? null : this.state.github,
+            telegram: this.state.telegram === 'Ссылка' || this.state.telegram === '' ? null : this.state.telegram,
+            vk: this.state.vk === 'Ссылка' || this.state.vk === '' ? null : this.state.vk,
         })
     }
 
@@ -88,24 +91,24 @@ class AccountPan extends React.Component {
                     <h3 className='accountPan_h3'>
                         ФИО
                     </h3>
-                    <input className = 'accountPan_input' placeholder={this.state.fullName} onChange={(e) => this.setState({fullName: e.target.value})}/>
+                    <input className = 'accountPan_input' value={this.state.fullName} onChange={(e) => this.setState({fullName: e.target.value})}/>
                     <h3 className='accountPan_h3'>
                         Почта
                     </h3>
-                    <input className = 'accountPan_input' placeholder={this.state.email} onChange={(e) => this.setState({email: e.target.value})}/>
+                    <input className = 'accountPan_input' value={this.state.email} onChange={(e) => this.setState({email: e.target.value})}/>
                     <h3 className='accountPan_h3'>
                         Телефон
                     </h3>
-                    <input className = 'accountPan_input' placeholder={this.state.phone} onChange={(e) => this.setState({phone: e.target.value})}/>
+                    <input className = 'accountPan_input' value={this.state.phone} onChange={(e) => this.setState({phone: e.target.value})}/>
                     <h3 className='accountPan_h3'>
                         Ссылки
                     </h3>
                     <p className = 'accountPan_title_input'>GitHub</p>
-                    <input className = 'accountPan_link_input' placeholder={this.state.github} onChange={(e) => this.setState({github: e.target.value})}/>
+                    <input className = 'accountPan_link_input' placeholder='Ссылка' value={this.state.github} onChange={(e) => this.setState({github: e.target.value})}/>
                     <p className = 'accountPan_title_input'>Telegram</p>
-                    <input className = 'accountPan_link_input' placeholder={this.state.telegram} onChange={(e) => this.setState({telegram: e.target.value})}/>
-                    {/* <p className = 'accountPan_title_input'>Вконтакте</p>
-                    <input className = 'accountPan_link_input' placeholder={this.state.vk} onChange={(e) => this.setState({vk: e.target.value})}/> */}
+                    <input className = 'accountPan_link_input' placeholder='Ссылка' value={this.state.telegram} onChange={(e) => this.setState({telegram: e.target.value})}/>
+                    <p className = 'accountPan_title_input'>Вконтакте</p>
+                    <input className = 'accountPan_link_input' placeholder='Ссылка' value={this.state.vk} onChange={(e) => this.setState({vk: e.target.value})}/>
                     <button className='accountPan_save_button' onClick={this.updateUserInfo}>
                         <img src={require('./images/save.svg').default} alt='save'></img>
                         &nbsp;Сохранить
@@ -121,12 +124,10 @@ class AccountPan extends React.Component {
                         &nbsp;Изменить фото профиля
                     </a>
                 </div>
-                <div className='director_div'>
-                    <h1 className='director_div_h1'>Глава департамента</h1>
-                    <h3 className='director_div_h3'>Название</h3>
-                    <h2 className='director_div_h2'>IT-departament</h2>
-                    <h3 className='director_div_h3'>География</h3>
-                </div>
+                {JSON.parse(localStorage.getItem('role')).roleList[0] !== 'user' ? (
+                    <AccoutDepartmentCard/>
+                ) : (<></>)}
+                
             </div>
         );
     }

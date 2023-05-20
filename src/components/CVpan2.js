@@ -42,6 +42,7 @@ class CVpan2 extends React.Component {
                     if (error.response) {
                         localStorage.removeItem('tokens')
                         localStorage.removeItem('user')
+                        localStorage.removeItem('role')
                         window.location.replace("/Login")
                     }
                 })

@@ -9,29 +9,94 @@ class Adminmodal2 extends React.Component {
             fullName: '',
             email: '',
             phone: '',
+            departmentId: null,
 
             role: '',
             departmentName: null,
             description: null,
+            headId: null
         }
+
+        this.updateUserInfo = this.updateUserInfo.bind(this)
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.data !== this.props.data) {
-            this.setState({ 
-                data: this.props.data,
-                fullName: this.props.data?.surname + ' ' + this.props.data?.name + ' ' + this.props.data?.patronymic,
-                email: this.props.data?.email,
-                phone: this.props.data?.phone,
-                role: this.props.role
-            });
+            if (this.props.data !== null) {
+                this.setState({ 
+                    data: this.props.data,
+                    fullName: this.props.data?.surname + ' ' + this.props.data?.name + ' ' + this.props.data?.patronymic,
+                    email: this.props.data?.email,
+                    phone: this.props.data?.phone,
+                    role: this.props.role,
+                    departmentId: this.props.data.departmentId
+                });
+
+                if (this.props.data.departmentId !== null) {
+                    axios.get(`http://89.108.103.70/api/department/${this.props.data.departmentId}`).then((resp) => {
+                        this.setState({
+                            departmentName: resp.data.name,
+                            description: resp.data.description,
+                            headId: resp.data.headId
+                        })
+                    })
+                } 
+            }
+            else {
+                this.setState({ 
+                    data: null,
+                    fullName: '',
+                    email: '',
+                    phone: '',
+                    departmentId: null,
+        
+                    role: '',
+                    departmentName: null,
+                    description: null,
+                    headId: null
+                });
+            }
         }
         console.log(this.state)
     }
 
     updateUserInfo() {
+        //обновление роли
+        axios.put(`http://89.108.103.70/api/user/role`, {
+                userId: this.state.data.id,
+                roleName: this.state.role
+        })
+
+        //создание или обновление департамента или удаление
+        setTimeout(() => {
+                if (this.state.departmentId !== null && this.state.role !== 'user') {
+                //обновление
+                axios.put(`http://89.108.103.70/api/department`, {
+                    id: this.state.departmentId,
+                    name: this.state.departmentName,
+                    description: this.state.description,
+                    headId: this.state.headId
+                })
+            }
+            else if (this.state.departmentId === null && this.state.role !== 'user'){
+                //создание
+                axios.post(`http://89.108.103.70/api/department`, {
+                    name: this.state.departmentName,
+                    description: this.state.description,
+                    headId: this.state.data.id
+                }).then((resp) => {this.setState({departmentId: resp.data.id})})
+            }
+            else if (this.state.departmentId !== null && this.state.role === 'user') {
+                //удаление
+                axios.delete(`http://89.108.103.70/api/department/${this.state.departmentId}`)
+            }
+        }, 200)      
+
+        //обновление пользователя
+        setTimeout(() => {
         axios.put(`http://89.108.103.70/api/user`, {
             id: this.state.data.id,
+            departmentId: this.state.role === 'user' ? null : this.state.departmentId,
             surname: this.state.fullName.split(' ')[0],
             name: this.state.fullName.split(' ')[1],
             patronymic: this.state.fullName.split(' ')[2],
@@ -39,37 +104,12 @@ class Adminmodal2 extends React.Component {
             phone: this.state.phone,
             github: this.state.data.github,
             telegram: this.state.data.telegram,
-        }).then(() => this.props.updateData(null),  setTimeout(() => {
-            window.location.replace("/AdminPanel");
-          }, 200))
+            vk: this.state.data.vk
+        }).then(() => this.props.updateData(null))}, 400)
 
-        axios.put(`http://89.108.103.70/api/user/role`, {
-            userId: this.state.data.id,
-            roleName: this.state.role
-        })
-
-        // let isUpdated = false
-        // axios.get(`http://89.108.103.70/api/department/get-all`).then((resp) => {
-        //     for (let departmentInfo in resp.data.departmentList) {
-        //         if (this.state.data.id === departmentInfo.head.id) {
-        //             axios.put(`http://89.108.103.70/api/department`, {
-        //                 id: departmentInfo.id,
-        //                 name: this.state.departmentName,
-        //                 description: this.state.description,
-        //                 headId: this.state.data.id
-        //             });
-
-        //             break;
-        //         }
-        //     }
-        // })
-
-        
-        // axios.post(`http://89.108.103.70/api/department`, {
-        //     name: this.state.departmentName,
-        //     description: this.state.description,
-        //     headId: this.state.data.id
-        // })
+        // setTimeout(() => {
+        //     window.location.replace("/AdminPanel");
+        //   }, 250)
     }
 
     render() {

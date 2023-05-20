@@ -32,9 +32,9 @@ class PeopleCard extends React.Component {
         return (
             <div className='people'>
                 <img className='img_adm' src={require('./images/deafult-avatar.png')} alt='avatar'></img>
-                <p className='peopletext'>{this.state.data.surname + ' ' + this.state.data.name + ' ' + this.state.data.patronymic}</p>
-                <p className='peopletext'>{this.state.data.email}</p>
-                <p className='peopletext peoplerole'>{getRoleName(this.state.role)}</p>
+                <p className='peopletext name-1'>{this.state.data.surname + ' ' + this.state.data.name + ' ' + this.state.data.patronymic}</p>
+                <p className='peopletext mail-1'>{this.state.data.email}</p>
+                <span className='role-1'><p className='peopletext peoplerole'>{getRoleName(this.state.role)}</p></span>
             </div>
         );
     }

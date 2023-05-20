@@ -2,6 +2,16 @@ import React from "react";
 
 let employmentTypes = ['Не указано', 'Полная занятость', 'Частичная занятость', 'Вахта', 'Удаленная работа', 'Стажировка']   
 let workExperience = ['Не важно', 'От 1 до 3 лет', 'От 4 до 6 лет', 'Более 6 лет']
+let educationTypes = {
+    0: 'Не указано',
+    1: 'Высшее (Специалитет, магистратура)',
+    2: 'Высшее (Бакалавриат)',
+    3: 'Среднее профессиональное',
+    4: 'Высшее (Подготовка кадров высшей квалификации)',
+    5: 'Дополнительное профессиональное',
+    6: 'Среднее общее'
+}
+
 function getGenderName(gender) {
     if (gender === 0) {
         return 'Мужской'
@@ -47,7 +57,8 @@ class CVcardCVPan extends React.Component {
                         {this.state.data?.jobDataList !== null && this.state.data?.jobDataList.filter((el) => (el.endYear === null)).length > 0 ? (
                             <>
                                 <h3 className='CVcard_h3'>Текущая должность</h3>
-                                <p className='CVcard_p4'>{this.state.data?.jobDataList.filter((el) => (el.endYear === null))[0].organizationName}</p>
+                                <p className='CVcard_p4'>{this.state.data?.jobDataList.filter((el) => (el.endYear === null))[0].post}</p>
+                                <p className='CVcard_text'>{this.state.data?.jobDataList.filter((el) => (el.endYear === null))[0].organizationName}</p>
                                 <p className='CVcard_text'>c {this.state.data?.jobDataList.filter((el) => (el.endYear === null))[0].startYear} по н.в</p>
                             </>) : (<></>)}
                         {this.state.data?.jobDataList !== null && this.state.data?.jobDataList.filter((el) => (el.endYear !== null)).length > 0 ? (
@@ -56,7 +67,7 @@ class CVcardCVPan extends React.Component {
                                 <div className="jobs">
                                 {this.state.data.jobDataList.filter((el) => (el.endYear !== null)).map((el) => (
                                     <p className='p_job'> 
-                                        <p className='h1_p1'>{el.organizationName}</p>
+                                        <p className='h1_p1'>{el.post}</p>
                                         <p className='h2_p2'>{el.organizationName}</p>
                                         <p className='h3_p3'>{el.startYear}-{el.endYear}</p>
                                     </p>))}
@@ -64,13 +75,22 @@ class CVcardCVPan extends React.Component {
                             </>) : (<></>)}
                     </>) : (<></>)
                 }
-                <h2 className='CVPang_h2'>Образование</h2>
-                    <p className='p_study'> <a href = ''><text className='h2_p'></text></a>
-                    <p className='h1_pp'>Высшее</p>
-                    <p className='h2_p22'>МГТУ им. Баумана</p>
-                    <p className='h3_pp1'>Программная инженерия</p>
-                    <p className='h3_pp1'>2017-2018</p>
-                </p>
+                {this.state.data.educationDataList !== null ? (
+                <>
+                    <h2 className='CVPang_h2'>Образование</h2>
+                    <div className="education-cards">
+                    {this.state.data.educationDataList?.map((el) => (
+                        <div className='p_study'> 
+                            <a href = ''><text className='h2_p'></text></a>
+                            <p className='h1_pp'>{educationTypes[el.educationType]}</p>
+                            <p className='h2_p22'>{el.organizationName}</p>
+                            <p className='h3_pp1'>{el.specialization}</p>
+                            <p className='h3_pp1'>{el.startYear}-{el.endYear}</p>
+                        </div>
+                    ))}
+                    </div>
+                </>) : (<></>)
+                }
                 <h2 className='CVPang_h2'>Ключевые навыки</h2>
                 <ul className='skills vacancy-skills'>
                     {this.state.data.skillList.map((el) => (<li key={el.id}>{el.name}</li>))}

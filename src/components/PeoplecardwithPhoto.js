@@ -38,6 +38,9 @@ class PeoplecardwithPhoto extends React.Component {
                     {this.state.data.author.github !== null ?
                     (<a href={this.state.data.author.github} target="_ blank"><li className='skill-ver-2'>GitHub</li></a>) :
                     (<></>)}
+                    {this.state.data.author.vk !== null ?
+                    (<a href={this.state.data.author.vk} target="_ blank"><li className='skill-ver-2'>Вконтакте</li></a>) :
+                    (<></>)}
                 </ul></>)}
             </div>
         );

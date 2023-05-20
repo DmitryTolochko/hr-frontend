@@ -480,11 +480,20 @@
 
 .p_study {
     background-color: #FFFFFF;
-    width: 248px;
+    /* width: 248px; */
     height: 119px;
+    padding-left: 10px;
+    padding-right: 30px;
     border: 1px solid #000000;
     border-radius: 5.84946px;
+}
+
+.education-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-left: 58px;
+    margin-right: 58px;
 }
 
 .h1_p {

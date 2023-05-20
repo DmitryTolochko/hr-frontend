@@ -16,7 +16,7 @@ class VacancyEditor extends React.Component {
                 description: response.data.description,
                 city: response.data.city,
                 employmentType: response.data.employmentType,
-                // skillList: response.data.skillList
+                skillList: response.data.skillList
             })
         })
 
@@ -56,6 +56,7 @@ class VacancyEditor extends React.Component {
                     if (error.response) {
                         localStorage.removeItem('tokens')
                         localStorage.removeItem('user')
+                        localStorage.removeItem('role')
                         window.location.replace("/Login")
                     }
                 })
@@ -87,7 +88,7 @@ class VacancyEditor extends React.Component {
         } else {
             axios.post(`http://89.108.103.70/api/Vacancy`, {
                 authorId: this.state.authorId,
-                departmentId: "8bdadea4-b014-40bd-b1a1-73a3c02af059",
+                departmentId: JSON.parse(localStorage.getItem('user')).departmentId,
                 title: this.state.title,
                 workExperience: this.state.workExperience,
                 salary: this.state.salary,
