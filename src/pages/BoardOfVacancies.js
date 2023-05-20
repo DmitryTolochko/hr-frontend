@@ -66,9 +66,12 @@ export class BoardOfVacancies extends React.Component {
                 <FiltersPanel stateUpdater={this.stateUpdater} options={this.state.options}/>
                 <div className='board'>
                     <SearchString/>
-                    <div className='board__loader'>
-                        <Loader isLoading={this.loading}/>
-                    </div>
+                    {
+                        this.loading && 
+                        <div className='board__loader'>
+                            <Loader isLoading={this.loading}/>
+                        </div>
+                    }
                     {this.state.vacancies.map((el) => (<div key={el.id}><VacancyCard animatedClass='animated-card' cardInfo={el} departmentId={el.departmentId}/></div>))}
                 </div>
             </div>
