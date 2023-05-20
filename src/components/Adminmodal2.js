@@ -67,9 +67,9 @@ class Adminmodal2 extends React.Component {
                 roleName: this.state.role
         })
 
+        let depId = this.state.departmentId
         //создание или обновление департамента или удаление
-        setTimeout(() => {
-                if (this.state.departmentId !== null && this.state.role !== 'user') {
+        if (this.state.departmentId !== null && this.state.role !== 'user') {
                 //обновление
                 axios.put(`http://89.108.103.70/api/department`, {
                     id: this.state.departmentId,
@@ -77,39 +77,41 @@ class Adminmodal2 extends React.Component {
                     description: this.state.description,
                     headId: this.state.headId
                 })
-            }
-            else if (this.state.departmentId === null && this.state.role !== 'user'){
+        }
+        else if (this.state.departmentId === null && this.state.role !== 'user'){
                 //создание
                 axios.post(`http://89.108.103.70/api/department`, {
                     name: this.state.departmentName,
                     description: this.state.description,
                     headId: this.state.data.id
-                }).then((resp) => {this.setState({departmentId: resp.data.id})})
-            }
-            else if (this.state.departmentId !== null && this.state.role === 'user') {
+                }).then((resp) => {
+                    depId = resp.data.id
+                })
+        }
+        else if (this.state.departmentId !== null && this.state.role === 'user') {
                 //удаление
                 axios.delete(`http://89.108.103.70/api/department/${this.state.departmentId}`)
-            }
-        }, 200)      
-
+        }   
+        console.log(depId)
         //обновление пользователя
         setTimeout(() => {
-        axios.put(`http://89.108.103.70/api/user`, {
-            id: this.state.data.id,
-            departmentId: this.state.role === 'user' ? null : this.state.departmentId,
-            surname: this.state.fullName.split(' ')[0],
-            name: this.state.fullName.split(' ')[1],
-            patronymic: this.state.fullName.split(' ')[2],
-            email: this.state.email,
-            phone: this.state.phone,
-            github: this.state.data.github,
-            telegram: this.state.data.telegram,
-            vk: this.state.data.vk
-        }).then(() => this.props.updateData(null))}, 400)
-
-        // setTimeout(() => {
-        //     window.location.replace("/AdminPanel");
-        //   }, 250)
+            console.log(depId)
+            axios.put(`http://89.108.103.70/api/user`, {
+                id: this.state.data.id,
+                departmentId: depId,
+                surname: this.state.fullName.split(' ')[0],
+                name: this.state.fullName.split(' ')[1],
+                patronymic: this.state.fullName.split(' ')[2],
+                email: this.state.email,
+                phone: this.state.phone,
+                github: this.state.data.github,
+                telegram: this.state.data.telegram,
+                vk: this.state.data.vk
+            }).then(() => {
+                this.props.updateData(null)
+                window.location.replace("/AdminPanel");
+            })
+        }, 400)
     }
 
     render() {
