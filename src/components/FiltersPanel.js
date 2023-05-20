@@ -15,6 +15,8 @@ class FiltersPanel extends React.Component {
 
         this.updateRangeQueryList = this.updateRangeQueryList.bind(this);
         this.updateEqualsQueryList = this.updateEqualsQueryList.bind(this);
+        this.updateContainsQueryList = this.updateContainsQueryList.bind(this);
+        this.addSkill = this.addSkill.bind(this);
         this.clearSkills = this.clearSkills.bind(this);
     }
 
@@ -73,30 +75,51 @@ class FiltersPanel extends React.Component {
         }
         options.equalsQueryList = newEqualsQueryList;
         this.props.stateUpdater(options);           
-    } 
+    }
 
-    addSkill(event) {
+    updateContainsQueryList = (name, filters) => {
+        localStorage.setItem('FILTERS', JSON.stringify(filters))
+        this.setState({filters: filters})
+
+        const filterParams = {
+            fieldName: name,
+            values: filters[name]
+        }
+
+        const options = this.props.options
+        const containsQueryList = options.containsQueryList ?? []
+
+        const newContainsQueryList = containsQueryList.filter((param) => param.fieldName !== 'skillList')
+
+        if (filterParams.values.length) {
+            newContainsQueryList.push(filterParams)
+        }
+
+        options.containsQueryList = newContainsQueryList;
+        this.props.stateUpdater(options);      
+    }
+
+
+    addSkill = (event) => {
         if(event.key === 'Enter' || event.key === 'Unidentified') {
             const value = this.skillsInputRef.current.value;
             if(this.state.skills.includes(value)) {
                 const filters = this.state.filters;
-                filters.skills.push(value);
-                filters.skills = [...new Set(filters.skills)];
-                
-                localStorage.setItem('FILTERS', JSON.stringify(filters))
-                this.setState({filters: filters})
+                filters.skillList.push(value);
+                filters.skillList = [...new Set(filters.skillList)];
 
                 this.skillsInputRef.current.value = '';
+
+               this.updateContainsQueryList('skillList', filters);
             }
         }
     }
 
     clearSkills = () => {
         const filters = this.state.filters;
-        filters.skills = []
+        filters.skillList = []
 
-        localStorage.setItem('FILTERS', JSON.stringify(filters))
-        this.setState({filters: filters})
+        this.updateContainsQueryList('skillList', filters);
     }
 
     render() {
@@ -122,7 +145,7 @@ class FiltersPanel extends React.Component {
                     ))}
                 </ul>
                 <h4>Навыки</h4>
-                <input ref={this.skillsInputRef} className="filters-panel__input" list="skillsList" type="text" placeholder='Введите навык' onKeyUp={(el) => this.addSkill(el)}></input>
+                <input ref={this.skillsInputRef} className="filters-panel__input" list="skillsList" type="text" placeholder='Введите навык' onKeyUp={(ev) => this.addSkill(ev)}></input>
                 {this.state.skills && 
                     <datalist id="skillsList">
                         {this.state.skills.map((skill, id) =>
@@ -132,12 +155,12 @@ class FiltersPanel extends React.Component {
                 }
                 <div className="filters-panel__skills">
                     {
-                        this.state.filters.skills.map((skill) => 
+                        this.state.filters.skillList.map((skill) => 
                         <div className="filters-panel__skills-item">{skill}</div>
                         )
                     }
                 </div>
-                {!!this.state.filters.skills.length && 
+                {!!this.state.filters.skillList.length && 
                     <button className="filters-panel__clear" onClick={this.clearSkills}>
                     <ClearIcon className='filters-panel__clear-icon'/>
                         Очистить
