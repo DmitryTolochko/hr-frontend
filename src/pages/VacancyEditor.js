@@ -31,11 +31,20 @@ class VacancyEditor extends React.Component {
             city: "Не указан",
             employmentType: 0,
             skillList: [],
-            currentSkill: null
+            skills: []
         }
+
+        this.skillsInputRef = React.createRef();
 
         this.updateVacancy = this.updateVacancy.bind(this);
         this.addSkill = this.addSkill.bind(this);
+    }
+
+    componentDidMount() {
+        axios.get('http://89.108.103.70/api/skill/get-all')
+            .then((response) => {
+                this.setState({skills: response.data})
+        })
     }
 
     refreshToken() {
@@ -83,7 +92,7 @@ class VacancyEditor extends React.Component {
                 description: this.state.description,
                 city: this.state.city,
                 employmentType: this.state.employmentType,
-                skillList: this.state.skillList
+                skillIdList: this.state.skillList.map(skill => skill.id)
             }).then(this.redirectToMyVacancies)
         } else {
             axios.post(`http://89.108.103.70/api/Vacancy`, {
@@ -95,7 +104,7 @@ class VacancyEditor extends React.Component {
                 description: this.state.description,
                 city: this.state.city,
                 employmentType: this.state.employmentType,
-                skillList: this.state.skillList
+                skillIdList: this.state.skillList.map(skill => skill.id)
             }).then(this.redirectToMyVacancies)
         }
     }
@@ -114,21 +123,22 @@ class VacancyEditor extends React.Component {
         this.setState({ workExperience: event.target.value});
     }
 
-    addSkill = () => {
-        if (this.state.currentSkill != null)
-        {
-            this.state.skillList.push({
-                name: this.state.currentSkill
-            })
-
-            console.log(this.state.skillList)
-            
-            this.setState({ currentSkill: null })
+    addSkill = (event) => {
+        if(event.key === 'Enter' || event.key === 'Unidentified') {
+            const value = this.skillsInputRef.current.value;
+            const skill = this.state.skills.find(skill => skill.name === value)
+            if(skill) {
+                const skillList = this.state.skillList;
+                skillList.push(skill)
+                this.setState({ skillList: [...new Set(skillList)] })
+                console.log(skillList)
+                this.skillsInputRef.current.value = '';
+            }
         }
     }
 
     deleteSkill = (name) => {
-        this.setState({ skillList: this.state.skillList.filter(skill => skill.name !== name)})
+        this.setState({ skillList: this.state.skillList.filter((skill) => skill.name !== name)})
     }
 
     render () {
@@ -174,8 +184,14 @@ class VacancyEditor extends React.Component {
                         <li key={el.id}>{el.name}<img src={require('../components/images/trash.svg').default} alt='delete' className='delete-skill' onClick={() => this.deleteSkill(el.name)}></img></li>
                         ))}
                 </ul>
-                <input placeholder='Начните вводить навык...' value={this.state.currentSkill ?? ''} onChange={(e) => this.setState({currentSkill: e.target.value})}></input>
-                <button className='add-button' onClick={this.addSkill}><img src={require('../components/images/plus.svg').default}></img></button>
+                <input ref={this.skillsInputRef} list="skillsList" type="text" placeholder='Введите навык' onKeyUp={(ev) => this.addSkill(ev)}></input>
+                {this.state.skills && 
+                    <datalist id="skillsList">
+                        {this.state.skills.map((skill, id) =>
+                        <option key={id} value={skill.name} />
+                        )}
+                    </datalist>
+                }
 
                 <div className='editor-buttons'>
                         <button type='sumbit' className='editor-button publish-button' onClick={this.updateVacancy}>
