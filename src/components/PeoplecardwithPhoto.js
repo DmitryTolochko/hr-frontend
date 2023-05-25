@@ -27,7 +27,7 @@ class PeoplecardwithPhoto extends React.Component {
                 <p className='fio_CVpan2'><a href=''>{this.state.data.author.email}</a></p>
                 <h3 className='CVPan_h3'>Телефон</h3>
                 <p className='fio_CVpan2'><a href=''>+{this.state.data.author.phone}</a></p>
-                {this.state.data.author.github === null && this.state.data.author.telegram === null ? 
+                {this.state.data.author.github === null && this.state.data.author.telegram === null && this.state.data.author.vk === null ?
                 (<></>) :
                 (<><h3 className='CVPan_h3'>Ссылки</h3>
                 <ul className='skills-2'>

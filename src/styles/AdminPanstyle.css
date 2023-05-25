@@ -400,7 +400,7 @@
 }
 
 .adminmodal2 {
-    position: absolute;
+    position: fixed;
     background-color: #FFFFFF;
     width: 520px;
     padding-bottom: 30px;
@@ -412,11 +412,11 @@
 }
 
 .dark-overlay {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.5); /* black with 50% opacity */
     z-index: 5; /* ensure the overlay is on top of other content */
 }

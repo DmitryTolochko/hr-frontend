@@ -12,6 +12,10 @@ class AccountPan extends React.Component {
             github: null,
             telegram: null,
             vk: null,
+
+            selectedFile: null,
+            changeFile: false,
+            photo: null
         }
         this.refreshToken()
         this.getUserInfo = this.getUserInfo.bind(this)
@@ -51,8 +55,8 @@ class AccountPan extends React.Component {
         }
     }
 
-    getUserInfo() {
-        axios.get(`http://89.108.103.70/api/user/${JSON.parse(localStorage.getItem('user')).id}`).then((response) => {
+    async getUserInfo() {
+        await axios.get(`http://89.108.103.70/api/user/${JSON.parse(localStorage.getItem('user')).id}`).then((response) => {
             this.setState({
                 fullName: response.data.surname + ' ' + response.data.name + ' ' + response.data.patronymic,
                 email: response.data.email,
@@ -61,6 +65,10 @@ class AccountPan extends React.Component {
                 telegram: response.data.telegram,
                 vk: response.data.vk,
             })
+        })
+
+        await axios.get(`http://89.108.103.70/api/file/${JSON.parse(localStorage('user')).id}`).then((resp) => {
+            this.setState({photo: resp.data})
         })
     }
 
@@ -77,6 +85,37 @@ class AccountPan extends React.Component {
             vk: this.state.vk === 'Ссылка' || this.state.vk === '' ? null : this.state.vk,
         })
     }
+
+    handleFileUpload = (event) => {
+        event.preventDefault();
+        const formData = new FormData();
+        formData.append('file', this.state.selectedFile);
+        axios.post('http://89.108.103.70/api/file', formData , {
+            headers: {
+                Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('tokens')).accessToken
+            },
+        })
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(error => {
+            console.log(error);
+        });
+    }
+
+    handleFileSelect = (event) => {
+        this.setState({
+          selectedFile: event.target.files[0]
+        })
+    }
+
+    logOut() {
+        localStorage.removeItem('tokens')
+        localStorage.removeItem('user')
+        localStorage.removeItem('role')
+        window.location.replace("/Login")
+    }
+   
 
     render() {
         return (
@@ -118,16 +157,29 @@ class AccountPan extends React.Component {
                     </button>
                 </div>
                 <div className='photodiv'>
-                    <img className='img_ac' src={require('./images/deafult-avatar.png')} alt='avatar'></img>
-                    <a className='photodiv_a' href = ''> 
-                        <img src={require('./images/pencil-small.svg').default} alt='save'></img>
+                    <img className='img_ac' src={this.state.photo === null ? require('./images/deafult-avatar.png') : this.state.photo} alt='avatar'></img>
+                    <a className='photodiv_a' onClick={() => this.setState({changeFile: true})}> 
+                        <img src={require('./images/pencil-small.svg').default} alt='save' ></img>
                         &nbsp;Изменить фото профиля
                     </a>
+                    
                 </div>
+                {this.state.changeFile ? (
+                    <>
+                        <div class="dark-overlay"></div>
+                        <form onSubmit={this.handleFileUpload} className='file-uploader'>
+                                <input type="file" onChange={this.handleFileSelect} />
+                                <button className='CVPan_up_button' type="submit">Сохранить</button>
+                        </form>
+                    </>
+                ) : (<></>)}
                 {JSON.parse(localStorage.getItem('role')).roleList[0] !== 'user' ? (
                     <AccoutDepartmentCard/>
                 ) : (<></>)}
-                
+
+                <button className='logout' onClick={() => this.logOut()}>
+                        Выйти из аккаунта
+                </button>
             </div>
         );
     }

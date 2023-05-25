@@ -18,7 +18,7 @@ class VacancyEditor extends React.Component {
                 employmentType: response.data.employmentType,
                 skillList: response.data.skillList
             })
-        })
+        }).catch()
 
         this.state = {
             id: null,

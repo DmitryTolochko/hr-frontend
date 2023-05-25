@@ -56,7 +56,14 @@ class BoardOfCVs extends React.Component {
     }
 
     getCVs() {
-        axios.get('http://89.108.103.70/api/Resume/get-all').then((response) => {
+        axios.post('http://89.108.103.70/api/Resume/get-all-filter', {
+            equalsQueryList: [
+                {
+                    "fieldName": "isDraft",
+                    "value": false
+                }   
+            ]
+        }).then((response) => {
             this.setState({data: response.data.resumeList})
         })
     }

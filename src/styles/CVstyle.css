@@ -8,12 +8,12 @@
     position: relative;
     background-color: #FFFFFF;
     width: 820px;
-    height: 2200px;
+    height:fit-content;
     justify-content: center;
-    
     
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 29.25px;
+    margin-bottom: 50px;
 }
 
 .CVPan_h1 {
@@ -155,7 +155,7 @@
     position: relative;
     background-color: #FFFFFF;
     width: 442px;
-    height: 820px;
+    height:fit-content;
     justify-content: center;
     margin-left: 35px;
     
@@ -184,8 +184,6 @@
 }
 
 .fio_CVpan {
-    width: 259px;
-    height: 22px;
     margin-left: 70px;
     margin-top: 15px;
 
@@ -222,8 +220,8 @@
 }
 
 .CVpan_h3_a {
-    width: 207px;
-    height: 21px;
+    cursor: pointer;
+
     margin-left: 58px;
     margin-top: 15px;
 
@@ -261,7 +259,7 @@
     
 
 .CVPan_PDF_button { 
-    width: 257px;
+    width: 200px;
     height: 61px;
 
 
@@ -272,6 +270,7 @@
     line-height: 29px;
     margin-top: 35px;
     margin-left: 20px;
+    margin-bottom: 40px;
     
     background: white;
     border-color: black;
@@ -296,26 +295,29 @@
 }
 
 .CVPan_a {
-    margin-left: 25px;
-   
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items:center;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    text-decoration: none;
-
+    font-size: 17px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    
     color: #535353;
 }
 
 .modal_job {
-    position: absolute;
+    position: fixed;
     background-color: #FFFFFF;
     width: 600px;
     height: 500px;
     justify-content: center;
     margin-left: 20px;
-    margin-top: 300px;
+    margin-top: 220px;
+    z-index: 10;
     
     
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
@@ -360,6 +362,26 @@
 
 .modal_job_input1 {
     width: 500px;
+    height: 42px;
+    margin-top:  15px;
+    margin-left: 45px;
+    border: none;
+    padding-left: 10px;
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: black;
+
+    background: #F9FBFE;
+    border-bottom: 1.56989px solid #000000;
+    border-radius: 5.84946px; 
+}
+
+.modal_job_input3 {
+    width: 220px;
     height: 42px;
     margin-top:  15px;
     margin-left: 45px;
@@ -426,13 +448,14 @@
 }
 
 .modal_job2 {
-    position: absolute;
+    position: fixed;
     background-color: #FFFFFF;
     width: 600px;
     height: 600px;
     justify-content: center;
     margin-left: 20px;
-    margin-top: 250px;
+    margin-top: 200px;
+    z-index: 10;
     
     
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
@@ -460,25 +483,26 @@
 }
 
 .p_job {
+    position: relative;
     background-color: #FFFFFF;
-    width: 150px;
+    /* width: 150px; */
     height: 89px;
     border: 1px solid #000000;
     border-radius: 5.84946px;
+    margin: 0;
 }
 
 .trash-small {
-    margin-top: 11px;
-    margin-left: 130px;
-}
-
-.trash-small2 {
-    margin-top: 11px;
-    margin-left: 225px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
 }
 
 
 .p_study {
+    margin: 0;
+    position: relative;
     background-color: #FFFFFF;
     /* width: 248px; */
     height: 119px;
@@ -488,12 +512,29 @@
     border-radius: 5.84946px;
 }
 
+.p_study2 {
+    background-color: #FFFFFF;
+    /* width: 248px; */
+    height: 119px;
+    padding-left: 10px;
+    padding-right: 30px;
+    border: 1px solid #000000;
+    border-radius: 5.84946px;
+    display: flex;
+}
+
+.info-p {
+    display: grid;
+}
+
 .education-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
     margin-left: 58px;
     margin-right: 58px;
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 .h1_p {
@@ -504,7 +545,9 @@
     font-size: 16px;
     line-height: 20px;
     margin-left: 5px;
-    margin-top: -20px;
+    margin-top: 0;
+    padding-top:10px;
+    margin-right: 50px;
 
     color: #000000;
 }
@@ -517,6 +560,7 @@
     line-height: 20px;
     margin-left: 5px;
     margin-top: -10px;
+    margin-right: 50px;
 
     color: #000000;
 
@@ -530,6 +574,7 @@
     line-height: 20px;
     margin-left: 5px;
     margin-top: -10px;
+    margin-right: 50px;
 
     color: #000000;
 
@@ -545,4 +590,24 @@
     margin-top: -10px;
 
     color: #000000;
+}
+
+.ver2-button {
+    position:absolute;
+}
+
+.skill-input {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    border: 0;
+    width: 600px;
+    height: 41px;
+    background: #F9FBFE;
+    border-bottom: 1.16989px solid #000000;
+    border-radius: 5.84946px;
+    margin-left: 54px;
+    padding-left: 11px;
 }

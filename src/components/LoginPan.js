@@ -36,12 +36,13 @@ class LoginPan extends React.Component {
             let dataUser = await getUser.json()
             console.log(dataUser)
 
-            axios.get(`http://89.108.103.70/api/user/role/${dataUser.id}`).then((resp) => {
+            await axios.get(`http://89.108.103.70/api/user/role/${dataUser.id}`).then((resp) => {
                 localStorage.setItem('role', JSON.stringify(resp.data))
             })
 
-            localStorage.setItem('user', JSON.stringify(dataUser))
-            setTimeout(() => {window.location.replace("/Account")}, 200)
+            await localStorage.setItem('user', JSON.stringify(dataUser))
+            window.location.replace("/Account")
+            // setTimeout(() => {}, 200)
         }
     }
 
