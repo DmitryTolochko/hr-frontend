@@ -164,7 +164,6 @@ class CVpan extends React.Component {
             firstInitialization: false
         })).catch(function (error) {
             if (error.response) {
-                console.log(123)
         }})
     }
 
@@ -209,7 +208,6 @@ class CVpan extends React.Component {
 
         if (current !== null) {
             updatedList = updatedList.filter((el) => (el !== current))
-            console.log(updatedList)
             await this.setState({jobDataList: updatedList})
             
             await this.addNewJob(newJob)
@@ -223,7 +221,6 @@ class CVpan extends React.Component {
 
     addNewJob(info) {
         let updatedList = info !== null ? [...this.state.jobDataList, info] : this.state.jobDataList
-        console.log(updatedList)
         this.setState({
             jobDataList: updatedList, 
             addNewJobFlag: false
@@ -246,7 +243,6 @@ class CVpan extends React.Component {
                 const skillList = this.state.skillList;
                 skillList.push(skill)
                 this.setState({ skillList: [...new Set(skillList)] })
-                console.log(skillList)
                 this.skillsInputRef.current.value = '';
             }
         }

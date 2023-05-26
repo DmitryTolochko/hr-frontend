@@ -2,9 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function getOpenedPages(role) {
-    if (role === 'user') { console.log(1); return [1, 2, 3] }
-    if (role === 'departmentHead') { console.log(2); return [1, 2, 3, 5, 6, 7] }
-    if (role === 'admin') { console.log(3); return [1, 2, 3, 4, 5, 6, 7] }
+    if (role === 'user') { 
+        return [1, 2, 3]
+    }
+    if (role === 'departmentHead') { 
+        return [1, 2, 3, 5, 6, 7] 
+    }
+    if (role === 'admin') {
+        return [1, 2, 3, 4, 5, 6, 7] 
+    }
 }
 
 class Navigation extends React.Component {
