@@ -332,16 +332,16 @@
 
 .logout {
     padding: 20px;
-    margin-top: 100vh;
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
 
-    position: fixed;
-    background-color: #FFFFFF;
+    display: flex;
+    background-color: #FFF;
+    margin: 50px auto;
     justify-content: center;
-    height:fit-content;
+    cursor: pointer;
     
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 29.25px;

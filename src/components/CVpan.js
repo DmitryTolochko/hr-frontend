@@ -199,35 +199,26 @@ class CVpan extends React.Component {
         let updatedList = this.state.jobDataList
         let current = updatedList.filter((el) => (el.endYear === null)).length === 0 ? null : 
             updatedList.filter((el) => (el.endYear === null))[0]
+
+        const newJob = {
+            post: this.state.currentJobPost,
+            organizationName: this.state.currentJobName,
+            startYear: this.state.currentJobYear,
+            endYear: null
+        }
+
         if (current !== null) {
             updatedList = updatedList.filter((el) => (el !== current))
             console.log(updatedList)
-            await this.setState({jobDataList: updatedList}).then(async () => {
-                console.log(this.state.jobDataList)
-                let newJob = {
-                    post: this.state.currentJobPost,
-                    organizationName: this.state.currentJobName,
-                    startYear: this.state.currentJobYear,
-                    endYear: null
-                }
-                await this.addNewJob(newJob)
-                await this.updateResume(isDraft)
-            })
-        }
-        else {
-            let newJob = {
-                post: this.state.currentJobPost,
-                organizationName: this.state.currentJobName,
-                startYear: this.state.currentJobYear,
-                endYear: null
-            }
+            await this.setState({jobDataList: updatedList})
+            
             await this.addNewJob(newJob)
             await this.updateResume(isDraft)
         }
-    }
-
-    changePublicity() {
-        this.saveResume(!this.state.isDraft)
+        else {
+            await this.addNewJob(newJob)
+            await this.updateResume(isDraft)
+        }
     }
 
     addNewJob(info) {
@@ -419,7 +410,7 @@ class CVpan extends React.Component {
                         </button>
                     ): 
                     (
-                        <button className='CVPan_up_button' onClick={() => this.changePublicity()}>
+                        <button className='CVPan_up_button' onClick={() => this.saveResume(!this.state.isDraft)}>
                             <img src={require('./images/vector-up.svg').default} alt='save'></img>
                             &nbsp;{this.state.isDraft ? 'Опубликовать' : 'Скрыть'}
                         </button>
