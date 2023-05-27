@@ -23,7 +23,7 @@
     margin-left: 100px;
     margin-bottom: 15px;
     gap: 15px;
-    
+    cursor: pointer;
     
     background: #FFFFFF;
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
@@ -63,10 +63,14 @@
     
     font-family: 'Montserrat';
     font-style: normal;
+    min-width: 30px;
     font-weight: 400;
     font-size: 16px;
     line-height: 20px;
     justify-content: center;
+    
+    min-width: 75px;
+    min-height: 10px;
 
     color: #000000;
 }

@@ -211,7 +211,8 @@
     justify-content: center;
     margin-left: -452px;
     margin-top: 480px;
-    
+    height: 100%;
+    padding-bottom: 30px;
     
     box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
     border-radius: 29.25px;
@@ -339,7 +340,7 @@
 
     display: flex;
     background-color: #FFF;
-    margin: 50px auto;
+    margin: 100px auto;
     justify-content: center;
     cursor: pointer;
     
@@ -350,10 +351,10 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    transition: all .1s ease;
 }
 
 .logout:hover {
     background-color: rgb(218, 111, 111);
-    transition: all .1s ease;
     transform: scale(1.02);
 }

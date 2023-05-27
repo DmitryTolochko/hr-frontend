@@ -6,7 +6,7 @@ function getOpenedPages(role) {
         return [1, 2, 3]
     }
     if (role === 'departmentHead') { 
-        return [1, 2, 3, 5, 6, 7] 
+        return [1, 2, 3, 4, 5, 6] 
     }
     if (role === 'admin') {
         return [1, 2, 3, 4, 5, 6, 7] 
@@ -17,21 +17,24 @@ class Navigation extends React.Component {
     constructor (props) {
         super(props)
 
+        this.user = JSON.parse(localStorage.getItem('user'));
+        this.userName = this.user ? `${this.user.name} ${this.user.surname}`: 'Профиль';
+
         this.state = {
             links: [
-                {id: 1, name: 'Мое резюме', className: '', link: "/CVEditor"},
+                {id: 1, name: 'Доска Вакансий', className: '', link: "/BoardOfVacancies"},
                 {id: 2, name: 'Избранные вакансии', className: '', link: "/FeaturedVacancies"},
-                {id: 3, name: 'Доска Вакансий', className: '', link: "/BoardOfVacancies"},
-                {id: 4, name: 'Админ панель', className: '', link: "/AdminPanel"},
-                {id: 5, name: 'Доска резюме', className: '', link: "/BoardOfCVs"},
-                {id: 6, name: 'Мои вакансии', className: '', link: "/MyVacancies"},
-                {id: 7, name: 'Отклики', className: '', link: "/CVResponses"},
+                {id: 3, name: 'Мое резюме', className: '', link: "/CVEditor"},
+                {id: 4, name: 'Доска резюме', className: '', link: "/BoardOfCVs"},
+                {id: 5, name: 'Мои вакансии', className: '', link: "/MyVacancies"},
+                {id: 6, name: 'Отклики', className: '', link: "/CVResponses"},
+                {id: 7, name: 'Админ панель', className: '', link: "/AdminPanel"}
             ],
-            openedPages: localStorage.getItem('role') !== null ? getOpenedPages(JSON.parse(localStorage.getItem('role')).roleList[0]) : [3]
+            openedPages: localStorage.getItem('role') !== null ? getOpenedPages(JSON.parse(localStorage.getItem('role')).roleList[0]) : [1]
         }
     }
 
-    changeChosenPage (id) {
+    changeChosenPage (id = 0) {
         this.setState((prevState) => {
             const updatedLinks = prevState.links.map((el) => {
               if (el.id === id) {
@@ -65,12 +68,12 @@ class Navigation extends React.Component {
                 {localStorage.getItem('user') !== null ? 
                 (<div className='account'>
                     <img src={require('./images/deafult-avatar.png')} alt='avatar'/>
-                    <Link to="/Account">Профиль пользователя</Link>
+                    <Link to="/Account" onClick={() => this.changeChosenPage()}>{this.userName}</Link>
                 </div>) :
                 (<div className='account'>
-                    <Link to="/Login">Логин</Link>
+                    <Link to="/Login" onClick={() => this.changeChosenPage()}>Логин</Link>
                     <p>/</p>
-                    <Link to="/Registration">Регистрация</Link>
+                    <Link to="/Registration" onClick={() => this.changeChosenPage()}>Регистрация</Link>
                 </div>)}
             </header>
         )

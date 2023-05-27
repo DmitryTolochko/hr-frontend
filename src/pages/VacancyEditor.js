@@ -24,11 +24,11 @@ class VacancyEditor extends React.Component {
             id: null,
             authorId: JSON.parse(localStorage.getItem('user')).id,
             departmentId: "",
-            title: "Название",
+            title: "",
             workExperience: 0,
             salary: null,
             description: "",
-            city: "Не указан",
+            city: "",
             employmentType: 0,
             skillList: [],
             skills: []
@@ -149,16 +149,16 @@ class VacancyEditor extends React.Component {
                 <h2>Основаная информация</h2>
 
                 <p>Название вакансии</p>
-                <input placeholder={this.state.title} onChange={(e) => this.setState({title: e.target.value})}></input>
+                <input value={this.state.title} placeholder="Введите название" onChange={(e) => this.setState({title: e.target.value})}></input>
 
-                <p>Заработная плата (в рублях)</p>
-                <input placeholder={this.state.salary} onChange={(e) => this.setState({salary: e.target.value})}></input>
+                <p>Заработная плата</p>
+                <input value={this.state.salary} placeholder="Укажите зарплату в рублях" onChange={(e) => this.setState({salary: e.target.value})}></input>
 
                 <p>Требуемый опыт</p>
                 <select value={this.state.workExperience} onChange={this.changeWorkExperience}>
                     <option value={0}>Не важно</option>
                     <option value={1}>От 1 до 3 лет</option>
-                    <option value={2}>От 4 до 6 лет</option>
+                    <option value={2}>От 3 до 6 лет</option>
                     <option value={3}>Более 6 лет</option>
                 </select>
                 
@@ -172,11 +172,11 @@ class VacancyEditor extends React.Component {
                     <option value={5}>Стажировка</option>
                 </select>
                 
-                <p>География (Город)</p>
-                <input placeholder={this.state.city} onChange={(e) => this.setState({city: e.target.value})}></input>
+                <p>География</p>
+                <input placeholder='Город или населённый пункт' value={this.state.city} onChange={(e) => this.setState({city: e.target.value})}></input>
 
                 <h2>Описание</h2>
-                <textarea defaultValue={this.state.description} onChange={(e) => this.setState({description: e.target.value})}></textarea>
+                <textarea placeholder='Расскажите о вакансии' defaultValue={this.state.description} onChange={(e) => this.setState({description: e.target.value})}></textarea>
 
                 <h2>Ключевые навыки</h2>
                 <ul className='skills-editor'>

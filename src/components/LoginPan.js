@@ -78,7 +78,7 @@ class LoginPan extends React.Component {
                     <div id = 'circle'>
                     </div>
                     <input className = 'loginPan_first_input' placeholder='Почта' onChange={(e) => this.setState({email: e.target.value})}/>
-                    <input className = 'loginPan_second_input' placeholder='Пароль' onChange={(e) => this.setState({password: e.target.value})}/>
+                    <input className = 'loginPan_second_input' type="password" placeholder='Пароль' onChange={(e) => this.setState({password: e.target.value})}/>
                     <button className='loginPan_button' onClick={this.getToken}>
                         Войти
                     </button>

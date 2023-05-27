@@ -51,7 +51,7 @@ class Registration extends React.Component {
                     </input>
                     <input className = 'registrationPan_third_input' placeholder='Телефон (+7)' onChange={(e) => this.setState({phone: e.target.value})}>
                     </input>
-                    <input className = 'registrationPan_four_input' placeholder='Пароль' onChange={(e) => this.setState({password: e.target.value})}>
+                    <input className = 'registrationPan_four_input' type="password" placeholder='Пароль' onChange={(e) => this.setState({password: e.target.value})}>
                     </input>
                     <button className='registrationPan_button' onClick={this.createNewUser}>
                         Зарегистрироваться

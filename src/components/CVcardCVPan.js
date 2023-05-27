@@ -76,25 +76,34 @@ class CVcardCVPan extends React.Component {
                     </>) : (<></>)
                 }
                 {this.state.data.educationDataList !== null ? (
-                <>
-                    <h2 className='CVPang_h2'>Образование</h2>
-                    <div className="education-cards">
-                    {this.state.data.educationDataList?.map((el) => (
-                        <div className='p_study'> 
-                            <a href = ''><text className='h2_p'></text></a>
-                            <p className='h1_pp'>{educationTypes[el.educationType]}</p>
-                            <p className='h2_p22'>{el.organizationName}</p>
-                            <p className='h3_pp1'>{el.specialization}</p>
-                            <p className='h3_pp1'>{el.startYear}-{el.endYear}</p>
-                        </div>
-                    ))}
-                    </div>
+                <>  
+                    {this.state.data.educationDataList.length > 0 && 
+                        <>
+                            <h2 className='CVPang_h2'>Образование</h2>
+                            <div className="education-cards">
+                                {this.state.data.educationDataList?.map((el) => (
+                                    <div className='p_study'> 
+                                        <a href = ''><text className='h2_p'></text></a>
+                                        <p className='h1_pp'>{educationTypes[el.educationType]}</p>
+                                        <p className='h2_p22'>{el.organizationName}</p>
+                                        <p className='h3_pp1'>{el.specialization}</p>
+                                        <p className='h3_pp1'>{el.startYear}-{el.endYear}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    }
+                    
                 </>) : (<></>)
                 }
-                <h2 className='CVPang_h2'>Ключевые навыки</h2>
-                <ul className='skills vacancy-skills'>
-                    {this.state.data.skillList.map((el) => (<li key={el.id}>{el.name}</li>))}
-                </ul>
+                {this.state.data.skillList !== [] && 
+                <>
+                    <h2 className='CVPang_h2'>Ключевые навыки</h2>
+                    <ul className='skills vacancy-skills'>
+                        {this.state.data.skillList.map((el) => (<li key={el.id}>{el.name}</li>))}
+                    </ul>
+                </>
+                }
                 {/* <p className='vacancy_time_data2'>Резюме опубликовано в <a href=''><p className='vacancy_time2'>14:15</p></a><a href=''><p className='vacancy_data2'>14.12.2011</p></a></p> */}
             </div>
         );

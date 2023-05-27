@@ -167,9 +167,9 @@ class CVpan extends React.Component {
         }})
     }
 
-    updateResume(isDraft) {
+    async updateResume(isDraft) {
         if (this.state.firstInitialization === true) {
-            this.createResume(isDraft)
+            await this.createResume(isDraft)
         }
         else {
             axios.put(`http://89.108.103.70/api/resume`, {
@@ -343,21 +343,27 @@ class CVpan extends React.Component {
                     <input className = 'CVPan_input1' placeholder='Год начала работы' value={this.state.currentJobYear}
                         onChange={(e) => this.setState({currentJobYear: e.target.value})}
                     />
-                    <h3 className='CVPan_h3'>
-                        Предыдущие места работы
-                    </h3>
-                    <div className="jobs">
-                    {this.state.jobDataList.filter((el) => (el.endYear !== null)).map((el) => (
-                        <p className='p_job'> 
-                            <a onClick={() => this.setState(prevState => ({jobDataList: prevState.jobDataList.filter(item => item !== el)}))}>
-                                <img src={require('./images/trash-small.svg').default} alt='add' className='trash-small'></img>
-                            </a>
-                            <p className='h1_p'>{el.post}</p>
-                            <p className='h2_p'>{el.organizationName}</p>
-                            <p className='h3_p'>{el.startYear}-{el.endYear}</p>
-                        </p>
-                    ))}
-                    </div>
+                    {
+                        this.state.jobDataList.length > 1 && 
+                        <>
+                            <h3 className='CVPan_h3'>
+                            Предыдущие места работы
+                            </h3>
+                            <div className="jobs">
+                            {this.state.jobDataList.filter((el) => (el.endYear !== null)).map((el) => (
+                                <p className='p_job'> 
+                                    <a onClick={() => this.setState(prevState => ({jobDataList: prevState.jobDataList.filter(item => item !== el)}))}>
+                                        <img src={require('./images/trash-small.svg').default} alt='add' className='trash-small'></img>
+                                    </a>
+                                    <p className='h1_p'>{el.post}</p>
+                                    <p className='h2_p'>{el.organizationName}</p>
+                                    <p className='h3_p'>{el.startYear}-{el.endYear}</p>
+                                </p>
+                            ))}
+                            </div>
+                        </>
+                    }
+                   
                     <a className='CVpan_h3_a' onClick={() => this.setState({addNewJobFlag: true})}> 
                         <img src={require('./images/plus-small.svg').default} alt='add'></img>
                         &nbsp;Добавить место работы
@@ -365,19 +371,21 @@ class CVpan extends React.Component {
                     <h2 className='CVPan_h2'>
                         Образование
                     </h2>
-                    <div className="education-cards">
-                    {this.state.educationDataList.map((el) => (
-                        <p className='p_study'> 
-                            <p className='h1_p'>{educationTypes[el.educationType]}</p>
-                            <p className='h2_p22'>{el.organizationName}</p>
-                            <p className='h3_p'>{el.specialization}</p>
-                            <p className='h3_p'>{el.startYear}-{el.endYear}</p>
-                            <a onClick={() => this.setState(prevState => ({educationDataList: prevState.educationDataList.filter(item => item !== el)}))}>
-                                <img src={require('./images/trash-small.svg').default} alt='delete' className='trash-small'></img>
-                            </a>
-                        </p>
-                    ))}
-                    </div>
+                    {this.state.educationDataList.length > 0 && 
+                        <div className="education-cards">
+                            {this.state.educationDataList.map((el) => (
+                                <p className='p_study'> 
+                                    <p className='h1_p'>{educationTypes[el.educationType]}</p>
+                                    <p className='h2_p22'>{el.organizationName}</p>
+                                    <p className='h3_p'>{el.specialization}</p>
+                                    <p className='h3_p'>{el.startYear}-{el.endYear}</p>
+                                    <a onClick={() => this.setState(prevState => ({educationDataList: prevState.educationDataList.filter(item => item !== el)}))}>
+                                        <img src={require('./images/trash-small.svg').default} alt='delete' className='trash-small'></img>
+                                    </a>
+                                </p>
+                            ))}
+                        </div>
+                    }
                     <a className='CVpan_h3_a' onClick={() => this.setState({addNewEducationFlag: true})}> 
                         <img src={require('./images/plus-small.svg').default} alt='add'></img>
                         &nbsp;Добавить образование
@@ -411,11 +419,6 @@ class CVpan extends React.Component {
                             &nbsp;{this.state.isDraft ? 'Опубликовать' : 'Скрыть'}
                         </button>
                     )}
-                    
-                    <button className='CVPan_PDF_button'>
-                        <img src={require('./images/vector-down.svg').default} alt='save'></img>
-                        &nbsp;Скачать PDF
-                    </button>
                     <button className='CVPan_PDF_button ver2-button' onClick={() => {this.saveResume(this.state.isDraft)}}>
                         &nbsp;Сохранить
                     </button>

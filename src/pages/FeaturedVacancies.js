@@ -3,10 +3,12 @@ import SearchString from '../components/SearchString';
 import VacancyCard from '../components/VacancyCard';
 import FiltersPanel from '../components/FiltersPanel';
 import axios from 'axios'
+import Loader from '../components/Loader';
 
 class FeaturedVacancies extends React.Component {
     constructor(props) {
         super(props)
+        this.loading = true;
         this.state = {
             vacancies: [],
             options: {
@@ -40,6 +42,7 @@ class FeaturedVacancies extends React.Component {
             rangeQueryList: settings.rangeQueryList ?? [],
         }).then((response) => {
             this.setState({vacancies: response.data.filteredVacancyList})
+            this.loading = false;
         })
     }
 
@@ -49,6 +52,10 @@ class FeaturedVacancies extends React.Component {
                 {/* <FiltersPanel/> */}
                 <div className='board'>
                     <SearchString width='703px'/>
+                    <div className='loader-wrapper'>
+                        <Loader isLoading={this.loading}/>
+                        {!this.loading && <p>Нет избранных вакансий :(</p>}
+                    </div>
                     {/* <VacancyCard animatedClass='animated-card'/> */}
                 </div>
             </div>

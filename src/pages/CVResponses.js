@@ -7,9 +7,8 @@ import CVResponse from '../components/CVResponse';
 const CVResponses = () => {
     return (
         <div className='board-of-vacancies'>
-            <FiltersPanel/>
             <div className='board'>
-                <SearchString width='703px'/>
+                <SearchString/>
                 <CVResponse animatedClass='animated-card'/>
                 <CVResponse animatedClass='animated-card'/>
                 <CVResponse animatedClass='animated-card'/>

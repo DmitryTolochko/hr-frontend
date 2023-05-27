@@ -82,7 +82,7 @@ class MyVacancies extends React.Component {
                             </button>
                         </Link>
                     </div>
-                    {this.state.data.map((el) => (<div key={el.id}><VacancyCardEdit cardInfo={el} animatedClass='animated-card'/></div>))}
+                    {this.state.data.map((el) => (<VacancyCardEdit key={el.id} cardInfo={el} animatedClass='animated-card'/>))}
                 </div>
             </div>
         );

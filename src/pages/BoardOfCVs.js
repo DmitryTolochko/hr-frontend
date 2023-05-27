@@ -78,9 +78,8 @@ class BoardOfCVs extends React.Component {
         }
         return (
             <div className='board-of-vacancies'>
-                <FiltersPanel/>
                 <div className='board'>
-                    <SearchString width='703px'/>
+                    <SearchString/>
                     {this.state.data.map((el) => (<div key={el.id}><CVCard animatedClass='animated-card' cardInfo={el}/></div>))}
                 </div>
             </div>

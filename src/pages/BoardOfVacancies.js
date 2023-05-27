@@ -72,7 +72,7 @@ export class BoardOfVacancies extends React.Component {
                             <Loader isLoading={this.loading}/>
                         </div>
                     }
-                    {this.state.vacancies.map((el) => (<div key={el.id}><VacancyCard animatedClass='animated-card' cardInfo={el} departmentId={el.departmentId}/></div>))}
+                    {this.state.vacancies.map((el) => (<VacancyCard key={el.id} animatedClass='animated-card' cardInfo={el} departmentId={el.departmentId}/>))}
                 </div>
             </div>
         );

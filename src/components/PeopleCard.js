@@ -8,7 +8,7 @@ function getRoleName(role) {
     else if (role === 'admin') {
         return 'Администратор'
     }
-    else {
+    else if (role === 'departmentHead'){
         return 'Глава департамента'
     }
 }
