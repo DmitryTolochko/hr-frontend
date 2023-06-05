@@ -10,6 +10,7 @@ class Vacancy extends React.Component {
 
         axios.get(`http://89.108.103.70/api/Vacancy/${window.location.href.split("/")[4]}`).then((response) => {
             this.setState({data: response.data})
+            document.title = response.data.title
             axios.get(`http://89.108.103.70/api/Department/${response.data.departmentId}`).then((t) => {
             this.setState({departmentName: t.data.name})
         })
@@ -20,6 +21,7 @@ class Vacancy extends React.Component {
             departmentName: '',
         }
     }
+
     render () {
         return (
             <div className='vacancy'>

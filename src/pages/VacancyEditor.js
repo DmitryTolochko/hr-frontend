@@ -5,6 +5,7 @@ import axios from 'axios'
 class VacancyEditor extends React.Component {
     constructor(props) {
         super(props)
+        document.title = 'Редактор вакансии'
 
         axios.get(`http://89.108.103.70/api/Vacancy/${window.location.href.split("/")[4]}`).then((response) => {
             this.setState({

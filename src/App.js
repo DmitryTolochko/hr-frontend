@@ -44,7 +44,7 @@ class App extends React.Component {
                     <Navigation />
                     <div className='page'>
                         <Routes>
-                            <Route exact path='/' element={<Account/>} />
+                            <Route exact path='/' element={<BoardOfVacancies/>} />
                             <Route path='/CVEditor' element={<CVEditor/>} />
                             <Route path='/FeaturedVacancies' element={<FeaturedVacancies/>} />
                             <Route path='/BoardOfVacancies' element={<BoardOfVacancies/>} />

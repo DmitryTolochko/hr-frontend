@@ -10,6 +10,7 @@ class MyVacancies extends React.Component {
         this.state = {
             data: null
         }
+        document.title = 'Мои вакансии'
         this.getVacancies = this.getVacancies.bind(this)
     }
 

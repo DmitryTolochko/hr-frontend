@@ -17,6 +17,7 @@ let educationTypes = {
 class CVpan extends React.Component {
     constructor(props) {
         super(props)
+        document.title = 'Редактор резюме'
 
         this.state ={
             id: null,

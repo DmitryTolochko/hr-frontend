@@ -59,6 +59,7 @@ class CVpan2 extends React.Component {
     getCV() {
         axios.get(`http://89.108.103.70/api/resume/${window.location.href.split("/")[4]}`).then((response) => {
             this.setState({data: response.data})
+            document.title = response.data.author.surname + ' ' + response.data.author.name + ' ' + response.data.author.patronymic
         })
     }
 

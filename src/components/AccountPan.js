@@ -65,6 +65,7 @@ class AccountPan extends React.Component {
                 telegram: response.data.telegram,
                 vk: response.data.vk,
             })
+            document.title = 'Личный кабинет'
         })
 
         await axios.get(`http://89.108.103.70/api/file/${JSON.parse(localStorage('user')).id}`).then((resp) => {

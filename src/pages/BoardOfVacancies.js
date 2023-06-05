@@ -13,7 +13,7 @@ export class BoardOfVacancies extends React.Component {
             vacancies: [],
             options: JSON.parse(localStorage.getItem('FILTER_OPTIONS')) ?? {}
         }
-    
+        document.title = 'Доска вакансий Intra'
         this.loading = true;
         this.getVacancies(this.state.options);
         this.stateUpdater = this.stateUpdater.bind(this)

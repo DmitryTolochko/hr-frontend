@@ -13,7 +13,7 @@ class Registration extends React.Component {
             password: null,
             passwordConfirm: null
         }
-
+        document.title = 'Регистрация Intra'
         this.createNewUser = this.createNewUser.bind(this)
     }
 

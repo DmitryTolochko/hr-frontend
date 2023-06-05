@@ -15,6 +15,7 @@ class AdminPan extends React.Component {
             modalData: null,
             role: null
         }
+        document.title = 'Панель администратора'
 
         this.getUsers = this.getUsers.bind(this)
         this.getUserInfo = this.getUserInfo.bind(this)

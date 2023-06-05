@@ -10,6 +10,7 @@ class LoginPan extends React.Component {
             password: null
         }
 
+        document.title = 'Вход Intra'
         this.getToken = this.getToken.bind(this)
         this.logInUser = this.logInUser.bind(this)
     }

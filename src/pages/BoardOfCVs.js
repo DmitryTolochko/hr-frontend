@@ -12,7 +12,7 @@ class BoardOfCVs extends React.Component {
             data: [
             ]
         }
-
+        document.title = 'Доска резюме'
         this.getCVs = this.getCVs.bind(this)
     }
 
