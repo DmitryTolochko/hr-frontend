@@ -11,6 +11,7 @@ class AdminPan extends React.Component {
         super(props)
         this.state = {
             data: null,
+            copyData: null,
             user: null,
             modalData: null,
             role: null
@@ -20,6 +21,7 @@ class AdminPan extends React.Component {
         this.getUsers = this.getUsers.bind(this)
         this.getUserInfo = this.getUserInfo.bind(this)
         this.updateModalData = this.updateModalData.bind(this)
+        this.searchPeople = this.searchPeople.bind(this)
     }
 
     refreshToken() {
@@ -63,7 +65,10 @@ class AdminPan extends React.Component {
 
     getUsers() {
         axios.get('http://89.108.103.70/api/user/get-all').then((response) => {
-            this.setState({data: response.data})
+            this.setState({
+                data: response.data.userList,
+                copyData: response.data.userList,
+            })
         })
     }
 
@@ -82,6 +87,15 @@ class AdminPan extends React.Component {
         this.setState({modalData: info});
     }
 
+    searchPeople(title) {
+        this.loading = false;
+        if (title !== null) {
+            let newData = this.state.copyData.filter(el => (el.name + ' ' + el.surname + ' ' + el.patronymic).includes(title))
+            console.log(newData)
+            this.setState({data: newData})
+        }
+    }
+
     render() {
         if (this.state.data === null) {
             return (
@@ -93,14 +107,14 @@ class AdminPan extends React.Component {
         return (
             <div className='glavAdmin'>
                 <div className='adminPan'>
-                    <div className='SearchStringadmin'><SearchString width='650px'/></div>
+                    <div className='SearchStringadmin'><SearchString width='650px' method={this.searchPeople}/></div>
                     <div className='zaglav'>
                         <text className='tabletext'>Аватар</text>
                         <text className='tabletext1'>ФИО</text>
                         <text className='tabletext2'>Почта</text>
                         <text className='tabletext3'>Роль</text>
                     </div>
-                    {this.state.data.userList.map((el) => (<a onClick={() => this.getUserInfo(el)}><PeopleCard data={el}/></a>))}
+                    {this.state.data.map((el) => (<a onClick={() => this.getUserInfo(el)} id={el.id}><PeopleCard data={el} id={el.id}/></a>))}
                 </div>
                 {this.state.user !== null && this.state.role !== null ? (<AdminLK data={this.state.user} role={this.state.role}  updateData={this.updateModalData}/>) : (<></>)}
                 {this.state.modalData !== null ? (<div class="dark-overlay"></div>) : (<></>)}

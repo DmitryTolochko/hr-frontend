@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ImageComponent from './ImageComponent';
 
 function getOpenedPages(role) {
     if (role === 'user') { 
@@ -67,7 +68,7 @@ class Navigation extends React.Component {
                 </ul>
                 {localStorage.getItem('user') !== null ? 
                 (<div className='account'>
-                    <img src={require('./images/deafult-avatar.png')} alt='avatar'/>
+                    <ImageComponent id={JSON.parse(localStorage.getItem('user')).id} tag='img_ac'/>
                     <Link to="/Account" onClick={() => this.changeChosenPage()}>{this.userName}</Link>
                 </div>) :
                 (<div className='account'>

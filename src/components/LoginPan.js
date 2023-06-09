@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import ReCAPTCHA from "react-google-recaptcha";
 
 class LoginPan extends React.Component {
     constructor(props) {
@@ -80,6 +81,14 @@ class LoginPan extends React.Component {
                     </div>
                     <input className = 'loginPan_first_input' placeholder='Почта' onChange={(e) => this.setState({email: e.target.value})}/>
                     <input className = 'loginPan_second_input' type="password" placeholder='Пароль' onChange={(e) => this.setState({password: e.target.value})}/>
+                    <ReCAPTCHA
+                        ref={this._reCaptchaRef}
+                        sitekey='6LesJYMmAAAAAHSj9DdtLYjMlv-iEWEwtBE-aL5a'
+                        onChange={this.handleChange}
+                        asyncScriptOnLoad={this.asyncScriptOnLoad}
+
+                        className='captcha'
+                    />
                     <button className='loginPan_button' onClick={this.getToken}>
                         Войти
                     </button>

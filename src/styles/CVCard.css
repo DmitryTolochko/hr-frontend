@@ -2,9 +2,11 @@
     width: 125px;
     height: 125px;
 
-    padding-top: 23px;
-    padding-right: 31px;
+    margin-top: 23px;
+    margin-right: 31px;
     margin-bottom: 72px;
+
+    border-radius: 89.2857px;
 }
 
 .card-name {

@@ -9,7 +9,7 @@
     position: relative;
     background-color: #FFFFFF;
     width: 550px;
-    height: 518px;
+    height:fit-content;
     margin: 0 auto;
     justify-content: center;
     
@@ -130,6 +130,7 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
+    margin-bottom: 30px;
     
 
     color: #000000;
@@ -145,3 +146,15 @@
 
     color: #000000;
 }
+
+.captcha {
+    display: "inline-block"; 
+    zoom: 1.33;
+    z-index: 10;
+    padding-left: 56px;
+    margin-top: 27px;
+}
+
+/* #rc-imageselect {
+    zoom: 1.33;
+} */

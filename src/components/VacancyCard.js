@@ -38,12 +38,14 @@ class VacancyCard extends React.Component {
         }).then(this.setState({isFeatured: true}))
     }
 
-    deleteFromFeatured(id) {
-        axios.delete(`http://89.108.103.70/api/vacancy/favorite/${id}`, {
+    async deleteFromFeatured(id) {
+        await axios.delete(`http://89.108.103.70/api/vacancy/favorite/${id}`, {
             headers: {
                 Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('tokens')).accessToken
             },
-        }).then(window.location.reload)
+        })
+
+        window.location.reload()
     }
 
     render() {
@@ -55,7 +57,7 @@ class VacancyCard extends React.Component {
                         <h2>{this.props.cardInfo.salary} руб.</h2>
                     </span>
                     {this.state.isFeatured ? 
-                    (<a onClick={() =>this.addToFeatured(this.props.cardInfo.id)}><img src={require('./images/star-2.svg').default} alt='star'></img></a>) : 
+                    (<a onClick={() =>this.deleteFromFeatured(this.props.cardInfo.id)}><img src={require('./images/star-2.svg').default} alt='star'></img></a>) : 
                     (<a onClick={() =>this.addToFeatured(this.props.cardInfo.id)}><img src={require('./images/star-1.svg').default} alt='star'></img></a>)}
                     
                 </div>

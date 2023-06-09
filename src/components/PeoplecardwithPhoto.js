@@ -1,4 +1,5 @@
 import React from 'react';
+import ImageComponent from './ImageComponent';
 
 class PeoplecardwithPhoto extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class PeoplecardwithPhoto extends React.Component {
         }
         return (
             <div className='photo_card_div'>
-                <img className='img_CV' src={require('./images/deafult-avatar.png')} alt='avatar'></img>
+                <ImageComponent id={this.state.data.author.id} tag='img_CV'/>
                 <h2 className='photo_div_h2'>Контакты</h2>
                 <h3 className='CVPan_h3'>Почта</h3>
                 <p className='fio_CVpan2'><a href=''>{this.state.data.author.email}</a></p>

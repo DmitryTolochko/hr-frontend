@@ -3,6 +3,7 @@ import ModalJob1 from './ModalJob1';
 import ModalJob2 from './ModalJob2';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
+import ImageComponent from './ImageComponent';
 
 let educationTypes = {
     0: 'Не указано',
@@ -254,6 +255,7 @@ class CVpan extends React.Component {
     }
 
     render() {
+        {console.log(this.state)}
         if (this.state.author === null) {
             return (
                 <div className='loader-wrapper'>
@@ -428,7 +430,8 @@ class CVpan extends React.Component {
                     <h2 className='photo_div_h2'>
                         Фото
                     </h2>
-                    <a href=''><img className='img_CV' src={require('./images/deafult-avatar.png')} alt='avatar'></img></a>
+                    <ImageComponent id={this.state.author.id} tag='img_CV'/>
+                    {/* <a href=''><img className='img_CV' src={require('./images/deafult-avatar.png')} alt='avatar'></img></a> */}
                     <h2 className='photo_div_h2'>
                         Контакты
                     </h2>

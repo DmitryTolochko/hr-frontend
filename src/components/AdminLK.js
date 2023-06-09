@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import ImageComponent from './ImageComponent';
 
 function getRoleName(role) {
     if (role === 'user') {
@@ -18,7 +19,8 @@ class PeopleCard extends React.Component {
         super(props)
         this.state = {
             data: props.data,
-            role: props.role
+            role: props.role,
+            isUpdated: false
         }
     }
 
@@ -26,7 +28,8 @@ class PeopleCard extends React.Component {
         if (prevProps.data !== this.props.data || prevProps.role !== this.props.role) {
             this.setState({ 
                 data: this.props.data,
-                role: this.props.role
+                role: this.props.role,
+                isUpdated: false
             });
         }
         console.log(this.state)
@@ -43,7 +46,11 @@ class PeopleCard extends React.Component {
     render() {
         return (
             <div className='adminlk'>
-                <a href=''><img className='img_adm2'src={require('./images/deafult-avatar.png')} alt='avatar' ></img></a>
+                {this.state.isUpdated ? 
+                    <ImageComponent id={this.state.data.id} tag='img_adm2'/> :
+                    this.setState({isUpdated: true})
+                }
+                {/* <a href=''><img className='img_adm2'src={require('./images/deafult-avatar.png')} alt='avatar' ></img></a> */}
                 <h1 className='admin_h1'>{this.state.data.surname + ' ' + this.state.data.name}</h1>
                 <h2 className='admin_h2'>Почта</h2>
                 <p className='admin_a_text'>{this.state.data.email}</p>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ImageComponent from './ImageComponent';
 
 function get_current_age(date) {
     var d = date.split('-');
@@ -22,7 +23,7 @@ const CVCard= (props) => {
                     <h1><Link to={'/CV/' + props.cardInfo.id}>{props.cardInfo.title}</Link></h1>
                     <h2>{props.cardInfo.desiredSalary} руб.</h2>
                 </span>
-                <img className='card-avatar' src={require('./images/deafult-avatar.png')}></img>
+                <ImageComponent id={props.cardInfo.author.id} tag='card-avatar'/>
             </div>
 
             <div className='second-half-CV'>

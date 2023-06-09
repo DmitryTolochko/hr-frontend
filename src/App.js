@@ -34,6 +34,7 @@ import './styles/VacancyEditor.css'
 import './styles/CV.css'
 import './styles/MyVacancies.css'
 import './styles/Loader.css'
+import StartPage from './pages/StartPage';
 
 
 class App extends React.Component {
@@ -58,6 +59,7 @@ class App extends React.Component {
                             <Route path="/VacancyEditor/:id" element={<VacancyEditor/>}/>
                             <Route path="/CVResponses" element={<CVResponses/>}/>
                             <Route path="/CV/:id" element={<CV/>}/>
+                            {/* <Route path='/startpage' element={<StartPage/>}/> */}
                         </Routes>
                     </div>
                 </Router>

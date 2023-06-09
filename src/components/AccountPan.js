@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import AccoutDepartmentCard from './AccountDepartmentCard';
+import ImageComponent from './ImageComponent';
 
 class AccountPan extends React.Component {
     constructor(props) {
@@ -67,10 +68,6 @@ class AccountPan extends React.Component {
             })
             document.title = 'Личный кабинет'
         })
-
-        await axios.get(`http://89.108.103.70/api/file/${JSON.parse(localStorage('user')).id}`).then((resp) => {
-            this.setState({photo: resp.data})
-        })
     }
 
     updateUserInfo() {
@@ -97,10 +94,23 @@ class AccountPan extends React.Component {
             },
         })
           .then(response => {
-            console.log(response.data);
-          })
+            window.location.replace('/Account')
+        })
           .catch(error => {
-            console.log(error);
+            axios.delete(`http://89.108.103.70/api/file/${JSON.parse(localStorage.getItem('user')).id}`, {
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('tokens')).accessToken
+                },
+            })
+            .then(() => {
+                axios.post('http://89.108.103.70/api/file', formData , {
+                    headers: {
+                        Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('tokens')).accessToken
+                    },
+                }).then(() => {
+                    window.location.replace('/Account')
+                })
+            })
         });
     }
 
@@ -150,7 +160,8 @@ class AccountPan extends React.Component {
                     </button>
                 </div>
                 <div className='photodiv'>
-                    <img className='img_ac' src={this.state.photo === null ? require('./images/deafult-avatar.png') : this.state.photo} alt='avatar'></img>
+                    {console.log(this.state.photo)}
+                    <ImageComponent id={JSON.parse(localStorage.getItem('user')).id} tag='img_ac'/>
                     <a className='photodiv_a' onClick={() => this.setState({changeFile: true})}> 
                         <img src={require('./images/pencil-small.svg').default} alt='save' ></img>
                         &nbsp;Изменить фото профиля
@@ -159,7 +170,7 @@ class AccountPan extends React.Component {
                 </div>
                 {this.state.changeFile ? (
                     <>
-                        <div class="dark-overlay"></div>
+                        <div className="dark-overlay"></div>
                         <form onSubmit={this.handleFileUpload} className='file-uploader'>
                                 <input type="file" onChange={this.handleFileSelect} />
                                 <button className='CVPan_up_button' type="submit">Сохранить</button>

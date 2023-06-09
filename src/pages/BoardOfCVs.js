@@ -9,11 +9,12 @@ class BoardOfCVs extends React.Component {
         super(props)
 
         this.state = {
-            data: [
-            ]
+            data: [],
+            copy: []
         }
         document.title = 'Доска резюме'
         this.getCVs = this.getCVs.bind(this)
+        this.searchCV = this.searchCV.bind(this)
     }
 
     componentDidMount() {
@@ -64,8 +65,19 @@ class BoardOfCVs extends React.Component {
                 }   
             ]
         }).then((response) => {
-            this.setState({data: response.data.resumeList})
+            this.setState({
+                data: response.data.resumeList,
+                copy: response.data.resumeList,
+            })
         })
+    }
+
+    searchCV(title) {
+        this.loading = false;
+        if (title !== null) {
+            let newData = this.state.copy.filter(el => el.title.includes(title))
+            this.setState({data: newData })
+        }
     }
 
     render() {
@@ -79,7 +91,7 @@ class BoardOfCVs extends React.Component {
         return (
             <div className='board-of-vacancies'>
                 <div className='board'>
-                    <SearchString/>
+                    <SearchString method={this.searchCV}/>
                     {this.state.data.map((el) => (<div key={el.id}><CVCard animatedClass='animated-card' cardInfo={el}/></div>))}
                 </div>
             </div>

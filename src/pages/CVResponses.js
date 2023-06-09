@@ -4,16 +4,19 @@ import FiltersPanel from '../components/FiltersPanel';
 import CVCard from '../components/CVCard';
 import CVResponse from '../components/CVResponse';
 import axios from 'axios';
+import Loader from '../components/Loader';
 
 class CVResponses extends React.Component {
     constructor(props) {
         super(props) 
+        this.loading = true;
         this.state = {
             responses: null,
             vacancies: null
         }
         document.title = 'Отклики'
         this.getVacancies = this.getVacancies.bind(this)
+        this.searchCV = this.searchCV.bind(this)
     }
 
     async componentDidMount() {
@@ -24,14 +27,33 @@ class CVResponses extends React.Component {
         await this.getVacancies()
     }
 
-    async getVacancies() {
-        await axios.post(`http://89.108.103.70/api/Vacancy/get-all-filter`, {
-            "containsQueryList": [
+    async getVacancies(title) {
+        console.log(title)
+        if (title != null) {
+            var options = [
                 {
-                  "fieldName": "authorId",
-                  "values": [JSON.parse(localStorage.getItem('user')).id]
+                    "fieldName": "authorId",
+                    "values": [JSON.parse(localStorage.getItem('user')).id]
+                },
+                {
+                    "fieldName": "title",
+                    "values": [title]
                 }
-              ],
+            ]
+            this.setState({responses: []})
+            this.loading = true;
+        }
+        else {
+            var options = [
+                {
+                    "fieldName": "authorId",
+                    "values": [JSON.parse(localStorage.getItem('user')).id]
+                }
+            ]
+        }
+
+        await axios.post(`http://89.108.103.70/api/Vacancy/get-all-filter`, {
+            "containsQueryList": options,
         }).then((response) => {
             if (response.data.filteredVacancyList) {
                 this.setState({vacancies: response.data.filteredVacancyList}, () => {
@@ -50,10 +72,14 @@ class CVResponses extends React.Component {
             },
         }).then((resp) => {
             if (resp.data.resumeList.length !== 0) {
-                let newResponses = this.state.responses === null ? [{resumeList: resp.data.resumeList, vacancy: vacancy}] : [...this.state.responses, {resumeList: resp.data.resumeList, vacancy: vacancy}]
+                let newResponses = this.state.responses === null ? 
+                    [{resumeList: resp.data.resumeList, vacancy: vacancy}] : 
+                    [...this.state.responses, {resumeList: resp.data.resumeList, vacancy: vacancy}]
                 this.setState({responses: newResponses})
             }
         })
+
+        this.loading = false;
     }
 
     async refreshToken() {
@@ -84,6 +110,10 @@ class CVResponses extends React.Component {
         }
     }
 
+    async searchCV(title) {
+        await this.getVacancies(title)
+    }
+
     render() {
         if (this.state.responses === null) {
             return (
@@ -95,11 +125,13 @@ class CVResponses extends React.Component {
         return (
             <div className='board-of-vacancies'>
                 <div className='board'>
-                    <SearchString/>
-                    {console.log(this.state.responses)}
+                    <SearchString method={this.searchCV}/>
                     {this.state.responses.map((vacancies) => (vacancies.resumeList.map((resume) =>
                         (<div><CVResponse data={resume} vacancy={vacancies.vacancy} animatedClass='animated-card'/></div> )
                     )))}
+                    <div className='loader-wrapper'>
+                        <Loader isLoading={this.loading}/>
+                    </div>
                 </div>
             </div>
         );

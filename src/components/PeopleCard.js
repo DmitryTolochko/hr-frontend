@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import ImageComponent from './ImageComponent';
 
 function getRoleName(role) {
     if (role === 'user') {
@@ -31,7 +32,7 @@ class PeopleCard extends React.Component {
     render() {
         return (
             <div className='people'>
-                <img className='img_adm' src={require('./images/deafult-avatar.png')} alt='avatar'></img>
+                <ImageComponent id={this.state.data.id} tag='img_adm'/>
                 <p className='peopletext name-1'>{this.state.data.surname + ' ' + this.state.data.name + ' ' + this.state.data.patronymic}</p>
                 <p className='peopletext mail-1'>{this.state.data.email}</p>
                 <span className='role-1'><p className='peopletext peoplerole'>{getRoleName(this.state.role)}</p></span>

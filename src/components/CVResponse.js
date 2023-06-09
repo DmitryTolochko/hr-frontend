@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import ImageComponent from './ImageComponent';
 
 function get_current_age(date) {
     var d = date.split('-');
@@ -53,7 +54,7 @@ class CVResponse extends React.Component {
                         
                         <h2>{this.state.data?.desiredSalary} руб.</h2>
                     </span>
-                    <img className='card-avatar cv-response-indent' src={require('./images/deafult-avatar.png')}></img>
+                    <ImageComponent id={this.state.data.author.id} tag='card-avatar cv-response-indent'/>
                 </div>
 
                 <p className='location'>Вакансия:</p>

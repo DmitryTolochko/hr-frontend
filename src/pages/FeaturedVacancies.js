@@ -11,6 +11,7 @@ class FeaturedVacancies extends React.Component {
         this.loading = true;
         this.state = {
             vacancies: [],
+            copyVacancies: [],
             options: {
                 containsQueryList: [],
                 equalsQueryList: [],
@@ -22,6 +23,7 @@ class FeaturedVacancies extends React.Component {
         this.getVacancies();
         this.getVacancies = this.getVacancies.bind(this)
         this.stateUpdater = this.stateUpdater.bind(this)
+        this.searchVacancy = this.searchVacancy.bind(this)
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -40,15 +42,55 @@ class FeaturedVacancies extends React.Component {
         })
     }
 
-    getVacancies() {
-        axios.get('http://89.108.103.70/api/vacancy/favorite', {
+    async getVacancies() {
+        await this.refreshToken()
+        await axios.get('http://89.108.103.70/api/vacancy/favorite', {
             headers: {
                 Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('tokens')).accessToken
             },
         }).then((response) => {
-            this.setState({vacancies: response.data.vacancyList})
+            this.setState({
+                vacancies: response.data.vacancyList,
+                copyVacancies: response.data.vacancyList,
+            })
             this.loading = false;
         })
+    }
+
+    async refreshToken() {
+        if (localStorage.getItem('tokens') !== null) {
+            let date = new Date(JSON.parse(localStorage.getItem('tokens')).expirationTime)
+            let now = new Date();
+            let diffInMinutes = Math.floor((date - now) / 60000);
+            if (diffInMinutes <= 5) {
+                await axios.post('http://89.108.103.70/api/Auth/update-token', {
+                    'accessToken': JSON.parse(localStorage.getItem('tokens')).accessToken,
+                    'refreshToken': JSON.parse(localStorage.getItem('tokens')).refreshToken,
+                })
+                .then((response) => {
+                    localStorage.setItem('tokens',JSON.stringify(response.data))
+                })
+                .catch( function (error) {
+                    if (error.response) {
+                        localStorage.removeItem('tokens')
+                        localStorage.removeItem('user')
+                        localStorage.removeItem('role')
+                        window.location.replace("/Login")
+                    }
+                })
+            }
+        } 
+        else {
+            window.location.replace("/Login")
+        }
+    }
+
+    searchVacancy(title) {
+        this.loading = false;
+        if (title !== null) {
+            let newVacancies = this.state.copyVacancies.filter(el => el.title.includes(title))
+            this.setState({vacancies: newVacancies})
+        }
     }
 
     render() {
@@ -71,7 +113,7 @@ class FeaturedVacancies extends React.Component {
             <div className='board-of-vacancies'>
                 {/* <FiltersPanel/> */}
                 <div className='board'>
-                    <SearchString width='703px'/>
+                    <SearchString width='703px' method={this.searchVacancy}/>
                     <div className='loader-wrapper'>
                         <Loader isLoading={this.loading}/>
                         {this.state.vacancies?.map((el) => (<VacancyCard key={el.id} isFeatured={true} cardInfo={el} departmentId={el.departmentId} animatedClass='animated-card'/>))}
