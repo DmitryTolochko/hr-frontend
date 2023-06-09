@@ -8,19 +8,23 @@ class LoginPan extends React.Component {
 
         this.state = {
             email: null,
-            password: null
+            password: null,
+            isButtonHidden: true,
+            token: null
         }
 
         document.title = 'Вход Intra'
         this.getToken = this.getToken.bind(this)
         this.logInUser = this.logInUser.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     getToken() {
         if (this.state.email && this.state.password) {
             axios.post(`http://89.108.103.70/api/Auth/login`, {
                 email: this.state.email,
-                password: this.state.password
+                password: this.state.password,
+                captchaToken: this.state.token
             }).then((response) => this.logInUser(response))
         }
     }
@@ -69,6 +73,13 @@ class LoginPan extends React.Component {
             window.location.replace("/Login")
         }
     }
+
+    handleChange = value => {
+        this.setState({
+            isButtonHidden: false,
+            token: value
+        })
+    }
     
     render() {
         return (
@@ -84,14 +95,15 @@ class LoginPan extends React.Component {
                     <ReCAPTCHA
                         ref={this._reCaptchaRef}
                         sitekey='6LesJYMmAAAAAHSj9DdtLYjMlv-iEWEwtBE-aL5a'
-                        onChange={this.handleChange}
                         asyncScriptOnLoad={this.asyncScriptOnLoad}
-
                         className='captcha'
+                        onChange={this.handleChange}
                     />
-                    <button className='loginPan_button' onClick={this.getToken}>
+                    {this.state.isButtonHidden ? 
+                    (<></>) : 
+                    (<button className='loginPan_button' onClick={this.getToken}>
                         Войти
-                    </button>
+                    </button>)}
                     <div className='loginPan_div'>
                         Еще нет аккаунта?&nbsp;
                         <a className='loginPan_a' href='/Registration'> 

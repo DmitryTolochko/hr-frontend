@@ -155,6 +155,6 @@
     margin-top: 27px;
 }
 
-/* #rc-imageselect {
+body > div:nth-child(3) {
     zoom: 1.33;
-} */
+}
