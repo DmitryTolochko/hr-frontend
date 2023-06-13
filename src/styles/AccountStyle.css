@@ -358,3 +358,10 @@
     background-color: rgb(218, 111, 111);
     transform: scale(1.02);
 }
+
+.file-uploader > p {
+    font-weight: 500;
+    font-size: 19px;
+    padding: 0;
+    margin-top: 0;
+}

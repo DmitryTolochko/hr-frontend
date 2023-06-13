@@ -116,9 +116,8 @@ class FeaturedVacancies extends React.Component {
                     <SearchString width='703px' method={this.searchVacancy}/>
                     <div className='loader-wrapper'>
                         <Loader isLoading={this.loading}/>
-                        {this.state.vacancies?.map((el) => (<VacancyCard key={el.id} isFeatured={true} cardInfo={el} departmentId={el.departmentId} animatedClass='animated-card'/>))}
+                        {this.state.vacancies?.map((el) => (<VacancyCard key={el.id} isAuthorized={true} isFeatured={true} cardInfo={el} departmentId={el.departmentId} animatedClass='animated-card'/>))}
                     </div>
-                    {/* <VacancyCard animatedClass='animated-card'/> */}
                 </div>
             </div>
         );

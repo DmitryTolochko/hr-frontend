@@ -274,7 +274,7 @@
     position: absolute;
     background-color: #FFFFFF;
     width: 520px;
-    height: 590px;
+    height:fit-content;
     justify-content: center;
     margin-top: 150px;
     z-index: 10;
@@ -441,4 +441,8 @@
     width:190px;
     display: flex;
     justify-content: center;
+}
+
+.buttons {
+    margin-bottom: 30px;
 }

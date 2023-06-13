@@ -8,12 +8,14 @@ class VacancyCard extends React.Component {
         this.state = {
             department: '',
             buttonText: 'Откликнуться',
-            isFeatured: props.isFeatured
+            isFeatured: props.isFeatured,
+            isAuthorized: props.isAuthorized
         }
 
         this.getDepartment = this.getDepartment.bind(this)
         this.getDepartment(props.departmentId)
         this.createResponse = this.createResponse.bind(this)
+        this.addToFeatured = this.addToFeatured.bind(this)
     }
 
     getDepartment(id) {
@@ -53,19 +55,21 @@ class VacancyCard extends React.Component {
             <div className={`vacancy-card ${this.props.animatedClass}`}>
                 <div className='first-half'>
                     <span className='vacancy-card-head'>
-                        <h1><Link to={"/Vacancy/" + this.props.cardInfo.id} target="_blank">{this.props.cardInfo.title}</Link></h1>
+                        <h1><Link to={"/Vacancy/" + this.props.cardInfo.id} isFeatured={this.state.isFeatured} target="_blank">{this.props.cardInfo.title}</Link></h1>
                         <h2>{this.props.cardInfo.salary} руб.</h2>
                     </span>
+                    
                     {this.state.isFeatured ? 
-                    (<a onClick={() =>this.deleteFromFeatured(this.props.cardInfo.id)}><img src={require('./images/star-2.svg').default} alt='star'></img></a>) : 
-                    (<a onClick={() =>this.addToFeatured(this.props.cardInfo.id)}><img src={require('./images/star-1.svg').default} alt='star'></img></a>)}
+                    (<a onClick={() =>this.deleteFromFeatured(this.props.cardInfo.id)}>{this.state.isAuthorized ? <img src={require('./images/star-2.svg').default} alt='star'></img> : <></>}</a>) : 
+                    (<a onClick={() =>this.addToFeatured(this.props.cardInfo.id)}>{this.state.isAuthorized ? <img src={require('./images/star-1.svg').default} alt='star'></img> : <></>}</a>)}
                     
                 </div>
                 
                 <p className='location'>{this.props.cardInfo.city}</p>
                 <div className='second-half'>
                     <p className='department'>{this.state.department}</p>
-                    <button className='respond-button' onClick={() => this.createResponse(this.props.cardInfo.id)}>{this.state.buttonText}</button>
+                    {this.state.isAuthorized ? <button className='respond-button' onClick={() => this.createResponse(this.props.cardInfo.id)}>{this.state.buttonText}</button> : <></>}
+                    
                 </div>
             </div>
         );

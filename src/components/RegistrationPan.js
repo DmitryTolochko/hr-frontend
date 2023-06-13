@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha";
 
 class Registration extends React.Component {
     constructor (props) {
@@ -11,10 +12,13 @@ class Registration extends React.Component {
             email: null,
             phone: null,
             password: null,
-            passwordConfirm: null
+            passwordConfirm: null,
+            isButtonHidden: true,
+            token: null
         }
         document.title = 'Регистрация Intra'
         this.createNewUser = this.createNewUser.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     createNewUser() {
@@ -31,9 +35,18 @@ class Registration extends React.Component {
             email: this.state.email,
             phone: this.state.phone,
             password: this.state.password,
-            passwordConfirm: this.state.password
+            passwordConfirm: this.state.password,
+            captchaToken: this.state.token
         })
         .then(setTimeout(() => {window.location.replace("/Login")}, 300));
+    }
+
+    handleChange = value => {
+        this.setState({
+            isButtonHidden: false,
+            token: value
+        })
+        this.recaptcha.current.reset();
     }
 
     render() {
@@ -53,9 +66,20 @@ class Registration extends React.Component {
                     </input>
                     <input className = 'registrationPan_four_input' type="password" placeholder='Пароль' onChange={(e) => this.setState({password: e.target.value})}>
                     </input>
-                    <button className='registrationPan_button' onClick={this.createNewUser}>
+                    <ReCAPTCHA
+                        ref={(el) => {
+                            this.recaptcha = el;
+                        }}
+                        sitekey='6LesJYMmAAAAAHSj9DdtLYjMlv-iEWEwtBE-aL5a'
+                        asyncScriptOnLoad={this.asyncScriptOnLoad}
+                        className='captcha captcha2'
+                        onChange={this.handleChange}
+                    />
+                    {this.state.isButtonHidden ? 
+                    (<></>) : 
+                    (<button className='registrationPan_button' onClick={this.createNewUser}>
                         Зарегистрироваться
-                    </button>
+                    </button>)}
                     <div className='registrationPan_div'>
                         Уже есть аккаунт?&nbsp;
                         <Link to='/Login'>

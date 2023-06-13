@@ -13,7 +13,11 @@ export class BoardOfVacancies extends React.Component {
             vacancies: [],
             copyVacancies: [],
             featuredVacancies: [],
+            isAuthorized: false,
             options: JSON.parse(localStorage.getItem('FILTER_OPTIONS')) ?? {}
+        }
+        if (localStorage.getItem('user') !== null) {
+            this.refreshToken();
         }
         document.title = 'Доска вакансий Intra'
         this.loading = true;
@@ -81,6 +85,7 @@ export class BoardOfVacancies extends React.Component {
             }).then((response) => {
                 this.setState({featuredVacancies: response.data.vacancyList})
             })
+            this.setState({isAuthorized: true})
         }
 
         await axios.post('http://89.108.103.70/api/Vacancy/get-all-filter', options)
@@ -127,7 +132,7 @@ export class BoardOfVacancies extends React.Component {
                             <Loader isLoading={this.loading}/>
                         </div>
                     }
-                    {this.state.vacancies.map((el) => (<VacancyCard key={el.id} animatedClass='animated-card' isFeatured={this.state.featuredVacancies.filter(vac => vac.id === el.id).length !== 0} cardInfo={el} departmentId={el.departmentId}/>))}
+                    {this.state.vacancies.map((el) => (<VacancyCard key={el.id} isAuthorized={this.state.isAuthorized} animatedClass='animated-card' isFeatured={this.state.featuredVacancies.filter(vac => vac.id === el.id).length !== 0} cardInfo={el} departmentId={el.departmentId}/>))}
                 </div>
             </div>
         );

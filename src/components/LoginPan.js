@@ -79,6 +79,7 @@ class LoginPan extends React.Component {
             isButtonHidden: false,
             token: value
         })
+        this.recaptcha.current.reset();
     }
     
     render() {
@@ -93,11 +94,13 @@ class LoginPan extends React.Component {
                     <input className = 'loginPan_first_input' placeholder='Почта' onChange={(e) => this.setState({email: e.target.value})}/>
                     <input className = 'loginPan_second_input' type="password" placeholder='Пароль' onChange={(e) => this.setState({password: e.target.value})}/>
                     <ReCAPTCHA
-                        ref={this._reCaptchaRef}
                         sitekey='6LesJYMmAAAAAHSj9DdtLYjMlv-iEWEwtBE-aL5a'
                         asyncScriptOnLoad={this.asyncScriptOnLoad}
                         className='captcha'
                         onChange={this.handleChange}
+                        ref={(el) => {
+                            this.recaptcha = el;
+                        }}
                     />
                     {this.state.isButtonHidden ? 
                     (<></>) : 

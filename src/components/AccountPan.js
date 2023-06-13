@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios'
 import AccoutDepartmentCard from './AccountDepartmentCard';
 import ImageComponent from './ImageComponent';
+import Adminmodal1 from './Adminmodal1';
 
 class AccountPan extends React.Component {
     constructor(props) {
@@ -16,12 +17,15 @@ class AccountPan extends React.Component {
 
             selectedFile: null,
             changeFile: false,
-            photo: null
+            photo: null,
+
+            changePassword: false
         }
         this.refreshToken()
         this.getUserInfo = this.getUserInfo.bind(this)
         this.refreshToken = this.refreshToken.bind(this)
         this.updateUserInfo = this.updateUserInfo.bind(this)
+        this.changePassword = this.changePassword.bind(this)
     }
 
     refreshToken() {
@@ -120,6 +124,12 @@ class AccountPan extends React.Component {
         })
     }
 
+    changePassword() {
+        this.setState({
+            changePassword: !this.state.changePassword
+        })
+    }
+
     render() {
         return (
             <div className='glav_accountPan'>
@@ -155,7 +165,7 @@ class AccountPan extends React.Component {
                         <img src={require('./images/save.svg').default} alt='save'></img>
                         &nbsp;Сохранить
                     </button>
-                    <button className='accountPan_password_button'>
+                    <button className='accountPan_password_button' onClick={() => this.changePassword()}>
                         Сменить пароль
                     </button>
                 </div>
@@ -173,8 +183,17 @@ class AccountPan extends React.Component {
                         <div className="dark-overlay"></div>
                         <form onSubmit={this.handleFileUpload} className='file-uploader'>
                                 <input type="file" onChange={this.handleFileSelect} />
+                                <p>Максимальное разрешение: 500x500</p>
+                                <p>Допустимые форматы: jpeg, png, jpg</p>
+                                <p>Максимальный размер файла: 1 Мб</p>
                                 <button className='CVPan_up_button' type="submit">Сохранить</button>
                         </form>
+                    </>
+                ) : (<></>)}
+                {this.state.changePassword ? (
+                    <>
+                        <div className="dark-overlay"></div>
+                        <Adminmodal1 changePassword={this.changePassword}/>
                     </>
                 ) : (<></>)}
                 {JSON.parse(localStorage.getItem('role')).roleList[0] !== 'user' ? (
